@@ -43,7 +43,7 @@ allprojects{
         implementation libs.auth0
         implementation libs.springCloudStaterSleuth
         implementation libs.springCloudSleuthZipkin
-
+        implementation libs.mapstruct
     }
 }
 configurations {
