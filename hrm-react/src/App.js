@@ -1,21 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import LoginPage from "./pages/login/LoginPage";
 
-class App extends Component {
-  render() {
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { useSelector } from "react-redux";
+import HomePage from "./pages/home/HomePage";
+
+function App() {
+    // const isLogin = useSelector((state) => state.auth.isAuthanticated);
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+        <div className="App">
+
+            <BrowserRouter>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<LoginPage></LoginPage>}
+                    ></Route>
+
+                    <Route
+                        path="/homepage"
+                        element={<HomePage></HomePage>}
+                    ></Route>
+
+                </Routes>
+            </BrowserRouter>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
     );
-  }
 }
 
 export default App;
