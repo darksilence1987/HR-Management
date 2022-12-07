@@ -16,7 +16,6 @@ import static org.team3.constant.ApiUrls.*;
 
 public class AuthController {
 
-
     private final AuthService authService;
 
     @CrossOrigin
@@ -25,6 +24,9 @@ public class AuthController {
         System.out.println("mail: " +loginDetails.getEmail()+ " password: " + loginDetails.getPassword());
         authService.save(loginDetails);
     }
+
+
+
 
 
 }
