@@ -1,6 +1,7 @@
 package org.team3.repository.entity;
 
 import lombok.*;
+import org.team3.repository.enums.Role;
 
 import javax.persistence.*;
 
@@ -16,4 +17,5 @@ public class LoginDetails {
     long id;
     String email;
     String password;
+    Role role;
 }

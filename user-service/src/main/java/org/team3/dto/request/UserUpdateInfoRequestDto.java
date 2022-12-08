@@ -1,4 +1,4 @@
-package org.team3.dto.response;
+package org.team3.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class UserUpdateInfoResponseDto {
+public class UserUpdateInfoRequestDto {
     private String photo;
     private String address;
     private String phone;
