@@ -6,8 +6,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.xhite.exception.AuthServiceException;
-import org.xhite.exception.ErrorType;
+import org.team3.exception.UserServiceException;
+import org.team3.exception.ErrorType;
 
 import java.util.Optional;
 
@@ -44,12 +44,12 @@ public class JwtTokenManager {
                     .withIssuer(issuer)
                     .build();
             DecodedJWT decodedToken = verifier.verify(token);
-            if(decodedToken == null) throw new AuthServiceException(ErrorType.GECERSIZ_TOKEN);
+            if(decodedToken == null) throw new UserServiceException(ErrorType.GECERSIZ_TOKEN);
             Long authid = decodedToken.getClaim("authid").asLong();
             return Optional.of(authid);
         }
         catch (Exception e){
-            throw new AuthServiceException(ErrorType.GECERSIZ_TOKEN);
+            throw new UserServiceException(ErrorType.GECERSIZ_TOKEN);
         }
     }
 }
