@@ -14,6 +14,6 @@ public class LoginDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    String mail;
+    String email;
     String password;
 }

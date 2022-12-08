@@ -22,7 +22,7 @@ public class AuthController {
     @CrossOrigin
     @PostMapping("/deneme")
     public void deneme(@RequestBody LoginDetails loginDetails) {
-        System.out.println("mail: " +loginDetails.getMail()+ " password: " + loginDetails.getPassword());
+        System.out.println("mail: " +loginDetails.getEmail()+ " password: " + loginDetails.getPassword());
         authService.save(loginDetails);
     }
 
