@@ -35,7 +35,7 @@ export default function SignIn() {
         const data = new FormData(event.currentTarget);
         axios.post('http://localhost:9090/api/v1/auth/deneme', {
             password: data.get('password'),
-            mail: data.get('email')
+            email: data.get('email')
 
         });
     };

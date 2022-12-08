@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import HomePage from "./pages/home/HomePage";
 
 function App() {
-    // const isLogin = useSelector((state) => state.auth.isAuthanticated);
+    // const isLogin = useSelector((state) => state.auth.isAuthenticated);
     return (
         <div className="App">
 
