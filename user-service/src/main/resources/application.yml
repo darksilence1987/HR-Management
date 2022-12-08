@@ -1,0 +1,14 @@
+server:
+  port: 9091
+spring:
+  rabbitmq:
+    host: localhost
+    username: portname
+    password: 123
+    port: 5672
+
+rabbitmq:
+  exchange-auth: ${rabbitmq-exchange-auth}
+  bindingKey: ${rabbitmq-bindingKey}
+  queueAcvitavted: ${rabbitmq-queueAcvitavted}
+  userUpdateQueue: ${rabbitmq-userUpdateQueue}
