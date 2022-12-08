@@ -14,7 +14,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @Document
 public class User {
-
     @Id
     String id;
     Long authid;

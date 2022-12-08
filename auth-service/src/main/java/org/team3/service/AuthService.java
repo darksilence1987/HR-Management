@@ -16,6 +16,8 @@ public class AuthService extends ServiceManager<LoginDetails, Long> {
         this.authRepository = authRepository;
     }
 
+
+
     }
 
 
