@@ -39,10 +39,10 @@ allprojects{
         annotationProcessor libs.lombok
         implementation libs.springBootValidation
         implementation libs.swaggerui
-        implementation libs.springCloudOpenFeign
+        //implementation libs.springCloudOpenFeign
         implementation libs.auth0
-        implementation libs.springCloudStaterSleuth
-        implementation libs.springCloudSleuthZipkin
+        //implementation libs.springCloudStaterSleuth
+        //implementation libs.springCloudSleuthZipkin
         implementation libs.mapstruct
     }
 }

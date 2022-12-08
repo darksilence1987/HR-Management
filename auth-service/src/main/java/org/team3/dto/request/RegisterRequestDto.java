@@ -29,6 +29,6 @@ public class RegisterRequestDto {
     @Size(min = 8, max=64)
     String phone;
     @Size(min = 4, max=64)
-    String addres;
+    String address;
 
 }

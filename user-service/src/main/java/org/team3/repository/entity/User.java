@@ -1,4 +1,4 @@
-package org.team3.repository.entitiy;
+package org.team3.repository.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
