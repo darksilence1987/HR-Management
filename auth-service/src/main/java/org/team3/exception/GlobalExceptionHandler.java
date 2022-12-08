@@ -15,8 +15,8 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.xhite.exception.ErrorType.BAD_REQUEST_ERROR;
-import static org.xhite.exception.ErrorType.KULLANICI_ZATEN_KAYITLI;
+import static org.team3.exception.ErrorType.BAD_REQUEST_ERROR;
+import static org.team3.exception.ErrorType.KULLANICI_ZATEN_KAYITLI;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
