@@ -6,7 +6,10 @@ import { useSelector } from "react-redux";
 import HomePage from "./pages/home/HomePage";
 
 function App() {
-    // const isLogin = useSelector((state) => state.auth.isAuthenticated);
+
+    const isLogin = useSelector((state) => state.auth.isAuthanticated);
+    console.log("isLogin degeri", isLogin);
+
     return (
         <div className="App">
 
@@ -14,13 +17,9 @@ function App() {
                 <Routes>
                     <Route
                         path="/"
-                        element={<LoginPage></LoginPage>}
+                        element={isLogin ?<HomePage></HomePage> :<LoginPage></LoginPage> }
                     ></Route>
 
-                    <Route
-                        path="/homepage"
-                        element={<HomePage></HomePage>}
-                    ></Route>
 
                 </Routes>
             </BrowserRouter>

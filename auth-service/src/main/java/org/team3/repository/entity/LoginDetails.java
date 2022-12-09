@@ -10,12 +10,14 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tblloginDetails")
+@Table(name = "tbllogindetails")
 public class LoginDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
     String email;
     String password;
-    Role role;
+    @Builder.Default
+    @Enumerated(EnumType.STRING)
+    Role role = Role.Employee;
 }
