@@ -1,4 +1,4 @@
-package org.team3.rabbitmq.procuder;
+package org.team3.rabbitmq.producer;
 
 
 import lombok.RequiredArgsConstructor;
@@ -25,7 +25,7 @@ public class DenemeProcedure {
         rabbitTemplate.convertAndSend(exchange, bindingKeyActivatedCode, message);
     }
 
-    // model içindeki ActivateReguestDto dto
+    // model icindeki ActivateRequestDto dto
 
 //    public void sendActivatedCode(ActivateReguestDto dto) {
 //

@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: config-server-git
+    name: config-server
   cloud:
     config:
       server:
@@ -11,3 +11,4 @@ spring:
           uri: "https://github.com/darksilence1987/HRManagement-Config.git"
           default-label: main
           skip-ssl-validation: true
+

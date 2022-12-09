@@ -16,7 +16,7 @@ public class RabbitMqConfig {
     private String exchange;
     @Value("${rabbitmq.bindingKey}")
     private String bindingKeyActivatedCode;
-    @Value("${rabbitmq.queueAcvitavted}")
+    @Value("${rabbitmq.queueActivatedCode}")
     private String queueNameActivatedCode;
 
     @Bean

@@ -1,21 +1,11 @@
-server:
-  port: 9091
 spring:
-  rabbitmq:
-    host:
-    username: team3
-    password: 123
-    port: 5672
+  cloud:
+    config:
+      uri: http://localhost:8889
+  profiles:
+    active: properties
+  config:
+    import: "optional:configserver:"
+  application:
+    name: user-service-application
 
-
-myapplication:
-  user-service:
-    feign-client: http://localhost:9091/api/v1
-  elastic-service:
-    feign-client: http://localhost:9099/api/v1/elastic
-
-rabbitmq:
-  exchange-auth: ${rabbitmq-exchange-auth}
-  bindingKey: ${rabbitmq-bindingKey}
-  queueAcvitavted: ${rabbitmq-queueAcvitavted}
-  userUpdateQueue: ${rabbitmq-userUpdateQueue}

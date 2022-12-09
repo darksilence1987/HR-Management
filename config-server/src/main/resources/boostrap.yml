@@ -1,5 +1,5 @@
 spring:
   application:
-    name: config-server-git
+    name: config-server
   profiles:
     active: development

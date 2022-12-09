@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: rabbitmq-deployment
   labels:
-    team: socialmediadev
+    team: team3
 spec:
   selector:
     matchLabels:
@@ -32,6 +32,6 @@ spec:
               protocol: TCP
           env:
             - name: RABBITMQ_DEFAULT_USER
-              value: "socialmedia"
+              value: "team3"
             - name: RABBITMQ_DEFAULT_PASS
-              value: "socialmedia123*"
+              value: "root"
