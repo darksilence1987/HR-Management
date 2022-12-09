@@ -1,11 +1,11 @@
 package org.team3.rabbitmq.consumer;
 
-import com.bilgeadam.rabbitmq.model.UpdateUsernameEmailModel;
-import com.bilgeadam.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
+import org.team3.rabbitmq.model.UpdateUsernameEmailModel;
+import org.team3.service.AuthService;
 
 @Service
 @RequiredArgsConstructor

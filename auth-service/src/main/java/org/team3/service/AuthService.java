@@ -1,5 +1,6 @@
 package org.team3.service;
 import org.springframework.stereotype.Service;
+import org.team3.rabbitmq.model.UpdateUsernameEmailModel;
 import org.team3.repository.IAuthRepository;
 import org.team3.repository.entity.LoginDetails;
 import org.team3.utility.ServiceManager;
@@ -17,8 +18,10 @@ public class AuthService extends ServiceManager<LoginDetails, Long> {
     }
 
 
+    public void updateAuth(UpdateUsernameEmailModel model) {
 
     }
+}
 
 
 
