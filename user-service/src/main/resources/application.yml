@@ -2,10 +2,17 @@ server:
   port: 9091
 spring:
   rabbitmq:
-    host: localhost
-    username: portname
+    host:
+    username: team3
     password: 123
     port: 5672
+
+
+myapplication:
+  user-service:
+    feign-client: http://localhost:9091/api/v1
+  elastic-service:
+    feign-client: http://localhost:9099/api/v1/elastic
 
 rabbitmq:
   exchange-auth: ${rabbitmq-exchange-auth}
