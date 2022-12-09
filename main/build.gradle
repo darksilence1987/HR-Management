@@ -1,12 +1,15 @@
-buildscript {
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:$versions.springBoot")
-    }
+plugins {
+    id 'java'
 }
+
+group 'org.team3'
+version 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
 dependencies {
-    implementation libs.springBootDataJpa
-    implementation libs.postgresql
-    implementation libs.springBootRabbitMQ
-    implementation libs.springCloudStarterConfig
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 }
 
