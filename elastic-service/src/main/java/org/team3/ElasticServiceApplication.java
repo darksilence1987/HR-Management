@@ -1,13 +1,15 @@
 package org.team3;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients
-public class UserServiceApplication {
+//@EnableFeignClients
+public class ElasticServiceApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class, args);
+        SpringApplication.run(ElasticServiceApplication.class,args);
+
     }
 }
