@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "../../config/AuthService";
 const initialStateAuth = {
     token: "",
-    isAuthenticated: false,
+    isAuthanticated: false,
     auth: {},
     authList: [],
     isLoading: false,
@@ -50,7 +50,7 @@ const authSlice = createSlice({
 
         build.addCase(fetchLogin.fulfilled, (state, action) => {
 
-            state.token = action.payload.token;
+            // state.token = action.payload.token;
             state.isAuthanticated = true;
 
             state.isLoading = false;

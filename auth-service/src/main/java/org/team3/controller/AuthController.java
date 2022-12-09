@@ -3,6 +3,7 @@ package org.team3.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.team3.repository.entity.LoginDetails;
 import org.team3.service.AuthService;
@@ -18,11 +19,12 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @CrossOrigin
+    @CrossOrigin("*")
     @PostMapping("/deneme")
-    public void deneme(@RequestBody LoginDetails loginDetails) {
-        System.out.println("mail: " +loginDetails.getEmail()+ " password: " + loginDetails.getPassword());
-        authService.save(loginDetails);
+    public ResponseEntity<LoginDetails> deneme(@RequestBody LoginDetails loginDetails) {
+        System.out.println(loginDetails);
+      return  ResponseEntity.ok(authService.save(loginDetails));
+
     }
 
 
