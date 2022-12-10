@@ -33,11 +33,15 @@ export default function SignIn() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        let isLogin = axios.post('http://localhost:9090/api/v1/auth/deneme', {
+        let isLogin = axios.post('http://localhost:9090/api/v1/auth/login', {
             password: data.get('password'),
             email: data.get('email')
         });
-        isLogin ? alert("Giriş Başarılı") : alert("Giriş Başarısız")
+        console.log(isLogin);
+        const message = isLogin.then(response =>{
+            return response.data.message});
+        console.log(message);
+        (message === 'true') ? alert("Giriş Başarılı") : alert("Giriş Başarısız");
     };
 
     return (

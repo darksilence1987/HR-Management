@@ -1,11 +1,9 @@
 import React from 'react'
 
-function HomePage(role) {
+function HomePage() {
     return (
 
-        <div>
-            role==admin ? <AdminPage></AdminPage> : <UserPage></UserPage>
-        </div>
+        <div>HomePage</div>
     )
 }
 
