@@ -5,15 +5,15 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.24/13a394eed5c4f9efb2a6d956e2086f1d81e857d9/lombok-1.18.24.jar" />
+          <entry name="$PROJECT_DIR$/../JavaSpring/patika-java-spring/BAJava3-HR_Management/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.24/13a394eed5c4f9efb2a6d956e2086f1d81e857d9/lombok-1.18.24.jar" />
         </processorPath>
-        <module name="HR-Management.auth-service.main" />
-        <module name="HR-Management.elastic-service.main" />
-        <module name="HR-Management.user-service.main" />
-        <module name="HR-Management.api-gateway.main" />
-        <module name="HR-Management.config-server.main" />
-        <module name="HR-Management.main" />
-        <module name="org.team3.HR-Management.main.main" />
+        <module name="org.team3.HR-Management.auth-service.main" />
+        <module name="org.team3.HR-Management.elastic-service.main" />
+        <module name="org.team3.HR-Management.api-gateway.main" />
+        <module name="org.team3.HR-Management.user-service.main" />
+        <module name="Desktop.HR-Management.main~1" />
+        <module name="org.team3.HR-Management.config-server.main" />
+        <module name="Desktop.HR-Management.main.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="17" />
