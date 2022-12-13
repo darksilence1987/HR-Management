@@ -41,7 +41,7 @@ export default function SignIn() {
 
     return (
 
-        <body className="bg-primary">
+        <body className="bg-light">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -51,7 +51,7 @@ export default function SignIn() {
                                 <div className="card shadow-lg border-0 rounded-lg mt-5">
                                     <div className="card-header"><h3
                                         className="text-center font-weight-light my-4">Login</h3></div>
-                                    <div className="card-body">
+                                    <div className="card-body bg-gray-300">
                                         <form>
                                             <div className="form-floating mb-3">
                                                 <input onChange={onChangeAuth} className="form-control" name="email"  type="email"
