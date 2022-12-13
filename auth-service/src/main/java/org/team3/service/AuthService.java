@@ -1,6 +1,8 @@
 package org.team3.service;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.team3.dto.request.RegisterRequestDto;
+import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.exception.AuthServiceException;
 import org.team3.exception.ErrorType;
 import org.team3.manager.IUserManager;
@@ -9,6 +11,7 @@ import org.team3.repository.IAuthRepository;
 import org.team3.repository.entity.UserAuth;
 import org.team3.utility.ServiceManager;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -60,6 +63,9 @@ public class AuthService extends ServiceManager<UserAuth, Long> {
             throw new AuthServiceException(ErrorType.USER_NOT_CREATED);
         }
     }
+
+
+
 }
 
 
