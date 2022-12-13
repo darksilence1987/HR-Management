@@ -1,16 +1,15 @@
-package org.team3.dto.request;
+package org.team3.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.team3.repository.enums.Role;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDetailsRequestDto {
+public class UserCreateResponseDto {
     String photo;
     String name;
     String surname;
@@ -24,5 +23,4 @@ public class UserDetailsRequestDto {
     String email;
     String phone;
     String address;
-    Role role;
 }

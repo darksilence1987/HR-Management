@@ -1,8 +1,12 @@
 package org.team3.repository;
 
-import org.team3.repository.entity.LoginDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
-public interface IAuthRepository extends JpaRepository<LoginDetails,Long> {
+import org.team3.repository.entity.UserAuth;
+
+import java.util.Optional;
+
+public interface IAuthRepository extends JpaRepository<UserAuth,Long> {
+    Optional<UserAuth> findOptionalByEmailAndPassword(String email, String password);
 
 
 }

@@ -17,7 +17,7 @@ public class UpdateUserConsumer {
     @RabbitListener(queues = "${rabbitmq.userUpdateQueue}")
     public void updateUser(UpdateUsernameEmailModel model) {
         log.info("User : {}", model.toString());
-        authService.updateAuth(model);
+        //authService.updateAuth(model);
     }
 
 

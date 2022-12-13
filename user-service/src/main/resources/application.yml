@@ -8,3 +8,7 @@ spring:
     import: "optional:configserver:"
   application:
     name: user-service-application
+
+  data:
+    mongodb:
+      auto-index-creation: true
