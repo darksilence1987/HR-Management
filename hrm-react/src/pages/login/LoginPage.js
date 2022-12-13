@@ -22,7 +22,6 @@ import {useNavigate} from "react-router-dom";
 
 export default function SignIn() {
 
-
     const dispatch = useDispatch();
 // const navigate = useNavigate()
     const [auth, setAuth] = useState({
@@ -37,7 +36,7 @@ export default function SignIn() {
     };
     const onChangeAuth = (e) => {
         const { name, value } = e.target;
-        setAuth({ ...auth, [name]: value });=== 'true') ? alert("Giriş Başarılı") : alert("Giriş Başarısız");
+        setAuth({ ...auth, [name]: value });
     };
 
     return (
