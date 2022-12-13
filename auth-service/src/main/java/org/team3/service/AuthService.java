@@ -1,7 +1,11 @@
 package org.team3.service;
 import org.springframework.stereotype.Service;
+import org.team3.dto.request.RegisterRequestDto;
+import org.team3.exception.AuthServiceException;
+import org.team3.exception.ErrorType;
+import org.team3.manager.IUserManager;
+import org.team3.mapper.IAuthMapper;
 import org.team3.repository.IAuthRepository;
-import org.team3.repository.entity.LoginDetails;
 import org.team3.repository.entity.UserAuth;
 import org.team3.utility.ServiceManager;
 
@@ -14,9 +18,13 @@ public class AuthService extends ServiceManager<UserAuth, Long> {
     private final IAuthRepository authRepository;
 
 
-    public AuthService(IAuthRepository authRepository) {
+    private final IUserManager userManager;
+
+
+    public AuthService(IAuthRepository authRepository, IUserManager userManager) {
         super(authRepository);
         this.authRepository = authRepository;
+        this.userManager = userManager;
     }
     public Boolean registerUser(UserAuth registerUserAuth) {
         try {
@@ -38,6 +46,19 @@ public class AuthService extends ServiceManager<UserAuth, Long> {
         } catch (Exception e) {
         }
         return false;
+    }
+
+    public boolean createUser(RegisterRequestDto dto) {
+        try {
+            IAuthMapper iAuthMapper = IAuthMapper.INSTANCE;
+            UserAuth user= authRepository.save(iAuthMapper.toUserAuth(dto));
+            userManager.createUser(iAuthMapper.toUserDetailsRequestDto(dto));
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new AuthServiceException(ErrorType.USER_NOT_CREATED);
+        }
     }
 }
 
