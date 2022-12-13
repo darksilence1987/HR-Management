@@ -44,6 +44,8 @@ allprojects{
         //implementation libs.springCloudStaterSleuth
         //implementation libs.springCloudSleuthZipkin
         implementation libs.mapstruct
+        annotationProcessor libs.mapstructProcessor
+        annotationProcessor libs.lombokMapstructBinding
     }
 }
 configurations {

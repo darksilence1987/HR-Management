@@ -1,6 +1,9 @@
 package org.team3.exception;
 
 import lombok.Getter;
+import org.springframework.transaction.annotation.Transactional;
+import org.team3.dto.request.UserDetailsRequestDto;
+import org.team3.repository.entity.User;
 
 @Getter
 public class UserServiceException extends RuntimeException{
@@ -15,4 +18,6 @@ public class UserServiceException extends RuntimeException{
         super(message);
         this.errorType = errorType;
     }
+
+
 }

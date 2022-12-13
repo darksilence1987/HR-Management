@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class UserUpdateInfoRequestDto {
+public class UserUpdateInfoFromUserRequestDto {
     private String photo;
     private String address;
     private String phone;
