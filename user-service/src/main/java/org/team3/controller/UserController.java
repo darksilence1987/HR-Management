@@ -27,7 +27,6 @@ public class UserController {
     @PostMapping(USERCREATE)
     public ResponseEntity<Boolean> createUser(@RequestBody UserDetailsRequestDto dto) {
         try {
-            System.out.println(dto);
             userService.createUser(dto);
             return ResponseEntity.ok(true);
         } catch (Exception e) {

@@ -7,7 +7,7 @@ import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
 import org.team3.exception.ErrorType;
 import org.team3.exception.UserServiceException;
-import org.team3.manager.IUserMapper;
+import org.team3.mapper.IUserMapper;
 import org.team3.repository.IUserRepository;
 import org.team3.repository.entity.User;
 import org.team3.utility.ServiceManager;

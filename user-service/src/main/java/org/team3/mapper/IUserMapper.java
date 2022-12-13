@@ -1,4 +1,4 @@
-package org.team3.manager;
+package org.team3.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
