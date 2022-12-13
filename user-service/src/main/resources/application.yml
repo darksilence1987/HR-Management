@@ -8,4 +8,3 @@ spring:
     import: "optional:configserver:"
   application:
     name: user-service-application
-
