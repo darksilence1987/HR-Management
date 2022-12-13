@@ -1,9 +1,17 @@
 import React from 'react'
+import Index from "../../component/home";
 
 function HomePage() {
-    return (
 
-        <div>HomePage</div>
+
+
+    return (
+        <>
+       <Index></Index>
+
+
+
+        </>
     )
 }
 
