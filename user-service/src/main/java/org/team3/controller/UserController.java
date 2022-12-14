@@ -6,14 +6,18 @@ import org.springframework.web.bind.annotation.*;
 import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
+import org.team3.dto.response.UserDetailsResponseDto;
 import org.team3.dto.response.UserSummaryResponseDto;
 import org.team3.exception.ErrorType;
 import org.team3.exception.UserServiceException;
+import org.team3.mapper.IUserMapper;
+import org.team3.repository.entity.User;
 import org.team3.service.UserService;
 
 import javax.validation.Valid;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.team3.constant.ApiUrls.*;
 
@@ -36,6 +40,10 @@ public class UserController {
             throw new UserServiceException(ErrorType.USER_NOT_CREATED);
         }
     }
+    @PostMapping("/get-user-by-email")
+        public UserDetailsResponseDto loginRequest(@RequestParam String email) {
+        return userService.userDetailsResponseByEmail(email);
+        }
 
 
     @PutMapping(UPDATEUSERFROMMANAGER)

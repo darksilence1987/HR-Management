@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
+import org.team3.dto.response.UserDetailsResponseDto;
 import org.team3.dto.response.UserSummaryResponseDto;
 import org.team3.exception.ErrorType;
 import org.team3.exception.UserServiceException;
@@ -24,10 +25,13 @@ public class UserService extends ServiceManager<User, String> {
         super(repository);
         this.repository = repository;
     }
+    public Optional<User> findOptionalByEmail(String email) {
+        return repository.findOptionalByEmail(email);
+    }
 
     public boolean updateUserFromUser(UserUpdateInfoFromUserRequestDto dto, String email) {
 
-        Optional<User> userProfileDb = repository.findByEmail(email);
+        Optional<User> userProfileDb = repository.findOptionalByEmail(email);
         if (userProfileDb.isPresent()) {
             userProfileDb.get().setAddress(dto.getAddress());
             userProfileDb.get().setPhone(dto.getPhone());
@@ -53,9 +57,25 @@ public class UserService extends ServiceManager<User, String> {
 
     }
 
+    @Transactional
+    public UserDetailsResponseDto userDetailsResponseByEmail(String email) {
+
+        try {
+            Optional<User> user= repository.findOptionalByEmail(email);
+            UserDetailsResponseDto dto = IUserMapper.INSTANCE.toUserDetailsResponseDto(user.get());
+            return dto;
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            throw new UserServiceException(ErrorType.USER_NOT_CREATED);
+        }
+
+    }
+
+
     public boolean updateUserFromManager(UserUpdateInfoFromManagerRequestDto dto, String email) {
 
-        Optional<User> userProfileDb = repository.findByEmail(email);
+        Optional<User> userProfileDb = repository.findOptionalByEmail(email);
         if (userProfileDb.isPresent()) {
             userProfileDb.get().setAddress(dto.getAddress());
             userProfileDb.get().setPhone(dto.getPhone());
