@@ -6,37 +6,53 @@ import {findallUser} from "../../store/features/UserSlice";
 
 
 export default function DataTable() {
+  // const columns = [
+  //   { field: 'id', headerName: 'ID', width: 70 },
+  //   { field: 'authid', headerName: 'AuthID', width: 70 },
+  //   { field: 'photo', headerName: 'Photo', width: 70 },
+  //   { field: 'name', headerName: 'Name', width: 130 },
+  //   { field: 'surname', headerName: 'Surname', width: 130 },
+  //   { field: 'secondName', headerName: 'Second Name', width: 130 },
+  //   { field: 'secondSurname', headerName: 'Second Surname', width: 130 },
+  //   { field: 'birthDate', headerName: 'Birth Date', width: 130 },
+  //   { field: 'birthPlace', headerName: 'Birth Place', width: 130 },
+  //   { field: 'birthPlace', headerName: 'Birth Place', width: 130 },
+  //   { field: 'startDate', headerName: 'Start Date', width: 130 },
+  //   { field: 'job', headerName: 'Job', width: 130 },
+  //   { field: 'department', headerName: 'Department', width: 130 },
+  //   { field: 'email', headerName: 'Email', width: 130 },
+  //   { field: 'phone', headerName: 'Phone', width: 130 },
+  //   { field: 'address', headerName: 'Address', width: 130 },
+  //   { field: 'role', headerName: 'Role', width: 130 },
+  //
+  //
+  //
+  //
+  //   // {
+  //   //   field: 'fullName',
+  //   //   headerName: 'Full name',
+  //   //   description: 'This column has a value getter and is not sortable.',
+  //   //   sortable: false,
+  //   //   width: 160,
+  //   //   valueGetter: (params) =>
+  //   //       `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+  //   // },
+  //
+  //
+  // ];
+
+
+
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'authid', headerName: 'AuthID', width: 70 },
-    { field: 'photo', headerName: 'Photo', width: 70 },
-    { field: 'name', headerName: 'Name', width: 130 },
-    { field: 'surname', headerName: 'Surname', width: 130 },
-    { field: 'secondName', headerName: 'Second Name', width: 130 },
-    { field: 'secondSurname', headerName: 'Second Surname', width: 130 },
-    { field: 'birthDate', headerName: 'Birth Date', width: 130 },
-    { field: 'birthPlace', headerName: 'Birth Place', width: 130 },
-    { field: 'birthPlace', headerName: 'Birth Place', width: 130 },
-    { field: 'startDate', headerName: 'Start Date', width: 130 },
-    { field: 'job', headerName: 'Job', width: 130 },
-    { field: 'department', headerName: 'Department', width: 130 },
+    { field: 'firstName', headerName: 'First Name', width: 130 },
+    { field: 'lastName', headerName: 'Last Name', width: 130 },
     { field: 'email', headerName: 'Email', width: 130 },
     { field: 'phone', headerName: 'Phone', width: 130 },
+    { field: 'photo', headerName: 'Photo', width: 70 },
     { field: 'address', headerName: 'Address', width: 130 },
-    { field: 'role', headerName: 'Role', width: 130 },
-
-
-    // {
-    //   field: 'fullName',
-    //   headerName: 'Full name',
-    //   description: 'This column has a value getter and is not sortable.',
-    //   sortable: false,
-    //   width: 160,
-    //   valueGetter: (params) =>
-    //       `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    // },
-
-
+    { field: 'job', headerName: 'Job', width: 130 },
+    { field: 'department', headerName: 'Department', width: 130 },
   ];
 
 
