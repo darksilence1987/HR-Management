@@ -40,14 +40,12 @@ public class AuthService extends ServiceManager<UserAuth, Long> {
     }
     public Boolean loginUser(LoginRequestDto loginDetails) {
         try {
-            Optional<UserAuth> userAuth = authRepository.findOptionalByEmailAndPassword(loginDetails.getEmail(), loginDetails.getPassword());
-            if (userAuth != null) {
-                if (userAuth.isPresent()) {
-                    String email = userAuth.get().getEmail();
+            UserAuth userAuth = authRepository.findByEmailAndPassword(loginDetails.getEmail(), loginDetails.getPassword());
+            if ((userAuth.getEmail().length()> 0)&& (userAuth.getPassword().length()>0)) {
+                System.out.println(userAuth);
                     return true;
-                }
-                return false;
             }
+            return false;
         } catch (Exception e) {
         }
         return false;
