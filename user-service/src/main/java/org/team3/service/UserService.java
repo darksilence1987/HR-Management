@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
+import org.team3.dto.response.UserSummaryResponseDto;
 import org.team3.exception.ErrorType;
 import org.team3.exception.UserServiceException;
 import org.team3.mapper.IUserMapper;
@@ -12,6 +13,7 @@ import org.team3.repository.IUserRepository;
 import org.team3.repository.entity.User;
 import org.team3.utility.ServiceManager;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -74,6 +76,10 @@ public class UserService extends ServiceManager<User, String> {
         } else {
             throw new UserServiceException(ErrorType.USER_NOT_FOUND);
         }
+    }
+
+    public List<UserSummaryResponseDto> getAllUsersSummaryInfo(){
+        return IUserMapper.INSTANCE.toUserListSummaryResponseDto(repository.findAll());
     }
 
 

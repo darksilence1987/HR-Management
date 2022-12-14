@@ -5,12 +5,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.team3.dto.request.RegisterRequestDto;
+import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.exception.AuthServiceException;
 import org.team3.exception.ErrorType;
 import org.team3.repository.entity.UserAuth;
 import org.team3.service.AuthService;
 
 import javax.validation.Valid;
+
+import java.util.List;
 
 import static org.team3.constant.ApiUrls.*;
 import static org.team3.constant.ApiUrls.USERCREATE;
@@ -53,6 +56,8 @@ public class AuthController {
             throw new AuthServiceException(ErrorType.USER_NOT_CREATED);
         }
     }
+
+
 
 
 }
