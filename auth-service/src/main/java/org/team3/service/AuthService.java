@@ -1,6 +1,7 @@
 package org.team3.service;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.team3.dto.request.LoginRequestDto;
 import org.team3.dto.request.RegisterRequestDto;
 import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.exception.AuthServiceException;
@@ -37,11 +38,12 @@ public class AuthService extends ServiceManager<UserAuth, Long> {
             return false;
         }
     }
-    public Boolean loginUser(UserAuth loginDetails) {
+    public Boolean loginUser(LoginRequestDto loginDetails) {
         try {
             Optional<UserAuth> userAuth = authRepository.findOptionalByEmailAndPassword(loginDetails.getEmail(), loginDetails.getPassword());
             if (userAuth != null) {
                 if (userAuth.isPresent()) {
+                    String email = userAuth.get().getEmail();
                     return true;
                 }
                 return false;

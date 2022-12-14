@@ -4,6 +4,7 @@ package org.team3.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.team3.dto.request.LoginRequestDto;
 import org.team3.dto.request.RegisterRequestDto;
 import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.exception.AuthServiceException;
@@ -37,13 +38,12 @@ public class AuthController {
     }
     @CrossOrigin("*")
     @PostMapping("/login")
-    public ResponseEntity<Boolean> loginUser(@RequestBody @Valid UserAuth loginUserAuth) {
-        System.out.println(loginUserAuth);
+    public Boolean loginUser(@RequestBody @Valid LoginRequestDto loginUserAuth) {
         try {
             Boolean success = authService.loginUser(loginUserAuth);
-            return ResponseEntity.ok(success);
+            return true;
         } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
+            return false;
         }
     }
 
