@@ -3,6 +3,7 @@ package org.team3.manager;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.team3.dto.response.UserDetailsResponseDto;
 
 import java.util.Optional;
@@ -11,5 +12,5 @@ import java.util.Optional;
 
 public interface IUserManager {
     @PostMapping("/get-user-by-email")
-    public UserDetailsResponseDto loginRequest(@RequestBody String email);
+    public UserDetailsResponseDto loginRequest(@RequestParam String email);
 }

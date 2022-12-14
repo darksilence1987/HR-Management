@@ -1,10 +1,7 @@
 package org.team3.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.team3.repository.entity.UserProfile;
 import org.team3.service.MainService;
 
@@ -17,7 +14,7 @@ public class MainController {
     private final MainService mainservice;
 
     @PostMapping("/login-request")
-    public void loginRequest(@RequestBody String email) {
+    public void loginRequest(@RequestParam String email) {
         UserProfile user = mainservice.getUserProfile(email);
     }
 

@@ -19,6 +19,7 @@ public class MainService {
     public UserProfile getUserProfile(String email) {
         UserDetailsResponseDto login = userManager.loginRequest(email);
         UserProfile userProfile = IMainMapper.INSTANCE.toUserProfile(login);
+        System.out.println(userProfile);
         return userProfile;
     }
 }
