@@ -72,6 +72,7 @@ const authSlice = createSlice({
 
         build.addCase(fetchRegister.fulfilled, (state, action) => {
                 state.auth = action.payload;
+                console.log("auth degeri", state.auth);
                 state.isSave = true
                 state.alertMessage = "Kayıt Başarılı";
             state.isLoadingRegister = false;
