@@ -42,10 +42,11 @@ export const findByEmail = createAsyncThunk(
     "user/findbyemail",
     async (payload) => {
         try {
-            const response = await axios.post(userService.findbyemail + payload, {
+            const response = await axios.post(userService.findbyemail, payload, {
                 headers: {
                     "Content-Type": "application/json",
                 },
+
             });
 
             return response.data;

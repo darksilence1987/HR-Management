@@ -7,6 +7,10 @@ import {findByEmail} from "../../store/features/UserSlice";
 function Topbar() {
     const dispatch = useDispatch();
     const email = useSelector((state) => state.auth.email);
+    const auth = useSelector((state) => state.auth);
+
+    console.log("auth", auth);
+    console.log("email", email);
 
     const getUser = async () => {
         const response = await dispatch(findByEmail({email}));
