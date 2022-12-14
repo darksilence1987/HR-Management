@@ -3,12 +3,10 @@ import { Alert } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, redirect, useNavigate } from "react-router-dom";
-// import {
-//     fecthRegister,
-//     setAllertMsssage,
-//     setAuth,
-//     setIsSave,
-// } from "../../store/features/AuthSlice";
+import {
+    fetchRegister,
+
+} from "../../store/features/AuthSlice";
 
 function RegisterPage() {
 
@@ -20,10 +18,10 @@ function RegisterPage() {
 
 
 
-    // const [isValid, setIsVAlid] = useState(false);
-    // const isSave = useSelector((state) => state.auth.isSave);
-    // const alertMessage = useSelector((state) => state.auth.alertMessage);
-    // const auth = useSelector((state) => state.auth.auth);
+    // const [isValid, setIsValid] = useState(false);
+    const isSave = useSelector((state) => state.auth.isSave);
+    const alertMessage = useSelector((state) => state.auth.alertMessage);
+    const auth = useSelector((state) => state.auth.auth);
     // const navigate = useNavigate();
 
 
@@ -43,10 +41,17 @@ function RegisterPage() {
         //     dispatch(fecthRegister(auth));
         // }
 
+        dispatch(fetchRegister(auth))
+
+
+
         // setTimeout(() => {
         //     dispatch(setIsSave());
         // }, 3000);
     };
+
+
+
     //
     // const navigateLogin = () => {
     //     if (isSave) {
@@ -95,28 +100,28 @@ function RegisterPage() {
                                             <div className="row mb-3">
                                                 <div className="col-md-6">
                                                     <div className="form-floating mb-3 mb-md-0">
-                                                        <input className="form-control" id="inputFirstName" type="text"
+                                                        <input name="lastName" onChange={(e) => setLastName(e.target.value)} value={lastName}  className="form-control" id="inputFirstName" type="text"
                                                                placeholder="Enter your first name"/>
                                                         <label htmlFor="inputFirstName">First name</label>
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6">
                                                     <div className="form-floating">
-                                                        <input className="form-control" id="inputLastName" type="text"
+                                                        <input name="firstName" onChange={(e) => setFirstName(e.target.value)} value={firstName} className="form-control" id="inputLastName" type="text"
                                                                placeholder="Enter your last name"/>
                                                         <label htmlFor="inputLastName">Last name</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="form-floating mb-3">
-                                                <input className="form-control" id="inputEmail" type="email"
+                                                <input name="email" onChange={(e) => setEmail(e.target.value)} value={email} type="email" className="form-control" id="inputEmail"
                                                        placeholder="name@example.com"/>
                                                 <label htmlFor="inputEmail">Email address</label>
                                             </div>
                                             <div className="row mb-3">
                                                 <div className="col-md-6">
                                                     <div className="form-floating mb-3 mb-md-0">
-                                                        <input className="form-control" id="inputPassword"
+                                                        <input name="password" onChange={(e) => setPassword(e.target.value)} value={password} className="form-control" id="inputPassword"
                                                                type="password" placeholder="Create a password"/>
                                                         <label htmlFor="inputPassword">Password</label>
                                                     </div>
@@ -124,14 +129,21 @@ function RegisterPage() {
                                                 <div className="col-md-6">
                                                     <div className="form-floating mb-3 mb-md-0">
                                                         <input className="form-control" id="inputPasswordConfirm"
-                                                               type="password" placeholder="Confirm password"/>
+                                                           name="password"  type="password" value={password}  onChange={(e) => setRePassword(e.target.value)}  placeholder="Confirm password"/>
                                                         <label htmlFor="inputPasswordConfirm">Confirm Password</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="mt-4 mb-0">
-                                                <div className="d-grid"><a className="btn btn-primary btn-block"
-                                                                           href="login.html">Create Account</a></div>
+                                                <div className="d-grid">
+                                                    <button
+
+                                                    onClick={register}
+                                                    type={"button"}
+
+                                                >
+                                                    Kayıt ol
+                                                </button></div>
                                             </div>
                                         </form>
                                     </div>
