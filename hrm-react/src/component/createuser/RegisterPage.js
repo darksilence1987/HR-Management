@@ -138,8 +138,8 @@ function RegisterPage() {
                                                     onClick={register}
                                                     type={"button"}
 
-                                                >
-                                                    Kaydet
+                                                >Save
+
                                                 </button></div>
                                             </div>
                                         </form>

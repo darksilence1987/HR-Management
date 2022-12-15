@@ -28,10 +28,12 @@ import static org.team3.constant.ApiUrls.*;
 public class UserController {
     private final UserService userService;
     @PutMapping(UPDATEUSERFROMUSER)
+    @CrossOrigin("*")
     public ResponseEntity<Boolean> updateUserFromUser(@RequestBody @Valid UserUpdateInfoFromUserRequestDto dto , @PathVariable String email) {
         return ResponseEntity.ok(userService.updateUserFromUser(dto,email));
     }
     @PostMapping(USERCREATE)
+    @CrossOrigin("*")
     public ResponseEntity<Boolean> createUser(@RequestBody UserDetailsRequestDto dto) {
         try {
             userService.createUser(dto);
@@ -41,19 +43,22 @@ public class UserController {
         }
     }
     @PostMapping("/get-user-by-email")
+    @CrossOrigin("*")
         public UserDetailsResponseDto loginRequest(@RequestBody String email) {
         return userService.userDetailsResponseByEmail(email);
         }
 
 
     @PutMapping(UPDATEUSERFROMMANAGER)
+    @CrossOrigin("*")
     public ResponseEntity<Boolean> updateUserFromManager(@RequestBody @Valid UserUpdateInfoFromManagerRequestDto dto , @PathVariable String email) {
         return ResponseEntity.ok(userService.updateUserFromManager(dto,email));
     }
 
-    @GetMapping("/get-user-details-list")
-    public List<UserSummaryResponseDto> getAllUsersSummaryInfo(){
-        return userService.getAllUsersSummaryInfo();
+    @GetMapping(GETALLUSERSSUMMARYINFO)
+    @CrossOrigin("*")
+    public ResponseEntity<List<UserSummaryResponseDto>> getAllUsersSummaryInfo(){
+        return ResponseEntity.ok(userService.getAllUsersSummaryInfo());
     }
 
 
