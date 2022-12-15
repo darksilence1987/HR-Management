@@ -16,7 +16,6 @@ export default function DataTable() {
   //   { field: 'secondSurname', headerName: 'Second Surname', width: 130 },
   //   { field: 'birthDate', headerName: 'Birth Date', width: 130 },
   //   { field: 'birthPlace', headerName: 'Birth Place', width: 130 },
-  //   { field: 'birthPlace', headerName: 'Birth Place', width: 130 },
   //   { field: 'startDate', headerName: 'Start Date', width: 130 },
   //   { field: 'job', headerName: 'Job', width: 130 },
   //   { field: 'department', headerName: 'Department', width: 130 },
@@ -45,14 +44,21 @@ export default function DataTable() {
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'firstName', headerName: 'First Name', width: 130 },
-    { field: 'lastName', headerName: 'Last Name', width: 130 },
     { field: 'email', headerName: 'Email', width: 130 },
-    { field: 'phone', headerName: 'Phone', width: 130 },
-    { field: 'photo', headerName: 'Photo', width: 70 },
-    { field: 'address', headerName: 'Address', width: 130 },
+      { field: 'photo', headerName: 'Photo', width: 70 },
+    { field: 'name', headerName: 'First Name', width: 130 },
+    { field: 'surname', headerName: 'Last Name', width: 130 },
+      { field: 'secondName', headerName: 'Second Name', width: 130 },
+      { field: 'secondSurname', headerName: 'Second Surname', width: 130 },
+      { field: 'birthDate', headerName: 'Birth Date', width: 130 },
+      { field: 'birthPlace', headerName: 'Birth Place', width: 130 },
+      { field: 'startDate', headerName: 'Start Date', width: 130 },
     { field: 'job', headerName: 'Job', width: 130 },
     { field: 'department', headerName: 'Department', width: 130 },
+    { field: 'phone', headerName: 'Phone', width: 130 },
+    { field: 'address', headerName: 'Address', width: 130 },
+    { field: 'role', headerName: 'Role', width: 130 },
+
   ];
 
 
