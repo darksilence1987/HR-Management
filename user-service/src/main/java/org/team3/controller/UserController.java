@@ -44,7 +44,7 @@ public class UserController {
     }
     @PostMapping("/get-user-by-email")
     @CrossOrigin("*")
-        public UserDetailsResponseDto loginRequest(@RequestParam String email) {
+        public UserDetailsResponseDto loginRequest(@RequestBody String email) {
         return userService.userDetailsResponseByEmail(email);
         }
 
