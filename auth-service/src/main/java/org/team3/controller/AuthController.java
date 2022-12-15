@@ -40,8 +40,7 @@ public class AuthController {
     @PostMapping("/login")
     public Boolean loginUser(@RequestBody @Valid LoginRequestDto loginUserAuth) {
         try {
-            Boolean success = authService.loginUser(loginUserAuth);
-            return true;
+            return authService.loginUser(loginUserAuth);
         } catch (Exception e) {
             return false;
         }
