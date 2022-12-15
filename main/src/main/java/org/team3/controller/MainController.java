@@ -35,6 +35,10 @@ public class MainController {
     public List<UserProfile> getUserDetailsList(@RequestParam String managerMail){
         return mainservice.getUserDetailsList(managerMail);
     }
+    @PostMapping("/get-user-details")
+    public UserProfile getUserDetails(@RequestParam String recipientMail, @RequestParam String ownerMail){
+        return mainservice.getUserDetails(recipientMail, ownerMail);
+    }
 
 
 

@@ -55,5 +55,20 @@ public class MainService {
             return userProfiles;
         }else throw new MainServiceException(ErrorType.YETKI_DISI);
         }
+    public UserProfile getUserDetails(String recipientMail, String ownerMail) {
+        if (recipientMail.equals(ownerMail)) {
+            UserDetailsResponseDto userdto = userManager.loginRequest(ownerMail);
+            UserProfile userProfile = IMainMapper.INSTANCE.toUserProfile(userdto);
+            return userProfile;
+        }
+        else if(userManager.loginRequest(recipientMail).getRole().equals(Role.Manager)){
+            UserDetailsResponseDto userdto = userManager.loginRequest(ownerMail);
+            UserProfile userProfile = IMainMapper.INSTANCE.toUserProfile(userdto);
+            return userProfile;
+        }
+        else throw new MainServiceException(ErrorType.YETKI_DISI);
+
+        }
     }
+
 
