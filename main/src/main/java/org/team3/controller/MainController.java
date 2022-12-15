@@ -11,6 +11,8 @@ import org.team3.repository.entity.UserProfile;
 import org.team3.service.MainService;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+
 import static org.team3.constant.ApiUrls.*;
 
 @RestController
@@ -28,6 +30,10 @@ public class MainController {
             return user;
         }
         else throw new MainServiceException(ErrorType.LOGIN_ERROR_001);
+    }
+    @GetMapping("/get-user-details-list")
+    public List<UserProfile> getUserDetailsList(@RequestParam String managerMail){
+        return mainservice.getUserDetailsList(managerMail);
     }
 
 

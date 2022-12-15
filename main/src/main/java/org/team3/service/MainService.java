@@ -5,12 +5,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.team3.dto.request.LoginRequestDto;
 import org.team3.dto.response.UserDetailsResponseDto;
+import org.team3.exception.ErrorType;
+import org.team3.exception.MainServiceException;
 import org.team3.manager.IAuthManager;
 import org.team3.manager.IUserManager;
 import org.team3.mapper.IMainMapper;
 import org.team3.repository.entity.UserProfile;
+import org.team3.repository.enums.Role;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Service
 public class MainService {
@@ -40,4 +44,16 @@ public class MainService {
         }
         else return null;
     }
-}
+
+    public List<UserProfile> getUserDetailsList(String managerMail) {
+        List<UserProfile> userProfiles;
+        userProfiles = IMainMapper.INSTANCE.toUserProfileList(userManager.getAllUsersSummaryInfo());
+        UserDetailsResponseDto userdto = userManager.loginRequest(managerMail);
+
+        if(userdto.getRole().equals(Role.Manager)){
+         userProfiles= IMainMapper.INSTANCE.toUserProfileList(userManager.getAllUsersSummaryInfo());
+            return userProfiles;
+        }else throw new MainServiceException(ErrorType.YETKI_DISI);
+        }
+    }
+
