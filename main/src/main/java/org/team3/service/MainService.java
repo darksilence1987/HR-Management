@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.team3.dto.request.LoginRequestDto;
+import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.response.UserDetailsResponseDto;
 import org.team3.exception.ErrorType;
 import org.team3.exception.MainServiceException;
@@ -68,6 +69,20 @@ public class MainService {
         }
         else throw new MainServiceException(ErrorType.YETKI_DISI);
 
+        }
+
+        public void updateUserInfo(UserProfile userProfile, String actorMail){
+            if(userManager.loginRequest(actorMail).getRole().equals(Role.Manager)){
+                UserUpdateInfoFromManagerRequestDto dto = IMainMapper.INSTANCE.toUserUpdateInfoFromManagerRequestDto(userProfile);
+                dto.setRole(userManager.loginRequest(userProfile.getEmail()).getRole());
+                userManager.updateUserFromManager(dto,  actorMail);
+                //return true;
+            }
+            else if(userProfile.getEmail().equals(actorMail)){
+                userManager.updateUserFromUser(IMainMapper.INSTANCE.toUserUpdateInfoFromUserRequestDto(userProfile), actorMail);
+                //return true;
+            }
+            else throw new MainServiceException(ErrorType.YETKI_DISI);
         }
     }
 

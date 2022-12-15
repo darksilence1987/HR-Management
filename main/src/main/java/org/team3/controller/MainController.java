@@ -39,6 +39,10 @@ public class MainController {
     public UserProfile getUserDetails(@RequestParam String recipientMail, @RequestParam String ownerMail){
         return mainservice.getUserDetails(recipientMail, ownerMail);
     }
+    @PostMapping("/update-user-details")
+    public void updateUserDetails(@RequestBody UserProfile userProfile, @RequestParam String ownerMail){
+        mainservice.updateUserInfo(userProfile, ownerMail);
+    }
 
 
 

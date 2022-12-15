@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
+import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
+import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
 import org.team3.dto.response.UserDetailsResponseDto;
 import org.team3.dto.response.UserSummaryResponseDto;
 import org.team3.repository.entity.UserProfile;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-15T15:27:08+0300",
+    date = "2022-12-15T16:09:52+0300",
     comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.1.jar, environment: Java 17.0.5 (JetBrains s.r.o.)"
 )
 @Component
@@ -54,6 +56,47 @@ public class IMainMapperImpl implements IMainMapper {
         }
 
         return list;
+    }
+
+    @Override
+    public UserUpdateInfoFromManagerRequestDto toUserUpdateInfoFromManagerRequestDto(UserProfile userProfile) {
+        if ( userProfile == null ) {
+            return null;
+        }
+
+        UserUpdateInfoFromManagerRequestDto.UserUpdateInfoFromManagerRequestDtoBuilder userUpdateInfoFromManagerRequestDto = UserUpdateInfoFromManagerRequestDto.builder();
+
+        userUpdateInfoFromManagerRequestDto.photo( userProfile.getPhoto() );
+        userUpdateInfoFromManagerRequestDto.name( userProfile.getName() );
+        userUpdateInfoFromManagerRequestDto.surname( userProfile.getSurname() );
+        userUpdateInfoFromManagerRequestDto.secondName( userProfile.getSecondName() );
+        userUpdateInfoFromManagerRequestDto.secondSurname( userProfile.getSecondSurname() );
+        userUpdateInfoFromManagerRequestDto.birthDate( userProfile.getBirthDate() );
+        userUpdateInfoFromManagerRequestDto.birthPlace( userProfile.getBirthPlace() );
+        userUpdateInfoFromManagerRequestDto.startDate( userProfile.getStartDate() );
+        userUpdateInfoFromManagerRequestDto.job( userProfile.getJob() );
+        userUpdateInfoFromManagerRequestDto.department( userProfile.getDepartment() );
+        userUpdateInfoFromManagerRequestDto.email( userProfile.getEmail() );
+        userUpdateInfoFromManagerRequestDto.phone( userProfile.getPhone() );
+        userUpdateInfoFromManagerRequestDto.address( userProfile.getAddress() );
+        userUpdateInfoFromManagerRequestDto.role( userProfile.getRole() );
+
+        return userUpdateInfoFromManagerRequestDto.build();
+    }
+
+    @Override
+    public UserUpdateInfoFromUserRequestDto toUserUpdateInfoFromUserRequestDto(UserProfile userProfile) {
+        if ( userProfile == null ) {
+            return null;
+        }
+
+        UserUpdateInfoFromUserRequestDto.UserUpdateInfoFromUserRequestDtoBuilder userUpdateInfoFromUserRequestDto = UserUpdateInfoFromUserRequestDto.builder();
+
+        userUpdateInfoFromUserRequestDto.photo( userProfile.getPhoto() );
+        userUpdateInfoFromUserRequestDto.address( userProfile.getAddress() );
+        userUpdateInfoFromUserRequestDto.phone( userProfile.getPhone() );
+
+        return userUpdateInfoFromUserRequestDto.build();
     }
 
     protected UserProfile userSummaryResponseDtoToUserProfile(UserSummaryResponseDto userSummaryResponseDto) {
