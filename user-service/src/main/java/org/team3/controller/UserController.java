@@ -27,11 +27,13 @@ import static org.team3.constant.ApiUrls.*;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    @CrossOrigin("*")
     @PutMapping(UPDATEUSERFROMUSER)
     public ResponseEntity<Boolean> updateUserFromUser(@RequestBody @Valid UserUpdateInfoFromUserRequestDto dto , @PathVariable String email) {
         return ResponseEntity.ok(userService.updateUserFromUser(dto,email));
     }
     @PostMapping(USERCREATE)
+    @CrossOrigin("*")
     public ResponseEntity<Boolean> createUser(@RequestBody UserDetailsRequestDto dto) {
         try {
             userService.createUser(dto);
@@ -41,17 +43,20 @@ public class UserController {
         }
     }
     @PostMapping("/get-user-by-email")
+    @CrossOrigin("*")
         public UserDetailsResponseDto loginRequest(@RequestParam String email) {
         return userService.userDetailsResponseByEmail(email);
         }
 
 
     @PutMapping(UPDATEUSERFROMMANAGER)
+    @CrossOrigin("*")
     public ResponseEntity<Boolean> updateUserFromManager(@RequestBody @Valid UserUpdateInfoFromManagerRequestDto dto , @PathVariable String email) {
         return ResponseEntity.ok(userService.updateUserFromManager(dto,email));
     }
 
     @GetMapping(GETALLUSERSSUMMARYINFO)
+    @CrossOrigin("*")
     public ResponseEntity<List<UserSummaryResponseDto>> getAllUsersSummaryInfo(){
         return ResponseEntity.ok(userService.getAllUsersSummaryInfo());
     }
