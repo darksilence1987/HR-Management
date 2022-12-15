@@ -5,23 +5,20 @@ import SideNavbar from "../navbar/SideNavbar";
 import PersonalProfile from "../profile/Profile";
 import ProfilePage from "../profile/Profile1";
 import RegisterPage from "../createuser/RegisterPage";
+import UpdateUser from "../updateuser/UpdateUser";
+import {useDispatch, useSelector} from "react-redux";
 
 
 
 function Index() {
 
-
-
-
+    const dispatch = useDispatch();
+    // const email = useSelector((state) => state.auth.auth.userrole);
 
     return (
 
-
         <body className="sb-nav-fixed">
-
-
         <Topbar></Topbar>
-
         <div id="layoutSidenav">
 
             <SideNavbar></SideNavbar>
@@ -45,6 +42,8 @@ function Index() {
                         <div className="card mb-4">
 
                             <RegisterPage></RegisterPage>
+
+                            <UpdateUser></UpdateUser>
 
                            <DataTable></DataTable>
 

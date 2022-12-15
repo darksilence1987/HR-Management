@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import userService from "../../config/UserService";
 import axios from "axios";
+import mainService from "../../config/MainService";
 
 const initialStateUser = {
     token: "",
@@ -16,15 +17,11 @@ const initialStateUser = {
     },
 };
 
-
-
-
-
 export const findallUser = createAsyncThunk(
     "user/findall",
     async (payload) => {
         try {
-            const response = await axios.get(userService.findall, {
+            const response = await axios.get(mainService.getuserdetailslist, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -36,7 +33,6 @@ export const findallUser = createAsyncThunk(
         }
     }
 );
-
 
 export const findByEmail = createAsyncThunk(
     "user/findbyemail",
@@ -56,6 +52,23 @@ export const findByEmail = createAsyncThunk(
     }
 );
 
+export const updateuserfromuser = createAsyncThunk(
+    "user/updateuserfromuser",
+    async (payload) => {
+        try {
+            const response = await axios.post(userService.updateuserfromuser, payload, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+
+            });
+
+            return response.data;
+        } catch (error) {
+            return error.response.data;
+        }
+    }
+);
 
 const userSlice = createSlice({
     name: "user",
@@ -89,6 +102,19 @@ const userSlice = createSlice({
             state.isLoading = false;
         });
         build.addCase(findByEmail.pending, (state, action) => {
+            state.isLoading = true;
+        });
+
+        build.addCase(updateuserfromuser.fulfilled, (state, action) => {
+
+            state.isLoading = false;
+        });
+
+        build.addCase(updateuserfromuser.rejected, (state, action) => {
+            state.error = action.payload;
+            state.isLoading = false;
+        });
+        build.addCase(updateuserfromuser.pending, (state, action) => {
             state.isLoading = true;
         });
     },
