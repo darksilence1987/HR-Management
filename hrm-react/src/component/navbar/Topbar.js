@@ -6,19 +6,19 @@ import {findByEmail} from "../../store/features/UserSlice";
 
 function Topbar() {
     const dispatch = useDispatch();
-    const email = useSelector((state) => state.auth.email);
-    const auth = useSelector((state) => state.auth);
+    const email = useSelector((state) => state.auth.auth.email);
+    const user = useSelector((state) => state.auth);
 
-    console.log("auth", auth);
-    console.log("email", email);
 
-    const getUser = async () => {
-        const response = await dispatch(findByEmail({email}));
-    };
 
-    React.useEffect(() => {
-        getUser();
-    }, []);
+    // const getUser = async () => {
+    //     const response = await dispatch(findByEmail({email}));
+    //
+    // };
+    //
+    // React.useEffect(() => {
+    //     getUser();
+    // }, []);
 
 
 
@@ -42,8 +42,8 @@ function Topbar() {
                 </form>
 
                 <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Dropdown Button
+                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                        {email}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>

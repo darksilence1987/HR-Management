@@ -4,7 +4,7 @@ import LoginPage from "./pages/login/LoginPage";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 import HomePage from "./pages/home/HomePage";
-import RegisterPage from "./pages/register/RegisterPage";
+import RegisterPage from "./component/createuser/RegisterPage";
 import Chart from "./component/charts/Chart";
 import Table from "./component/tables/Table";
 
