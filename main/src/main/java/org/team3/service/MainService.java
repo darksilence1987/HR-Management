@@ -9,8 +9,10 @@ import org.team3.manager.IAuthManager;
 import org.team3.manager.IUserManager;
 import org.team3.mapper.IMainMapper;
 import org.team3.repository.entity.UserProfile;
+import org.team3.repository.enums.Role;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Service
 public class MainService {
@@ -39,5 +41,14 @@ public class MainService {
             return ResponseEntity.ok(userProfile);
         }
         else return null;
+    }
+
+    public ResponseEntity<List<UserProfile>> getUserDetailsList(String managerMail) {
+        List<UserProfile> userProfiles;
+        if(userManager.loginRequest(managerMail).getRole().equals(Role.Employee)) return null;
+        else {
+            userProfiles = IMainMapper.INSTANCE.toUserProfileList(userManager.getAllUsersSummaryInfo());
+            return ResponseEntity.ok(userProfiles);
+        }
     }
 }

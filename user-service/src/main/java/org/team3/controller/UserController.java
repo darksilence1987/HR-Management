@@ -41,7 +41,7 @@ public class UserController {
         }
     }
     @PostMapping("/get-user-by-email")
-        public UserDetailsResponseDto loginRequest(@RequestParam String email) {
+        public UserDetailsResponseDto loginRequest(@RequestBody String email) {
         return userService.userDetailsResponseByEmail(email);
         }
 
@@ -51,9 +51,9 @@ public class UserController {
         return ResponseEntity.ok(userService.updateUserFromManager(dto,email));
     }
 
-    @GetMapping(GETALLUSERSSUMMARYINFO)
-    public ResponseEntity<List<UserSummaryResponseDto>> getAllUsersSummaryInfo(){
-        return ResponseEntity.ok(userService.getAllUsersSummaryInfo());
+    @PostMapping("/get-user-details-list")
+    public List<UserSummaryResponseDto> getAllUsersSummaryInfo(){
+        return userService.getAllUsersSummaryInfo();
     }
 
 
