@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.team3.dto.request.LoginRequestDto;
 import org.team3.dto.response.UserDetailsResponseDto;
+import org.team3.exception.ErrorType;
+import org.team3.exception.MainServiceException;
 import org.team3.manager.IAuthManager;
 import org.team3.manager.IUserManager;
 import org.team3.mapper.IMainMapper;
@@ -43,12 +45,15 @@ public class MainService {
         else return null;
     }
 
-    public ResponseEntity<List<UserProfile>> getUserDetailsList(String managerMail) {
+    public List<UserProfile> getUserDetailsList(String managerMail) {
         List<UserProfile> userProfiles;
-        if(userManager.loginRequest(managerMail).getRole().equals(Role.Employee)) return null;
-        else {
-            userProfiles = IMainMapper.INSTANCE.toUserProfileList(userManager.getAllUsersSummaryInfo());
-            return ResponseEntity.ok(userProfiles);
+        userProfiles = IMainMapper.INSTANCE.toUserProfileList(userManager.getAllUsersSummaryInfo());
+        UserDetailsResponseDto userdto = userManager.loginRequest(managerMail);
+
+        if(userdto.getRole().equals(Role.Manager)){
+         userProfiles= IMainMapper.INSTANCE.toUserProfileList(userManager.getAllUsersSummaryInfo());
+            return userProfiles;
+        }else throw new MainServiceException(ErrorType.YETKI_DISI);
         }
     }
-}
+

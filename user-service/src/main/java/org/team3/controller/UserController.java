@@ -51,7 +51,7 @@ public class UserController {
         return ResponseEntity.ok(userService.updateUserFromManager(dto,email));
     }
 
-    @PostMapping("/get-user-details-list")
+    @GetMapping("/get-user-details-list")
     public List<UserSummaryResponseDto> getAllUsersSummaryInfo(){
         return userService.getAllUsersSummaryInfo();
     }

@@ -31,8 +31,8 @@ public class MainController {
         }
         else throw new MainServiceException(ErrorType.LOGIN_ERROR_001);
     }
-    @PostMapping("/get-user-details-list")
-    public ResponseEntity<List<UserProfile>> getUserDetailsList(@RequestBody String managerMail){
+    @GetMapping("/get-user-details-list")
+    public List<UserProfile> getUserDetailsList(@RequestParam String managerMail){
         return mainservice.getUserDetailsList(managerMail);
     }
 
