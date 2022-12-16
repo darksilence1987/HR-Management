@@ -31,14 +31,17 @@ public class MainController {
         }
         else throw new MainServiceException(ErrorType.LOGIN_ERROR_001);
     }
+    @CrossOrigin("*")
     @GetMapping("/get-user-details-list")
     public List<UserProfile> getUserDetailsList(@RequestParam String managerMail){
         return mainservice.getUserDetailsList(managerMail);
     }
+    @CrossOrigin("*")
     @PostMapping("/get-user-details")
     public UserProfile getUserDetails(@RequestParam String recipientMail, @RequestParam String ownerMail){
         return mainservice.getUserDetails(recipientMail, ownerMail);
     }
+    @CrossOrigin("*")
     @PostMapping("/update-user-details")
     public void updateUserDetails(@RequestBody UserProfile userProfile, @RequestParam String ownerMail){
         mainservice.updateUserInfo(userProfile, ownerMail);

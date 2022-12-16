@@ -2,11 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import userService from "../../config/UserService";
 import axios from "axios";
 import mainService from "../../config/MainService";
+import authService from "../../config/AuthService";
 
 const initialStateUser = {
+    returnUserCreate: false,
     token: "",
+    email: "",
     userProfile: {
-        follows: [],
+
     },
     userProfileList: [],
     isLoading: false,
@@ -17,11 +20,34 @@ const initialStateUser = {
     },
 };
 
+
+export const fetchUserCreate = createAsyncThunk(
+    "user/create",
+
+    async (payload) => {
+        try {
+            const response = await fetch(userService.usercreate, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            })
+                .then((response) => response.json())
+                .catch((error) => console.log(error));
+            return response;
+        } catch (err) {
+            return err.response;
+        }
+    }
+);
+
+
 export const findallUser = createAsyncThunk(
     "user/findall",
     async (payload) => {
         try {
-            const response = await axios.get(mainService.getuserdetailslist, {
+            const response = await axios.get(userService.findall, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -56,10 +82,11 @@ export const updateuserfromuser = createAsyncThunk(
     "user/updateuserfromuser",
     async (payload) => {
         try {
-            const response = await axios.post(userService.updateuserfromuser, payload, {
+            const response = await axios.post(userService.updateuserfromuser,  payload, {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                params: { email: "Manager" }
 
             });
 
@@ -76,6 +103,21 @@ const userSlice = createSlice({
     reducers: {},
 
     extraReducers: (build) => {
+
+        build.addCase(fetchUserCreate.fulfilled, (state, action) => {
+            state.returnUserCreate = action.payload;
+            console.log(" user create dönen değer: ", state.returnUserCreate);
+            state.isLoadingRegister = false;
+
+        });
+        build.addCase(fetchUserCreate.pending, (state, action) => {
+            state.isLoadingRegister = true;
+            state.isSave = false;
+        });
+        build.addCase(fetchUserCreate.rejected, (state, action) => {
+            state.isLoadingRegister = false;
+            state.isSave = false;
+        });
 
         build.addCase(findallUser.fulfilled, (state, action) => {
             state.userProfileList = action.payload;

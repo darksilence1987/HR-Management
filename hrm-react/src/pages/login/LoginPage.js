@@ -1,24 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import axios from 'axios';
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLogin } from "../../store/features/AuthSlice";
 import {useNavigate} from "react-router-dom";
-
 
 export default function SignIn() {
 
@@ -71,13 +55,13 @@ export default function SignIn() {
                                             </div>
                                             <div
                                                 className="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a className="small" href="password.html">Forgot Password?</a>
+                                                <a className="small" >Forgot Password?</a>
                                                 <a onClick={doLogin} className="btn btn-primary" >Login</a>
                                             </div>
                                         </form>
                                     </div>
                                     <div className="card-footer text-center py-3">
-                                        <div className="small"><a href="register.html">Need an account? Sign up!</a>
+                                        <div className="small"><a>Need an account? Sign up!</a>
                                         </div>
                                     </div>
                                 </div>

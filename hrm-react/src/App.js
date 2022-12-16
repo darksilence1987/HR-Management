@@ -4,7 +4,7 @@ import LoginPage from "./pages/login/LoginPage";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 import HomePage from "./pages/home/HomePage";
-import RegisterPage from "./component/createuser/RegisterPage";
+import UserCreateTable from "./component/createuser/UserCreateTable";
 import Chart from "./component/charts/Chart";
 import Table from "./component/tables/Table";
 
@@ -25,7 +25,7 @@ function App() {
 
                     <Route
                         path="/register"
-                        element={ <RegisterPage></RegisterPage>}
+                        element={ <UserCreateTable></UserCreateTable>}
                     ></Route>
 
 

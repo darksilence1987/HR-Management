@@ -2,9 +2,9 @@ import React from 'react'
 import DataTable from "../tables/Table";
 import Topbar from "../navbar/Topbar";
 import SideNavbar from "../navbar/SideNavbar";
-import PersonalProfile from "../profile/Profile";
+
 import ProfilePage from "../profile/Profile1";
-import RegisterPage from "../createuser/RegisterPage";
+import UserCreateTable from "../createuser/UserCreateTable";
 import UpdateUser from "../updateuser/UpdateUser";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -13,7 +13,10 @@ import {useDispatch, useSelector} from "react-redux";
 function Index() {
 
     const dispatch = useDispatch();
-    // const email = useSelector((state) => state.auth.auth.userrole);
+    const userRole = useSelector((state) => state.auth.auth.role);
+
+
+    console.log("user role ", userRole);
 
     return (
 
@@ -21,33 +24,44 @@ function Index() {
         <Topbar></Topbar>
         <div id="layoutSidenav">
 
-            <SideNavbar></SideNavbar>
 
+            {userRole === "Manager"? <SideNavbar></SideNavbar>: <></>
+            }
 
             <div id="layoutSidenav_content">
                 <main>
                     <div className="container-fluid px-4">
-                        <h1 className="mt-4">Dashboard</h1>
+                        <h1 className="mt-4">Human Resources Management</h1>
                         <ol className="breadcrumb mb-4">
-                            <li className="breadcrumb-item active">Dashboard</li>
+                            <li className="breadcrumb-item active">User Profile</li>
+
                         </ol>
 
-                            {/*<PersonalProfile></PersonalProfile>*/}
-
                         <ProfilePage></ProfilePage>
+<>
+    {
+        userRole === "Manager"? <>
+
+            <br/>
+            <br/>
+            <br/>
+            <ol className="breadcrumb mb-4">
+
+                <li className="breadcrumb-item active">User List</li>
+
+            </ol>
+
+            <div className="card mb-4">
+
+                    <DataTable></DataTable>
+
+            </div>
+        </>: <></>
+    }
+
+</>
 
 
-
-
-                        <div className="card mb-4">
-
-                            <RegisterPage></RegisterPage>
-
-                            <UpdateUser></UpdateUser>
-
-                           <DataTable></DataTable>
-
-                        </div>
                     </div>
                 </main>
 

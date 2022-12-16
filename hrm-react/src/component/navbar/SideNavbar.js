@@ -1,4 +1,5 @@
 import React from 'react'
+import UserCreateTable from "../createuser/UserCreateTable";
 
 function SideNavbar() {
 
@@ -13,12 +14,12 @@ function SideNavbar() {
                     <div className="sb-sidenav-menu">
                         <div className="nav">
                             <div className="sb-sidenav-menu-heading">Core</div>
-                            <a className="nav-link" href="index.html">
+                            <a className="nav-link" >
                                 <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
-                                Dashboard
+                                <UserCreateTable></UserCreateTable>
                             </a>
                             <div className="sb-sidenav-menu-heading">Interface</div>
-                            <a className="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            <a className="nav-link collapsed"  data-bs-toggle="collapse"
                                data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div className="sb-nav-link-icon"><i className="fas fa-columns"></i></div>
                                 Layouts

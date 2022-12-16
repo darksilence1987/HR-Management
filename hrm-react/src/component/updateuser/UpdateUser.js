@@ -6,8 +6,14 @@ import {useDispatch, useSelector} from "react-redux";
 import React, {useState} from "react";
 import {fetchLogin} from "../../store/features/AuthSlice";
 import {updateuserfromuser} from "../../store/features/UserSlice";
+import Modal from 'react-bootstrap/Modal';
 
 function GridComplexExample() {
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const dispatch = useDispatch();
 
@@ -19,7 +25,7 @@ function GridComplexExample() {
         photo: "",
     });
     const update =  () => {
-        dispatch(updateuserfromuser(user, email));
+        dispatch(updateuserfromuser(user));
         // await navigate("/");
 
     };
@@ -30,49 +36,61 @@ function GridComplexExample() {
 
 
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-lg-7">
-                    <div className="card shadow-lg border-0 rounded-lg mt-5">
-                        <div className="card-header"><h3
-                            className="text-center font-weight-light my-4">Update User</h3></div>
-                        <div className="card-body">
-                            <form>
-                                <div className="row mb-3">
-                                    <div className="col-md-6">
-                                        <div className="form-floating mb-3 mb-md-0">
-                                            <input name="address" onChange={onChangeUser} className="form-control" id="inputAddress" type="text"
-                                                   placeholder="Enter your address"/>
-                                            <label htmlFor="inputAddress">Address</label>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="form-floating">
-                                            <input name="phone" onChange={onChangeUser} className="form-control" id="inputPhone" type="text"
-                                                   placeholder="Enter your phone"/>
-                                            <label htmlFor="inputPhone">Phone</label>
-                                        </div>
+        <>
+            <Button variant="primary" onClick={handleShow}>
+                Update User
+            </Button>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <form>
+                            <div className="row mb-3">
+                                <div className="col-md-6">
+                                    <div className="form-floating mb-3 mb-md-0">
+                                        <input name="address" onChange={onChangeUser} className="form-control" id="inputAddress" type="text"
+                                               placeholder="Enter your address"/>
+                                        <label htmlFor="inputAddress">Address</label>
                                     </div>
                                 </div>
-                                <div className="form-floating mb-3">
-                                    <input name="photo" onChange={onChangeUser} type="text" className="form-control" id="inputPhoto"
-                                           placeholder="photo"/>
-                                    <label htmlFor="inputPhoto">Photo</label>
+                                <div className="col-md-6">
+                                    <div className="form-floating">
+                                        <input name="phone" onChange={onChangeUser} className="form-control" id="inputPhone" type="text"
+                                               placeholder="Enter your phone"/>
+                                        <label htmlFor="inputPhone">Phone</label>
+                                    </div>
                                 </div>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <input name="photo" onChange={onChangeUser} type="text" className="form-control" id="inputPhoto"
+                                       placeholder="photo"/>
+                                <label htmlFor="inputPhoto">Photo</label>
+                            </div>
 
-                                <div className="mt-4 mb-0">
-                                    <div className="d-grid">
-                                        <button  onClick={update} type={"button"}>Update</button></div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+                            {/*<div className="mt-4 mb-0">*/}
+                            {/*    <div className="d-grid">*/}
+                            {/*        <button  onClick={update} type={"button"}>Update</button></div>*/}
+                            {/*</div>*/}
+                        </form>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={update}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
 
     );
 }
 
 export default GridComplexExample;
+
+

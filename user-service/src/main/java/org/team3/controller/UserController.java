@@ -32,8 +32,8 @@ public class UserController {
     public ResponseEntity<Boolean> updateUserFromUser(@RequestBody @Valid UserUpdateInfoFromUserRequestDto dto , @PathVariable String email) {
         return ResponseEntity.ok(userService.updateUserFromUser(dto,email));
     }
-    @PostMapping(USERCREATE)
     @CrossOrigin("*")
+    @PostMapping(USERCREATE)
     public ResponseEntity<Boolean> createUser(@RequestBody UserDetailsRequestDto dto) {
         try {
             userService.createUser(dto);
@@ -42,21 +42,21 @@ public class UserController {
             throw new UserServiceException(ErrorType.USER_NOT_CREATED);
         }
     }
-    @PostMapping("/get-user-by-email")
     @CrossOrigin("*")
+    @PostMapping("/get-user-by-email")
         public UserDetailsResponseDto loginRequest(@RequestBody String email) {
         return userService.userDetailsResponseByEmail(email);
         }
 
 
-    @PutMapping(UPDATEUSERFROMMANAGER)
     @CrossOrigin("*")
+    @PutMapping(UPDATEUSERFROMMANAGER)
     public ResponseEntity<Boolean> updateUserFromManager(@RequestBody @Valid UserUpdateInfoFromManagerRequestDto dto , @PathVariable String email) {
         return ResponseEntity.ok(userService.updateUserFromManager(dto,email));
     }
 
-    @GetMapping(GETALLUSERSSUMMARYINFO)
     @CrossOrigin("*")
+    @GetMapping(GETALLUSERSSUMMARYINFO)
     public ResponseEntity<List<UserSummaryResponseDto>> getAllUsersSummaryInfo(){
         return ResponseEntity.ok(userService.getAllUsersSummaryInfo());
     }
