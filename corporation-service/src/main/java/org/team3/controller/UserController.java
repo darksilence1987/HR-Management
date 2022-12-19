@@ -3,8 +3,12 @@ package org.team3.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.team3.dto.request.CorporationCreateRequestDto;
+import org.team3.dto.response.CorporationSummaryResponseDto;
 import org.team3.exception.ErrorType;
 import org.team3.exception.CorporationServiceException;
+import org.team3.repository.entity.Corporation;
+import org.team3.service.CorporationService;
 
 
 import javax.validation.Valid;
@@ -18,25 +22,23 @@ import static org.team3.constant.ApiUrls.*;
 @RequiredArgsConstructor
 public class UserController {
 
-//    private final CorporationService userService;
+    private final CorporationService userService;
 
-//    @CrossOrigin("*")
-//    @PostMapping(CORPORATIONCREATE)
-//    public ResponseEntity<Boolean> createUser(@RequestBody UserDetailsRequestDto dto) {
-//        try {
-//            userService.createUser(dto);
-//            return ResponseEntity.ok(true);
-//        } catch (Exception e) {
-//            throw new CorporationServiceException(ErrorType.USER_NOT_CREATED);
-//        }
-//    }
+    @CrossOrigin("*")
+    @PostMapping(CORPORATIONCREATE)
+    public ResponseEntity<Boolean> createCorporation(@RequestBody CorporationCreateRequestDto dto) {
+
+            userService.createCorporation(dto);
+            return ResponseEntity.ok(true);
+
+    }
 
 
-//    @CrossOrigin("*")
-//    @GetMapping(GETALLCORPORATIONSSUMMARYINFO)
-//    public ResponseEntity<List<UserSummaryResponseDto>> getAllUsersSummaryInfo(){
-//        return ResponseEntity.ok(userService.getAllUsersSummaryInfo());
-//    }
+    @CrossOrigin("*")
+    @GetMapping(GETALLCORPORATIONSSUMMARYINFO)
+    public ResponseEntity<List<CorporationSummaryResponseDto>> getAllCorporationsSummaryInfo(){
+        return ResponseEntity.ok(userService.getAllCorporationsSummaryInfo());
+    }
 
 
 }
