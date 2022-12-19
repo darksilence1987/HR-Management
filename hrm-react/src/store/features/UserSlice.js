@@ -7,7 +7,7 @@ import authService from "../../config/AuthService";
 const initialStateUser = {
     userListUpdate: false,
     returnUserCreate: false,
-    token: "",
+    // token: "",
     email: "",
     userProfile: {
 
@@ -87,7 +87,7 @@ export const updateuserfromuser = createAsyncThunk(
                 headers: {
                     "Content-Type": "application/json",
                 },
-                params: { email: "Manager" }
+                // params: { email: "Manager" }
 
             });
 

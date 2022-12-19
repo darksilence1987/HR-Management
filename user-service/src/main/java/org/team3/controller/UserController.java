@@ -51,7 +51,7 @@ public class UserController {
 
     @CrossOrigin("*")
     @PutMapping(UPDATEUSERFROMMANAGER)
-    public ResponseEntity<Boolean> updateUserFromManager(@RequestBody @Valid UserUpdateInfoFromManagerRequestDto dto , @PathVariable String email) {
+    public ResponseEntity<Boolean> updateUserFromManager(@RequestBody @Valid UserUpdateInfoFromManagerRequestDto dto, @PathVariable String email) {
         return ResponseEntity.ok(userService.updateUserFromManager(dto,email));
     }
 
