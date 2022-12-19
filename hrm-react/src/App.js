@@ -29,18 +29,6 @@ function App() {
                     ></Route>
 
 
-                    <Route
-                        path="/chart"
-                        element={ <Chart></Chart>}
-                    ></Route>
-
-                    <Route
-                        path="/table"
-                        element={ <Table></Table>}
-                    ></Route>
-
-
-
                 </Routes>
             </BrowserRouter>
         </div>
