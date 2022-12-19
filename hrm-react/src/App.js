@@ -4,9 +4,15 @@ import LoginPage from "./pages/login/LoginPage";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 import HomePage from "./pages/home/HomePage";
+import UserCreateTable from "./component/createuser/UserCreateTable";
+import Chart from "./component/charts/Chart";
+import Table from "./component/userlist/UserList";
 
 function App() {
-    // const isLogin = useSelector((state) => state.auth.isAuthanticated);
+
+    const isLogin = useSelector((state) => state.auth.isAuthanticated);
+    console.log("isLogin degeri", isLogin);
+
     return (
         <div className="App">
 
@@ -14,13 +20,14 @@ function App() {
                 <Routes>
                     <Route
                         path="/"
-                        element={<LoginPage></LoginPage>}
+                        element={isLogin ?<HomePage></HomePage> :<LoginPage></LoginPage> }
                     ></Route>
 
                     <Route
-                        path="/homepage"
-                        element={<HomePage></HomePage>}
+                        path="/register"
+                        element={ <UserCreateTable></UserCreateTable>}
                     ></Route>
+
 
                 </Routes>
             </BrowserRouter>

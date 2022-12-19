@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/auth-service/HR-Management.auth-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/auth-service/HR-Management.auth-service.main.iml" />
+
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/user-service/HR-Management.user-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/user-service/HR-Management.user-service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/hrm-react.iml" filepath="$PROJECT_DIR$/hrm-react.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/main/org.team3.HR-Management.main.main.iml" filepath="$PROJECT_DIR$/.idea/modules/main/org.team3.HR-Management.main.main.iml" />
     </modules>
   </component>
 </project>

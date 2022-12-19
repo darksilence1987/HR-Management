@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "../../config/AuthService";
+import mainService from "../../config/MainService";
+
 const initialStateAuth = {
     token: "",
     isAuthanticated: false,
@@ -22,7 +24,7 @@ export const fetchLogin = createAsyncThunk(
 
     async (payload) => {
         try {
-            const response = await fetch(authService.login, {
+            const response = await fetch(mainService.loginrequest, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -39,6 +41,8 @@ export const fetchLogin = createAsyncThunk(
 );
 
 
+
+
 const authSlice = createSlice({
     name: "auth",
     initialState: initialStateAuth,
@@ -47,10 +51,9 @@ const authSlice = createSlice({
     extraReducers: (build) => {
 
 
-
         build.addCase(fetchLogin.fulfilled, (state, action) => {
-
-            state.token = action.payload.token;
+            state.auth = action.payload;
+            // state.token = action.payload.token;
             state.isAuthanticated = true;
 
             state.isLoading = false;

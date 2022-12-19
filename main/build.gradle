@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group 'org.team3'
+version 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation libs.springCloudConfigClient
+    implementation libs.springBootRabbitMQ
+    //implementation libs.springBootStarterSecurity
+    implementation libs.springCloudStarterConfig
+}
+

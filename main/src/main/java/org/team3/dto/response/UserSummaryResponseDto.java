@@ -9,10 +9,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class UserUpdateInfoResponseDto {
+public class UserSummaryResponseDto {
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phone;
     private String photo;
     private String address;
-    private String phone;
+    private String job;
+    private String department;
 
 }
