@@ -5,6 +5,7 @@ import mainService from "../../config/MainService";
 import authService from "../../config/AuthService";
 
 const initialStateUser = {
+    userListUpdate: false,
     returnUserCreate: false,
     token: "",
     email: "",
@@ -108,11 +109,13 @@ const userSlice = createSlice({
             state.returnUserCreate = action.payload;
             console.log(" user create dönen değer: ", state.returnUserCreate);
             state.isLoadingRegister = false;
+            state.userListUpdate = true;
 
         });
         build.addCase(fetchUserCreate.pending, (state, action) => {
             state.isLoadingRegister = true;
             state.isSave = false;
+            state.userListUpdate = false;
         });
         build.addCase(fetchUserCreate.rejected, (state, action) => {
             state.isLoadingRegister = false;

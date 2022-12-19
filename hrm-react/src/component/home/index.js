@@ -1,5 +1,5 @@
 import React from 'react'
-import DataTable from "../tables/Table";
+import DataTable from "../userlist/UserList";
 import Topbar from "../navbar/Topbar";
 import SideNavbar from "../navbar/SideNavbar";
 
@@ -7,6 +7,7 @@ import ProfilePage from "../profile/Profile1";
 import UserCreateTable from "../createuser/UserCreateTable";
 import UpdateUser from "../updateuser/UpdateUser";
 import {useDispatch, useSelector} from "react-redux";
+
 
 
 
@@ -57,15 +58,14 @@ function Index() {
 
             </div>
         </>: <></>
+
+
     }
 
 </>
 
-
                     </div>
                 </main>
-
-
 
                 <footer className="py-4 bg-light mt-auto">
                     <div className="container-fluid px-4">
@@ -79,8 +79,6 @@ function Index() {
                         </div>
                     </div>
                 </footer>
-
-
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -88,10 +86,6 @@ function Index() {
         <script src="/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
                 crossOrigin="anonymous"></script>
-
-
-
-
 
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossOrigin="anonymous"></script>

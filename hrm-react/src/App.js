@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import HomePage from "./pages/home/HomePage";
 import UserCreateTable from "./component/createuser/UserCreateTable";
 import Chart from "./component/charts/Chart";
-import Table from "./component/tables/Table";
+import Table from "./component/userlist/UserList";
 
 function App() {
 
