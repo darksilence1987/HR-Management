@@ -1,23 +1,18 @@
-package org.team3.repository.entity;
+package org.team3.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.team3.repository.enums.Status;
 
 import java.util.Date;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Document
-public class Corporation {
-    @Id
-    String id;
+public class CorporationCreateRequestDto {
+
     String name;
     String title;
     String mersisNo;
@@ -31,7 +26,4 @@ public class Corporation {
     String foundationYear;
     Date contractStart;
     Date contractEnd;
-//    @Builder.Default
-//    @Enumerated(EnumType.STRING)
-    Status status = Status.Active;
 }
