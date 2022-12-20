@@ -7,6 +7,7 @@ import HomePage from "./pages/home/HomePage";
 import UserCreateTable from "./component/createuser/UserCreateTable";
 import Chart from "./component/charts/Chart";
 import Table from "./component/userlist/UserList";
+import Corporation from "./component/corporation/Corporation";
 
 function App() {
 
@@ -26,6 +27,11 @@ function App() {
                     <Route
                         path="/register"
                         element={ <UserCreateTable></UserCreateTable>}
+                    ></Route>
+
+                    <Route
+                        path="/corporation"
+                        element={ <Corporation></Corporation>}
                     ></Route>
 
 
