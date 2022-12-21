@@ -1,7 +1,7 @@
 const authPort = "9090";
 const userPort = "9091";
 const mainPort = "9098";
-const corporationPort = "9096";
+const corporationPort = "8891";
 
 const version = "/api/v1";
 
