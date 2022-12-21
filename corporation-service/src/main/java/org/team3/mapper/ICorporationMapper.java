@@ -4,6 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 import org.team3.dto.request.CorporationCreateRequestDto;
+import org.team3.dto.response.CorporationGetAllResponseDto;
 import org.team3.dto.response.CorporationSummaryResponseDto;
 import org.team3.repository.entity.Corporation;
 
@@ -21,6 +22,7 @@ Corporation toCorporation(final CorporationCreateRequestDto dto);
 
 
     List<CorporationSummaryResponseDto> toUserListSummaryResponseDto(final List<Corporation> corporations);
+    List<CorporationGetAllResponseDto> toUserListResponseDto(final List<Corporation> corporations);
 
 
 }
