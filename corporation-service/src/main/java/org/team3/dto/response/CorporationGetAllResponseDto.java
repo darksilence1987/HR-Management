@@ -1,24 +1,19 @@
-package org.team3.repository.entity;
+package org.team3.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.team3.repository.enums.Status;
 
 import java.util.Date;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Document
-public class Corporation {
-    @Id
-    String id;
+public class CorporationGetAllResponseDto {
+
     String name;
     String title;
     String mersisNo;
@@ -27,11 +22,11 @@ public class Corporation {
     String logo;
     String phone;
     String address;
-    @Indexed(unique = true)
     String email;
     int numberOfEmployees;
     String foundationYear;
     Date contractStart;
     Date contractEnd;
-    Status status = Status.Active;
+    Status status;
+
 }

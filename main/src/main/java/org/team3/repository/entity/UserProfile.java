@@ -23,7 +23,6 @@ public class UserProfile {
     String startDate;
     String job;
     String department;
-
     String phone;
     String address;
     Role role;

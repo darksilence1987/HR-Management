@@ -7,6 +7,7 @@ import HomePage from "./pages/home/HomePage";
 import UserCreateTable from "./component/createuser/UserCreateTable";
 import Chart from "./component/charts/Chart";
 import Table from "./component/userlist/UserList";
+import UserPage from "./pages/userprofile/UserPage";
 import Corporation from "./component/corporation/Corporation";
 
 function App() {
@@ -25,8 +26,8 @@ function App() {
                     ></Route>
 
                     <Route
-                        path="/register"
-                        element={ <UserCreateTable></UserCreateTable>}
+                        path="/profilepage"
+                        element={ <UserPage></UserPage>}
                     ></Route>
 
                     <Route

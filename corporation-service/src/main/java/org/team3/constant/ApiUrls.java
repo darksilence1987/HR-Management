@@ -11,9 +11,11 @@ public class ApiUrls {
 
     public static final String SAVE =  "/save";
     public static final String CORPORATIONCREATE =  "/corporationcreate";
+    public static final String CORPORATIONUPDATE     =  "/corporationupdate";
     public static final String GETALLCORPORATIONSSUMMARYINFO =  "/getallcorporationssummaryinfo";
     public static final String FINDBYID =  "/findbyid";
-    public static final String GETALL =  "/getall";
+
+    public static final String GETALLCORPORATIONS =  "/getallcorporations";
 
 
 }
