@@ -8,7 +8,7 @@ import {Stack, Button} from "@mui/material";
 
 
 export default function DataTable() {
-  // const columns = [
+  // const columns1 = [
   //   { field: 'id', headerName: 'ID', width: 70 },
   //   { field: 'authid', headerName: 'AuthID', width: 70 },
   //   { field: 'photo', headerName: 'Photo', width: 70 },
@@ -63,6 +63,9 @@ export default function DataTable() {
       renderCell: (params) => {
         const onClick = (e) => {
           const currentRow = params.row;
+
+
+
           return alert(JSON.stringify(currentRow, null, 4));
         };
 
@@ -127,12 +130,12 @@ export default function DataTable() {
               pageSize={5}
               rowsPerPageOptions={[5]}
 
-              // SelectionMode="Single"
-              // checkboxSelection
-              //
-              // disableSelectionOnClick
+              isCellEditable={(params) => params.row.age % 2 === 0}
+              experimentalFeatures={{ newEditingApi: true }}
               disableMultipleSelection={true}
-              // onSelectionModelChange={(ids) => onRowsSelectionHandler(ids)}
+
+
+
           />
         </div>
 

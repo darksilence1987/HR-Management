@@ -28,15 +28,11 @@ export default function ProfilePage() {
     const user = useSelector((state) => state.auth.auth);
     const userRole = useSelector((state) => state.auth.auth.role);
 
-
     console.log("Profile page user: ", user.email);
     console.log("Profile page use1: ", user);
 
     return (
-
-
         <section style={{ backgroundColor: '#eee' }}>
-
             <MDBContainer className="py-5">
                 {/*<MDBRow>*/}
                 {/*    <MDBCol>*/}
@@ -51,7 +47,6 @@ export default function ProfilePage() {
                 {/*        </MDBBreadcrumb>*/}
                 {/*    </MDBCol>*/}
                 {/*</MDBRow>*/}
-
                 <MDBRow>
                     <MDBCol lg="4">
                         <MDBCard className="mb-4">
@@ -225,16 +220,6 @@ export default function ProfilePage() {
             </MDBContainer>
 
         </section>
-
-
-
-
-
-
-
-
-
-
 
     );
 }

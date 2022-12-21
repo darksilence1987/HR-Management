@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import DataTable from "../userlist/UserList";
 import Topbar from "../navbar/Topbar";
 import SideNavbar from "../navbar/SideNavbar";
@@ -7,11 +7,23 @@ import ProfilePage from "../profile/Profile1";
 import UserCreateTable from "../createuser/UserCreateTable";
 import UpdateUser from "../updateuser/UpdateUser";
 import {useDispatch, useSelector} from "react-redux";
+import Button from "react-bootstrap/Button";
+
+
 
 
 
 
 function Index() {
+
+    const [isShown, setIsShown] = useState(false);
+
+    const handleClick = event => {
+
+        setIsShown(current => !current);
+
+    };
+
 
     const dispatch = useDispatch();
     const userRole = useSelector((state) => state.auth.auth.role);
@@ -21,10 +33,12 @@ function Index() {
 
     return (
 
-        <body className="sb-nav-fixed">
-        <Topbar></Topbar>
-        <div id="layoutSidenav">
 
+        <body className="sb-nav-fixed">
+
+        <Topbar></Topbar>
+
+        <div id="layoutSidenav">
 
             {userRole === "Manager"? <SideNavbar></SideNavbar>: <></>
             }
@@ -33,33 +47,38 @@ function Index() {
                 <main>
                     <div className="container-fluid px-4">
                         <h1 className="mt-4">Human Resources Management</h1>
-                        <ol className="breadcrumb mb-4">
-                            <li className="breadcrumb-item active">User Profile</li>
 
-                        </ol>
 
-                        <ProfilePage></ProfilePage>
+                        <Button variant="primary" onClick={handleClick}>GetUserProfile</Button>
+
+                        {isShown && (
+                            <>
+                            <ol className="breadcrumb mb-4">
+                                <li className="breadcrumb-item active">User Profile</li>
+                            </ol>
+                            <ProfilePage></ProfilePage>
+
+                            </>
+                        )}
+
+
 <>
     {
         userRole === "Manager"? <>
 
-            <br/>
-            <br/>
-            <br/>
-            <ol className="breadcrumb mb-4">
+        <br/>
+        <br/>
+        <br/>
+        <ol className="breadcrumb mb-4">
 
-                <li className="breadcrumb-item active">User List</li>
+        <li className="breadcrumb-item active">User List</li>
 
-            </ol>
+        </ol>
+        <div className="card mb-4">
 
-            <div className="card mb-4">
-
-                    <DataTable></DataTable>
-
-            </div>
+        <DataTable></DataTable>
+        </div>
         </>: <></>
-
-
     }
 
 </>
