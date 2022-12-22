@@ -11,7 +11,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CorporationSummaryResponseDto {
 
+
     String name;
+    String id;
     String title;
     String email;
     String phone;

@@ -8,10 +8,8 @@ import UserCreateTable from "../createuser/UserCreateTable";
 import UpdateUser from "../updateuser/UpdateUser";
 import {useDispatch, useSelector} from "react-redux";
 import Button from "react-bootstrap/Button";
-
-
-
-
+import DataTableComp from "../companylist/CorporationList";
+import {Grid} from "@mui/material";
 
 
 function Index() {
@@ -54,35 +52,49 @@ function Index() {
 
                         {isShown && (
                             <>
-                            <ol className="breadcrumb mb-4">
-                                <li className="breadcrumb-item active">User Profile</li>
-                            </ol>
-                            <ProfilePage></ProfilePage>
+                                <ol className="breadcrumb mb-4">
+                                    <li className="breadcrumb-item active">User Profile</li>
+                                </ol>
+                                <ProfilePage></ProfilePage>
 
                             </>
                         )}
 
 
-<>
-    {
-        userRole === "Manager"? <>
+                        <>
+                            {
+                                userRole === "Manager" ? <>
 
-        <br/>
-        <br/>
-        <br/>
-        <ol className="breadcrumb mb-4">
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <ol className="breadcrumb mb-4">
 
-        <li className="breadcrumb-item active">User List</li>
+                                        <li className="breadcrumb-item active">User List</li>
 
-        </ol>
-        <div className="card mb-4">
+                                    </ol>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={6}>
+                                                <div id="beneda" className="card" style={{width : "100%"}}>
+                                                    <div id="beneda2"  className="card-body">
 
-        <DataTable></DataTable>
-        </div>
-        </>: <></>
-    }
+                                                    <DataTable id="beneda3"  style={{width : "100%"}}></DataTable>
+                                                    </div>
+                                                </div>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                                <div className="card"  style={{width : "100%"}}>
+                                                    <div className="card-body">
 
-</>
+                                                    <DataTableComp style={{width : "100%"}}></DataTableComp>
+                                                    </div>
+                                                </div>
+                                        </Grid>
+                                    </Grid>
+                                </> : <></>
+                            }
+
+                        </>
 
                     </div>
                 </main>
