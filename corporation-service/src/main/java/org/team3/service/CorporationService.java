@@ -82,6 +82,11 @@ public class CorporationService extends ServiceManager<Corporation, String> {
         }
     }
 
+    public void addEmployee(String email, String companyId){
+        Corporation corporation = repository.findById(companyId).get();
+        corporation.addEmployee(email);
+    }
+
 
 
 

@@ -27,15 +27,15 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @CrossOrigin("*")
-    @PostMapping("/register")
-    public ResponseEntity<Boolean> registerUser(@RequestBody @Valid UserAuth registerUserAuth) {
-        try {
-            return ResponseEntity.ok(authService.registerUser(registerUserAuth));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
-    }
+//    @CrossOrigin("*")
+//    @PostMapping("/register")
+//    public ResponseEntity<Boolean> registerUser(@RequestBody @Valid UserAuth registerUserAuth) {
+//        try {
+//            return ResponseEntity.ok(authService.registerUser(registerUserAuth));
+//        } catch (Exception e) {
+//            return ResponseEntity.badRequest().build();
+//        }
+//    }
     @CrossOrigin("*")
     @PostMapping("/login")
     public Boolean loginUser(@RequestBody @Valid LoginRequestDto loginUserAuth) {
@@ -47,7 +47,7 @@ public class AuthController {
     }
 
     @PostMapping(USERCREATE)
-    public ResponseEntity<Boolean> createUser(@RequestBody RegisterRequestDto dto) {
+    public ResponseEntity<Boolean> createUser(@RequestBody @Valid RegisterRequestDto dto) {
         try {
             authService.createUser(dto);
             return ResponseEntity.ok(true);

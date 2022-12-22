@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.team3.repository.enums.Status;
 
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,6 +16,7 @@ import java.util.Date;
 public class CorporationGetAllResponseDto {
 
     String name;
+    List<String> employeeMailList;
     String title;
     String mersisNo;
     String taxNo;
