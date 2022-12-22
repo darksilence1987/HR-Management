@@ -30,14 +30,14 @@ public class AuthService extends ServiceManager<UserAuth, Long> {
         this.authRepository = authRepository;
         this.userManager = userManager;
     }
-    public Boolean registerUser(UserAuth registerUserAuth) {
-        try {
-            authRepository.save(registerUserAuth);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+//    public Boolean registerUser(UserAuth registerUserAuth) {
+//        try {
+//            authRepository.save(registerUserAuth);
+//            return true;
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
     public Boolean loginUser(LoginRequestDto loginDetails) {
         try {
             UserAuth userAuth = authRepository.findByEmailAndPassword(loginDetails.getEmail(), loginDetails.getPassword());

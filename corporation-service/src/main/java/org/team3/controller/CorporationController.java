@@ -30,10 +30,7 @@ public class CorporationController {
 
             userService.createCorporation(dto);
             return ResponseEntity.ok(true);
-
     }
-
-
 
     @CrossOrigin("*")
     @PostMapping(CORPORATIONUPDATE)
