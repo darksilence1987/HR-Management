@@ -1,5 +1,6 @@
 import React from 'react'
-import UserCreateTable from "../createuser/UserCreateTable";
+import UserCreateTable from "../createtables/UserCreateTable";
+import CorporationCreateTable from "../createtables/CorporationCreateTable";
 
 function SideNavbar() {
 
@@ -12,12 +13,26 @@ function SideNavbar() {
             <div id="layoutSidenav_nav">
                 <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div className="sb-sidenav-menu">
+
                         <div className="nav">
                             <div className="sb-sidenav-menu-heading">Core</div>
+
                             <a className="nav-link" >
                                 <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
                                 <UserCreateTable></UserCreateTable>
+
                             </a>
+
+
+
+
+                            <a className="nav-link" >
+                                <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
+                                <CorporationCreateTable></CorporationCreateTable>
+
+                            </a>
+
+
                             <div className="sb-sidenav-menu-heading">Interface</div>
                             <a className="nav-link collapsed"  data-bs-toggle="collapse"
                                data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">

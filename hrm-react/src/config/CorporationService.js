@@ -4,6 +4,7 @@ const corporationService = {
 
 
     findall: RestApis.corporationService + "/corporation/getallcorporationssummaryinfo",
+    createCorporation: RestApis.corporationService + "/corporation/corporationcreate",
 
 };
 
