@@ -32,7 +32,7 @@ public class MainController {
         else throw new MainServiceException(ErrorType.LOGIN_ERROR_001);
     }
     @CrossOrigin("*")
-    @GetMapping("/get-user-details-list")
+    @PostMapping("/get-user-details-list")
     public List<UserProfile> getUserDetailsList(@RequestParam String managerMail){
         return mainservice.getUserDetailsList(managerMail);
     }
@@ -46,9 +46,6 @@ public class MainController {
     public void updateUserDetails(@RequestBody UserProfile userProfile, @RequestParam String ownerMail){
         mainservice.updateUserInfo(userProfile, ownerMail);
     }
-
-
-
 
 }
 

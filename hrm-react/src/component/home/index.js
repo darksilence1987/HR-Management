@@ -38,7 +38,8 @@ function Index() {
 
         <div id="layoutSidenav">
 
-            {userRole === "Manager" ? <SideNavbar></SideNavbar> : <></>
+
+            {userRole === "Manager"? <SideNavbar></SideNavbar>: <></>
             }
 
             <div id="layoutSidenav_content">

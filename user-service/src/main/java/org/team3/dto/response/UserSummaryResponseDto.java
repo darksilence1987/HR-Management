@@ -12,8 +12,8 @@ import org.team3.repository.enums.Role;
 @AllArgsConstructor
 public class UserSummaryResponseDto {
     private String id;
-    private String firstName;
-    private String lastName;
+    private String name;
+    private String surname;
     private String email;
     private String phone;
     private String photo;
