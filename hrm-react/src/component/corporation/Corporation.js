@@ -91,7 +91,7 @@ function Corporation() {
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossOrigin="anonymous"></script>
 
         </body>
-    )
+    );
 }
 
 export default Corporation

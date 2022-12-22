@@ -77,7 +77,7 @@ public class UserService extends ServiceManager<User, String> {
 
         Optional<User> userProfileDb = repository.findOptionalByEmail(email);
         if (userProfileDb.isPresent()) {
-            userProfileDb.get().setAddress(dto.getAddress());
+
             userProfileDb.get().setPhone(dto.getPhone());
             userProfileDb.get().setPhoto(dto.getPhoto());
             userProfileDb.get().setRole(dto.getRole());

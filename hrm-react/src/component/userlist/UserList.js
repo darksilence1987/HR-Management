@@ -123,7 +123,7 @@ export default function DataTable() {
   return (
       <div className="container">
 
-        <div style={{ height: 400, width: '50%' }}>
+        <div style={{ height: 400, width: '100%' }}>
           <DataGrid
               rows={userProfileList}
               columns={columns}
