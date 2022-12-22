@@ -6,4 +6,5 @@ include 'elastic-service'
 include 'api-gateway'
 include 'main'
 include 'corporation-service'
+include 'mail-service'
 

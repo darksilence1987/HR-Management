@@ -108,7 +108,6 @@ const userSlice = createSlice({
 
         build.addCase(fetchUserCreate.fulfilled, (state, action) => {
             state.returnUserCreate = action.payload;
-            console.log(" user create dönen değer: ", state.returnUserCreate);
             state.isLoadingRegister = false;
             state.userListUpdate = true;
 

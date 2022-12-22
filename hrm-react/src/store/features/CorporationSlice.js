@@ -90,11 +90,13 @@ const corporationSlice = createSlice({
         build.addCase(findallCorporation.fulfilled, (state, action) => {
             state.corporationList = action.payload;
             state.isLoading = false;
+            state.corporationListUpdate=  true;
             console.log(state.corporationList);
         });
 
         build.addCase(findallCorporation.rejected, (state, action) => {
             state.error = action.payload;
+            state.corporationListUpdate = false;
             state.isLoading = false;
         });
         // build.addCase(findallUser.pending, (state, action) => {

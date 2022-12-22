@@ -1,10 +1,15 @@
 import React from 'react'
 import UserCreateTable from "../createtables/UserCreateTable";
 import CorporationCreateTable from "../createtables/CorporationCreateTable";
+import ManagerCreateTable from "../createtables/ManagerCreateTable";
+import {useSelector} from "react-redux";
 
 function SideNavbar() {
 
 
+    const userRole = useSelector((state) => state.auth.auth.role);
+
+    console.log("sidenavbar role", userRole)
 
     return (
 
@@ -17,14 +22,23 @@ function SideNavbar() {
                         <div className="nav">
                             <div className="sb-sidenav-menu-heading">Core</div>
 
-                            <a className="nav-link" >
+                            {
+
+                                userRole ==="Admin"?
+
+                                <a className="nav-link">
+                                    <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
+                                    <ManagerCreateTable></ManagerCreateTable>
+
+                                </a>
+                                    :
+                                <a className="nav-link" >
                                 <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
                                 <UserCreateTable></UserCreateTable>
 
-                            </a>
+                                </a>
 
-
-
+                            }
 
                             <a className="nav-link" >
                                 <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>

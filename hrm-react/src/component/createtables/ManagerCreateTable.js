@@ -9,7 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 
-function UserCreateTable() {
+function ManagerCreateTable() {
 
     const [name, setName] = useState("");
     const [photo, setPhoto] = useState("");
@@ -53,6 +53,7 @@ function UserCreateTable() {
             email,
             phone,
             address,
+            role,
         };
 
 
@@ -112,13 +113,13 @@ function UserCreateTable() {
 
         <>
             <Button variant="primary" onClick={handleShow}>
-                Create User
+                Create Manager
             </Button>
 
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Create User</Modal.Title>
+                    <Modal.Title>Create Manager</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
@@ -238,13 +239,23 @@ function UserCreateTable() {
                                         </div>
                                     </div>
 
+
                                     <div className="col-md-6">
-                                    <div className="form-floating mb-3">
-                                        <input name="email" onChange={(e) => setEmail(e.target.value)} value={email}
-                                               type="email" className="form-control" id="inputEmail"
-                                               placeholder="name@example.com"/>
-                                        <label htmlFor="inputEmail">Email address</label>
+                                        <div className="form-floating mb-3 mb-md-3">
+                                            <input name="role" onChange={(e) => setRole(e.target.value)} value={role}
+                                                   className="form-control" id="inputRole" type="text"
+                                                   placeholder="Enter your role"/>
+                                            <label htmlFor="inputName">Role</label>
+                                        </div>
                                     </div>
+
+                                    <div className="col-md-6">
+                                        <div className="form-floating mb-3">
+                                            <input name="email" onChange={(e) => setEmail(e.target.value)} value={email}
+                                                   type="email" className="form-control" id="inputEmail"
+                                                   placeholder="name@example.com"/>
+                                            <label htmlFor="inputEmail">Email address</label>
+                                        </div>
 
                                     </div>
 
@@ -257,6 +268,9 @@ function UserCreateTable() {
                                         </div>
                                     </div>
                                 </div>
+
+
+
                             </form>
                         </div>
 
@@ -272,6 +286,8 @@ function UserCreateTable() {
                 </Modal.Footer>
             </Modal>
         </>
+
     );
 }
-export default UserCreateTable;
+
+export default ManagerCreateTable;
