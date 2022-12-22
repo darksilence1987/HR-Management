@@ -4,8 +4,6 @@ import Topbar from "../navbar/Topbar";
 import SideNavbar from "../navbar/SideNavbar";
 
 import ProfilePage from "../profile/Profile1";
-import UserCreateTable from "../createuser/UserCreateTable";
-import UpdateUser from "../updateuser/UpdateUser";
 import {useDispatch, useSelector} from "react-redux";
 import Button from "react-bootstrap/Button";
 import DataTableComp from "../companylist/CorporationList";
@@ -48,7 +46,9 @@ function Index() {
                         <h1 className="mt-4">Human Resources Management</h1>
 
 
-                        <Button variant="primary" onClick={handleClick}>GetUserProfile</Button>
+
+
+                        <Button   variant="primary" onClick={handleClick}>Get User Profile</Button>
 
                         {isShown && (
                             <>
@@ -75,10 +75,10 @@ function Index() {
                                     </ol>
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
-                                                <div id="beneda" className="card" style={{width : "100%"}}>
-                                                    <div id="beneda2"  className="card-body">
+                                                <div  className="card" style={{width : "100%"}}>
+                                                    <div  className="card-body">
 
-                                                    <DataTable id="beneda3"  style={{width : "100%"}}></DataTable>
+                                                    <DataTable  style={{width : "100%"}}></DataTable>
                                                     </div>
                                                 </div>
                                         </Grid>
