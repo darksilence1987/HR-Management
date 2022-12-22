@@ -12,13 +12,13 @@ import org.team3.service.UserService;
 @Slf4j
 public class DenemeConsumer {
 
-    private final UserService userService;
-
-    @RabbitListener(queues = "${rabbitmq.userUpdateQueue}")
-    public void updateUser(String model) {
-        log.info("User : {}", model.toString());
-//        userService.updateAuth(model);
-    }
+//    private final UserService userService;
+//
+//    @RabbitListener(queues = "${rabbitmq.userUpdateQueue}")
+//    public void updateUser(String model) {
+//        log.info("User : {}", model.toString());
+////        userService.updateAuth(model);
+//    }
 
 
 }

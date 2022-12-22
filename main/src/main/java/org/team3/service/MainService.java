@@ -4,7 +4,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.team3.dto.request.LoginRequestDto;
+import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
+import org.team3.dto.response.ManagerResponseDto;
 import org.team3.dto.response.UserDetailsResponseDto;
 import org.team3.exception.ErrorType;
 import org.team3.exception.MainServiceException;
@@ -84,6 +86,19 @@ public class MainService {
             }
             else throw new MainServiceException(ErrorType.YETKI_DISI);
         }
+
+    public ResponseEntity<Boolean> createManager(UserDetailsRequestDto dto) {
+        return userManager.createManager(dto);
+
     }
+
+    public ResponseEntity<Boolean> updateManager(UserUpdateInfoFromManagerRequestDto dto, String email) {
+        return userManager.updateManager(dto, email);
+    }
+
+    public List<ManagerResponseDto> getAllManager() {
+        return userManager.getAllManager().getBody();
+    }
+}
 
 

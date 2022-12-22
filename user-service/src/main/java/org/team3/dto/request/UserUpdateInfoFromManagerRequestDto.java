@@ -25,7 +25,6 @@ public class UserUpdateInfoFromManagerRequestDto {
     String department;
     String email;
     String phone;
-
     Role role;
 
 }

@@ -33,5 +33,6 @@ public class User {
     String phone;
     String address;
     Role role;
+    String corporationName;
 
 }

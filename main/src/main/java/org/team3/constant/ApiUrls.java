@@ -7,6 +7,9 @@ public class ApiUrls {
 
     public static final String UPDATEUSERFROMUSER =  "/updateuserfromuser/{email}";
     public static final String UPDATEUSERFROMMANAGER =  "/updateuserfrommanager/{email}";
+    public static final String MANAGERCREATE =  "/managercreate";
+    public static final String UPDATEMANAGER =  "/updatemanager/{email}";
+    public static final String GETALLMANAGER =  "/getallmanager";
 
 
 }

@@ -3,10 +3,13 @@ package org.team3.manager;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
+import org.team3.dto.response.ManagerResponseDto;
 import org.team3.dto.response.UserDetailsResponseDto;
 import org.team3.dto.response.UserSummaryResponseDto;
+import org.team3.exception.ErrorType;
 
 
 import javax.validation.Valid;
@@ -30,4 +33,13 @@ public interface IUserManager {
     public ResponseEntity<Boolean> updateUserFromManager(@RequestBody @Valid UserUpdateInfoFromManagerRequestDto dto , @PathVariable String email);
     @PutMapping(UPDATEUSERFROMUSER)
     public ResponseEntity<Boolean> updateUserFromUser(@RequestBody @Valid UserUpdateInfoFromUserRequestDto dto , @PathVariable String email);
+
+    @PostMapping(MANAGERCREATE)
+    public ResponseEntity<Boolean> createManager(@RequestBody UserDetailsRequestDto dto);
+
+    @PutMapping(UPDATEMANAGER)
+    public ResponseEntity<Boolean> updateManager(@RequestBody @Valid UserUpdateInfoFromManagerRequestDto dto, @PathVariable String email);
+
+    @GetMapping(GETALLMANAGER)
+    public ResponseEntity<List<ManagerResponseDto>> getAllManager();
 }

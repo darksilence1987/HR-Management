@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
+import org.team3.dto.response.ManagerResponseDto;
 import org.team3.dto.response.UserDetailsResponseDto;
 import org.team3.dto.response.UserSummaryResponseDto;
 import org.team3.exception.ErrorType;
@@ -12,6 +13,7 @@ import org.team3.exception.UserServiceException;
 import org.team3.mapper.IUserMapper;
 import org.team3.repository.IUserRepository;
 import org.team3.repository.entity.User;
+import org.team3.repository.enums.Role;
 import org.team3.utility.ServiceManager;
 
 import java.util.List;
@@ -100,6 +102,48 @@ public class UserService extends ServiceManager<User, String> {
 
     public List<UserSummaryResponseDto> getAllUsersSummaryInfo(){
         return IUserMapper.INSTANCE.toUserListSummaryResponseDto(repository.findAll());
+    }
+    public User createManager(UserDetailsRequestDto dto) {
+
+        try {
+            User user= IUserMapper.INSTANCE.toUser(dto);
+            user.setRole(Role.Manager);
+            repository.save(user);
+            return user;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new UserServiceException(ErrorType.USER_NOT_CREATED);
+        }
+
+
+    }
+
+    public boolean updateManager(UserUpdateInfoFromManagerRequestDto dto, String email) {
+        Optional<User> manager = repository.findOptionalByEmail(email);
+        if(manager.isPresent()&manager.get().getRole().equals(Role.Manager)){
+            manager.get().setAddress(dto.getAddress());
+            manager.get().setPhone(dto.getPhone());
+            manager.get().setPhoto(dto.getPhoto());
+            manager.get().setName(dto.getName());
+            manager.get().setBirthPlace(dto.getBirthPlace());
+            manager.get().setSurname(dto.getSurname());
+            manager.get().setSecondName(dto.getSecondName());
+            manager.get().setBirthDate(dto.getBirthDate());
+            manager.get().setStartDate(dto.getStartDate());
+            manager.get().setJob(dto.getJob());
+            manager.get().setDepartment(dto.getDepartment());
+            manager.get().setEmail(dto.getEmail());
+            manager.get().setSurname(dto.getSecondSurname());
+            save(manager.get());
+            return true;
+        } else {
+            throw new UserServiceException(ErrorType.USER_NOT_FOUND);
+        }
+
+    }
+
+    public List<ManagerResponseDto> getAllManager() {
+        return IUserMapper.INSTANCE.toManagerResponseDto(repository.findAllByRole(Role.Manager));
     }
 
 
