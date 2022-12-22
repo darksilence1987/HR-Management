@@ -2,6 +2,8 @@ import React, {} from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useDispatch, useSelector } from "react-redux";
 import {findByEmail} from "../../store/features/UserSlice";
+import Button from "react-bootstrap/Button";
+import {Link} from "react-router-dom";
 
 
 function Topbar() {
@@ -19,6 +21,10 @@ function Topbar() {
     // React.useEffect(() => {
     //     getUser();
     // }, []);
+
+    const myProfile = () =>{
+
+    }
 
 
 
@@ -47,7 +53,7 @@ function Topbar() {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item href="/profilepage">My Profile</Dropdown.Item>
+                        <Dropdown.Item ><Link to = "/profilepage">User Profile</Link></Dropdown.Item>
                         <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                     </Dropdown.Menu>
@@ -66,11 +72,6 @@ function Topbar() {
                 {/*    </li>*/}
                 {/*</ul>*/}
             </nav>
-
-
-
-
-
 
 
         </>

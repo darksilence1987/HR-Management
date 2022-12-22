@@ -29,9 +29,9 @@ public class UserService extends ServiceManager<User, String> {
         return repository.findOptionalByEmail(email);
     }
 
-    public boolean updateUserFromUser(UserUpdateInfoFromUserRequestDto dto, String email) {
+    public boolean updateUserFromUser(UserUpdateInfoFromUserRequestDto dto) {
 
-        Optional<User> userProfileDb = repository.findOptionalByEmail(email);
+        Optional<User> userProfileDb = repository.findOptionalByEmail(dto.getEmail());
         if (userProfileDb.isPresent()) {
             userProfileDb.get().setAddress(dto.getAddress());
             userProfileDb.get().setPhone(dto.getPhone());

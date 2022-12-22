@@ -9,6 +9,7 @@ const initialStateUser = {
     returnUserCreate: false,
     // token: "",
     email: "",
+    isUserProfile: false,
     userProfile: {
 
     },
@@ -66,6 +67,8 @@ export const findByEmail = createAsyncThunk(
     async (payload) => {
         try {
             const response = await axios.post(userService.findbyemail, payload, {
+
+
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -87,8 +90,6 @@ export const updateuserfromuser = createAsyncThunk(
                 headers: {
                     "Content-Type": "application/json",
                 },
-                // params: { email: "" }
-
             });
 
             return response.data;

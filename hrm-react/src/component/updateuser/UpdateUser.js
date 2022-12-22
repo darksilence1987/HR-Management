@@ -23,6 +23,7 @@ function GridComplexExample() {
         address: "",
         phone: "",
         photo: "",
+        email:"",
     });
     const update =  () => {
         dispatch(updateuserfromuser(user));
@@ -68,6 +69,12 @@ function GridComplexExample() {
                                 <input name="photo" onChange={onChangeUser} type="text" className="form-control" id="inputPhoto"
                                        placeholder="photo"/>
                                 <label htmlFor="inputPhoto">Photo</label>
+                            </div>
+
+                            <div className="form-floating mb-3">
+                                <input name="email" onChange={onChangeUser} type="email" className="form-control" id="inputEmail"
+                                       placeholder="email"/>
+                                <label htmlFor="inputPhoto">Email</label>
                             </div>
 
                             {/*<div className="mt-4 mb-0">*/}

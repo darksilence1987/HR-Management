@@ -1,97 +1,75 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from "react-redux";
 import {findallUser} from "../../store/features/UserSlice";
 import {Stack, Button} from "@mui/material";
+import {Form, Modal} from "react-bootstrap";
+import Topbar from "../navbar/Topbar";
+import {render} from "react-dom";
+import {
+    MDBBtn,
+    MDBCard,
+    MDBCardBody,
+    MDBCardImage,
+    MDBCardText,
+    MDBCol,
+    MDBContainer, MDBIcon,
+    MDBRow,
+    MDBTypography
+} from "mdb-react-ui-kit";
 
 
 
 
 export default function DataTable() {
-  // const columns1 = [
-  //   { field: 'id', headerName: 'ID', width: 70 },
-  //   { field: 'authid', headerName: 'AuthID', width: 70 },
-  //   { field: 'photo', headerName: 'Photo', width: 70 },
-  //   { field: 'name', headerName: 'Name', width: 130 },
-  //   { field: 'surname', headerName: 'Surname', width: 130 },
-  //   { field: 'secondName', headerName: 'Second Name', width: 130 },
-  //   { field: 'secondSurname', headerName: 'Second Surname', width: 130 },
-  //   { field: 'birthDate', headerName: 'Birth Date', width: 130 },
-  //   { field: 'birthPlace', headerName: 'Birth Place', width: 130 },
-  //   { field: 'startDate', headerName: 'Start Date', width: 130 },
-  //   { field: 'job', headerName: 'Job', width: 130 },
-  //   { field: 'department', headerName: 'Department', width: 130 },
-  //   { field: 'email', headerName: 'Email', width: 130 },
-  //   { field: 'phone', headerName: 'Phone', width: 130 },
-  //   { field: 'address', headerName: 'Address', width: 130 },
-  //   { field: 'role', headerName: 'Role', width: 130 },
-  //
-  //
-  //
-  //
-  //   // {
-  //   //   field: 'fullName',
-  //   //   headerName: 'Full name',
-  //   //   description: 'This column has a value getter and is not sortable.',
-  //   //   sortable: false,
-  //   //   width: 160,
-  //   //   valueGetter: (params) =>
-  //   //       `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-  //   // },
-  //
-  //
-  // ];
 
-
+const [userInfo, setUserInfo] = useState([]);
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
+    { field: 'id', headerName: 'ID', width: 70, hide: true  },
 
 
     { field: 'email', headerName: 'Email', width: 130 },
       { field: 'photo', headerName: 'Photo', width: 70 },
     { field: 'name', headerName: 'First Name', width: 130 },
-    { field: 'surname', headerName: 'Last Name', width: 130 },
+    { field: 'surname', headerName: 'Last Name', width: 130, hide: true },
+
+    // { field: 'secondName', headerName: 'Second Name', width: 130, hide: true  },
+    // { field: 'secondSurname', headerName: 'Second Surname', width: 130, hide: true   },
+    // { field: 'birthDate', headerName: 'Birth Date', width: 130, hide: true  },
+    // { field: 'birthPlace', headerName: 'Birth Place', width: 130,hide: true  },
+    // { field: 'startDate', headerName: 'Start Date', width: 130,hide: true  },
+    { field: 'job', headerName: 'Job', width: 130,hide: true  },
+    { field: 'department', headerName: 'Department', width: 130,hide: true  },
+    { field: 'phone', headerName: 'Phone', width: 130,hide: true  },
+    { field: 'address', headerName: 'Address', width: 130,hide: true  },
+    { field: 'role', headerName: 'Role', width: 130,hide: true  },
 
     {
       field: 'action',
       headerName: 'Action',
-      width: 180,
+      width: 250,
       sortable: false,
       disableClickEventBubbling: true,
 
       renderCell: (params) => {
-        const onClick = (e) => {
-          const currentRow = params.row;
-
-
-
-          return alert(JSON.stringify(currentRow, null, 4));
+        const GetUser = () => {
+           setUserInfo(params.row);
         };
-
         return (
 
             <Stack direction="row" spacing={2}>
-              <Button variant="outlined" color="warning" size="small" onClick={onClick}>User Details</Button>
+              <Button variant="outlined" color="warning" size="small" onClick={GetUser}><Button variant="primary" onClick={handleShow}>
+                GetUserFullInfo
+              </Button></Button>
               {/*<Button variant="outlined" color="error" size="small" onClick={onClick}>Delete</Button>*/}
             </Stack>
         );
       },
     },
-    //   { field: 'secondName', headerName: 'Second Name', width: 130 },
-    //   { field: 'secondSurname', headerName: 'Second Surname', width: 130 },
-    //   { field: 'birthDate', headerName: 'Birth Date', width: 130 },
-    //   { field: 'birthPlace', headerName: 'Birth Place', width: 130 },
-    //   { field: 'startDate', headerName: 'Start Date', width: 130 },
-    // { field: 'job', headerName: 'Job', width: 130 },
-    // { field: 'department', headerName: 'Department', width: 130 },
-    // { field: 'phone', headerName: 'Phone', width: 130 },
-    // { field: 'address', headerName: 'Address', width: 130 },
-    // { field: 'role', headerName: 'Role', width: 130 },
+
 
   ];
-
-
 
   const dispatch = useDispatch();
 
@@ -99,9 +77,12 @@ export default function DataTable() {
   const findAllUser = async () =>{
     const response = await dispatch(findallUser());
 
+
   }
   const userListUpdate = useSelector((state) => state.user.userListUpdate);
   const userProfileList = useSelector((state) => state.user.userProfileList);
+  console.log("user profile list", userProfileList);
+
   const user = useSelector((state) => state.user.userProfile);
 
 
@@ -109,18 +90,13 @@ export default function DataTable() {
     findAllUser();
   }, [userListUpdate]);
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-  // const [userChoose, setUserChoose] = React.useState([{address: null, department: null, email: null
-  // ,firstName: null,id: null,job: null,lastName: null,phone: null,photo:null,role:null}]);
-
-
-//   const onRowsSelectionHandler = (ids) => {
-// setUserChoose(ids.map((id) => userProfileList.find((row) => row.id === id)))
-//   };
-
-
-
+  console.log("user info", userInfo);
   return (
+      <>
       <div className="container">
 
         <div style={{ height: 400, width: '50%' }}>
@@ -133,12 +109,58 @@ export default function DataTable() {
               isCellEditable={(params) => params.row.age % 2 === 0}
               experimentalFeatures={{ newEditingApi: true }}
               disableMultipleSelection={true}
-
-
-
           />
         </div>
-
       </div>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>User Information</Modal.Title>
+            </Modal.Header>
+                                <MDBRow className="justify-content-center align-items-center">
+                                    <MDBCol md="8" xl="8">
+                                        <MDBCard style={{ borderRadius: '15px' }}>
+                                            <MDBCardBody className="text-center">
+
+                                                    <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                                                                  className="ms-4 rounded-circle" fluid style={{ width: '250px' }} />
+
+                                                <MDBTypography tag="h4">{userInfo.name} + {userInfo.surname}</MDBTypography>
+
+                                                <MDBCardText className="text-muted mb-4">
+                                                    {userInfo.phone} <span className="mx-2">|</span> <a href="#!">{userInfo.email}</a>
+                                                </MDBCardText>
+
+                                                <MDBTypography tag="h4">{userInfo.role}</MDBTypography>
+                                                <br/>
+                                                <MDBTypography tag="h4">{userInfo.address}</MDBTypography>
+                                                <br/>
+                                                <MDBTypography tag="h4">{userInfo.department}</MDBTypography>
+                                                <br/>
+                                                <div className="mb-4 pb-2">
+                                                    <MDBBtn outline floating>
+                                                        <MDBIcon fab icon="facebook" size="lg" />
+                                                    </MDBBtn>
+                                                    <MDBBtn outline floating className="mx-1">
+                                                        <MDBIcon fab icon="twitter" size="lg" />
+                                                    </MDBBtn>
+                                                    <MDBBtn outline floating>
+                                                        <MDBIcon fab icon="skype" size="lg" />
+                                                    </MDBBtn>
+                                                </div>
+                                                <MDBBtn rounded size="lg">
+                                                    Message now
+                                                </MDBBtn>
+
+                                            </MDBCardBody>
+                                        </MDBCard>
+                                    </MDBCol>
+                                </MDBRow>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </>
   );
 }
