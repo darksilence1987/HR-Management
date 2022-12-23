@@ -53,6 +53,8 @@ const authSlice = createSlice({
 
         build.addCase(fetchLogin.fulfilled, (state, action) => {
             state.auth = action.payload;
+            if(action.payload.code === 190){return false;}
+            console.log("action.payload", action.payload);
             // state.token = action.payload.token;
             state.isAuthanticated = true;
 

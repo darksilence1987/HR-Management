@@ -39,6 +39,7 @@ function UserCreateTable() {
     const dispatch = useDispatch();
     const register = async (e) => {
         e.preventDefault();
+        handleClose();
         const auth = {
             photo,
             name,

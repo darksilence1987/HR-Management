@@ -14,8 +14,8 @@ import org.team3.repository.entity.UserProfile;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-23T16:41:26+0300",
-    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.1.jar, environment: Java 17 (Oracle Corporation)"
+    date = "2022-12-23T20:34:08+0300",
+    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.1.jar, environment: Java 17.0.5 (JetBrains s.r.o.)"
 )
 @Component
 public class IMainMapperImpl implements IMainMapper {

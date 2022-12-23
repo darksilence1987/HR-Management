@@ -35,6 +35,7 @@ function CorporationCreateTable() {
     const dispatch = useDispatch();
     const RegisterCorp = async (e) => {
         e.preventDefault();
+        handleClose();
         const corporation = {
             name,
             title,
