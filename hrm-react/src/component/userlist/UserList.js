@@ -17,6 +17,7 @@ import {
     MDBRow,
     MDBTypography
 } from "mdb-react-ui-kit";
+import {sendMail} from "../../store/features/MailSlice";
 
 
 
@@ -29,8 +30,8 @@ const [userInfo, setUserInfo] = useState([]);
     { field: 'id', headerName: 'ID', width: 70, hide: true  },
 
 
-    { field: 'email', headerName: 'Email', width: 130 },
-      { field: 'photo', headerName: 'Photo', width: 70 },
+    { field: 'email', headerName: 'Email', width: 150 },
+      { field: 'photo', headerName: 'Photo', width: 100 },
     { field: 'name', headerName: 'First Name', width: 130 },
     { field: 'surname', headerName: 'Last Name', width: 130, hide: true },
 
@@ -48,7 +49,7 @@ const [userInfo, setUserInfo] = useState([]);
     {
       field: 'action',
       headerName: 'Action',
-      width: 250,
+      width: 220,
       sortable: false,
       disableClickEventBubbling: true,
 
@@ -60,7 +61,7 @@ const [userInfo, setUserInfo] = useState([]);
 
             <Stack direction="row" spacing={2}>
               <Button variant="outlined" color="warning" size="small" onClick={GetUser}><Button variant="primary" onClick={handleShow}>
-                GetUserFullInfo
+                DETAILS
               </Button></Button>
               {/*<Button variant="outlined" color="error" size="small" onClick={onClick}>Delete</Button>*/}
             </Stack>
@@ -95,7 +96,38 @@ const [userInfo, setUserInfo] = useState([]);
   const handleShow = () => setShow(true);
 
   console.log("user info", userInfo);
-  return (
+
+
+
+
+    const [mail, setMail] = useState({
+        mailAdres: "",
+        icerik: "",
+        konu: "",
+
+    });
+
+    console.log("mailim", mail)
+    const sendEmail =  () => {
+        dispatch(sendMail(mail));
+
+    };
+    const onChangeMail = (e) => {
+        const { name, value } = e.target;
+        setMail({ ...mail, [name]: value });
+    };
+
+    const [show1, setShow1] = useState(false);
+
+    const handleClose1 = () => setShow1(false);
+    const handleShow1 = () => setShow1(true);
+
+
+
+
+
+
+    return (
       <>
       <div className="container">
 
@@ -148,7 +180,11 @@ const [userInfo, setUserInfo] = useState([]);
                                                     </MDBBtn>
                                                 </div>
                                                 <MDBBtn rounded size="lg">
-                                                    Message now
+
+                                                    <Button variant="primary" onClick={handleShow1}>
+                                                       Send Mail
+                                                    </Button>
+
                                                 </MDBBtn>
 
                                             </MDBCardBody>
@@ -161,6 +197,72 @@ const [userInfo, setUserInfo] = useState([]);
               </Button>
             </Modal.Footer>
           </Modal>
+
+
+
+
+
+          <Modal show={show1} onHide={handleClose1}>
+              <Modal.Header closeButton>
+                  <Modal.Title>Modal heading</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                  <Form>
+                      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                          <Form.Label>Email address</Form.Label>
+                          <Form.Control
+                              onChange={onChangeMail}
+                              name = "mailAdres"
+                              placeholder="name@example.com"
+                              autoFocus
+                          />
+                      </Form.Group>
+                      <Form.Group
+                          className="mb-3"
+                          controlId="exampleForm.ControlTextarea1"
+                      >
+                          <Form.Label>İçerik</Form.Label>
+                          <Form.Control
+                              onChange={onChangeMail}
+                              name="icerik"
+                              as="textarea" rows={3} />
+                      </Form.Group>
+
+                      <Form.Group
+
+                          className="mb-3"
+                          controlId="exampleForm.ControlTextarea1"
+                      >
+                          <Form.Label>Konu</Form.Label>
+                          <Form.Control
+                              onChange={onChangeMail}
+                              name="konu"
+                              as="textarea" rows={3} />
+                      </Form.Group>
+
+                  </Form>
+              </Modal.Body>
+              <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose1}>
+                      Close
+                  </Button>
+                  <Button variant="primary" onClick={sendEmail}>
+Send
+                  </Button>
+              </Modal.Footer>
+          </Modal>
+
+
+
+
+
+
+
+
+
+
+
+
         </>
   );
 }

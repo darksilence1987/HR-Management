@@ -10,6 +10,7 @@ import DataTableComp from "../companylist/CorporationList";
 import {Grid} from "@mui/material";
 
 
+
 function Index() {
 
     const [isShown, setIsShown] = useState(false);
@@ -29,7 +30,6 @@ function Index() {
 
     return (
 
-
         <body className="sb-nav-fixed">
 
         <Topbar></Topbar>
@@ -43,11 +43,7 @@ function Index() {
             <div id="layoutSidenav_content">
                 <main>
                     <div className="container-fluid px-4">
-                        <h1 className="mt-4">Human Resources Management</h1>
-
-
-
-
+                        <h1 className="mt-4 h1">Human Resources Management</h1>
                         <Button   variant="primary" onClick={handleClick}>Get User Profile</Button>
 
                         {isShown && (
@@ -57,24 +53,20 @@ function Index() {
                                 </ol>
                                 <ProfilePage></ProfilePage>
 
+
                             </>
                         )}
-
-
                         <>
                             {
-                                userRole === "Manager" ? <>
+                                userRole === "Manager" || userRole === "Admin"  ? <>
 
                                     <br/>
                                     <br/>
                                     <br/>
-                                    <ol className="breadcrumb mb-4">
-
-                                        <li className="breadcrumb-item active">User List</li>
-
-                                    </ol>
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
+                                            <h1 className="mt-4 h3">User List</h1>
+                                            <br/>
                                                 <div  className="card" style={{width : "100%"}}>
                                                     <div  className="card-body">
 
@@ -82,7 +74,10 @@ function Index() {
                                                     </div>
                                                 </div>
                                         </Grid>
+
                                         <Grid item xs={6}>
+                                            <h1 className="mt-4 h3">Company List</h1>
+                                            <br/>
                                                 <div className="card"  style={{width : "100%"}}>
                                                     <div className="card-body">
 

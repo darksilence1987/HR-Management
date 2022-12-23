@@ -28,6 +28,7 @@
         <module name="org.team3.HR-Management.api-gateway.main" />
         <module name="org.team3.HR-Management.user-service.main" />
         <module name="Desktop.HR-Management.main~2" />
+        <module name="HR-Management.mail-service.main" />
         <module name="org.team3.HR-Management.config-server.main" />
         <module name="Desktop.HR-Management.main.main" />
       </profile>

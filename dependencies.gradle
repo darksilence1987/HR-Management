@@ -54,6 +54,7 @@ ext {
             mapstruct                       : "org.mapstruct:mapstruct:$versions.mapstruct",
             mapstructProcessor              : "org.mapstruct:mapstruct-processor:$versions.mapstruct",
             lombokMapstructBinding          : "org.projectlombok:lombok-mapstruct-binding:0.2.0",
+            springBootMailSender            : "org.springframework.boot:spring-boot-starter-mail:$versions.springBoot",
     ]
 
 

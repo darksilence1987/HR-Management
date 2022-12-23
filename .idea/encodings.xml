@@ -8,6 +8,8 @@
     <file url="file://$PROJECT_DIR$/auth-service/src/main/java/org/team3/rabbitmq/model/ActivateReguestDto.java" charset="windows-1254" />
     <file url="file://$PROJECT_DIR$/auth-service/src/main/java/org/team3/rabbitmq/model/UpdateUsernameEmailModel.java" charset="windows-1254" />
     <file url="file://$PROJECT_DIR$/auth-service/src/main/java/org/team3/rabbitmq/producer/DenemeProcedure.java" charset="windows-1254" />
+    <file url="file://$PROJECT_DIR$/mail-service" charset="windows-1254" />
+    <file url="file://$PROJECT_DIR$/mail-service/src/main/java/org/team3/constant/ApiUrls.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/user-service/src/main/java/org/team3/rabbitmq/consumer/DenemeConsumer.java" charset="windows-1254" />
     <file url="file://$PROJECT_DIR$/user-service/src/main/java/org/team3/rabbitmq/procuder/DenemeProcedure.java" charset="windows-1254" />
   </component>
