@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
+import org.team3.dto.request.AuthRegisterRequestDto;
+import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
 import org.team3.dto.response.UserDetailsResponseDto;
@@ -12,8 +14,8 @@ import org.team3.repository.entity.UserProfile;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-22T18:27:24+0300",
-    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.1.jar, environment: Java 17.0.4.1 (Amazon.com Inc.)"
+    date = "2022-12-23T16:41:26+0300",
+    comments = "version: 1.5.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.1.jar, environment: Java 17 (Oracle Corporation)"
 )
 @Component
 public class IMainMapperImpl implements IMainMapper {
@@ -97,6 +99,19 @@ public class IMainMapperImpl implements IMainMapper {
         userUpdateInfoFromUserRequestDto.phone( userProfile.getPhone() );
 
         return userUpdateInfoFromUserRequestDto.build();
+    }
+
+    @Override
+    public AuthRegisterRequestDto toAuthRegisterRequestDto(UserDetailsRequestDto dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        AuthRegisterRequestDto.AuthRegisterRequestDtoBuilder authRegisterRequestDto = AuthRegisterRequestDto.builder();
+
+        authRegisterRequestDto.email( dto.getEmail() );
+
+        return authRegisterRequestDto.build();
     }
 
     protected UserProfile userSummaryResponseDtoToUserProfile(UserSummaryResponseDto userSummaryResponseDto) {

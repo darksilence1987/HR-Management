@@ -4,6 +4,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 import org.springframework.http.ResponseEntity;
+import org.team3.dto.request.AuthRegisterRequestDto;
+import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
 import org.team3.dto.response.UserDetailsResponseDto;
@@ -22,6 +24,8 @@ public interface IMainMapper {
         List<UserProfile> toUserProfileList(List<UserSummaryResponseDto> dtoList);
         UserUpdateInfoFromManagerRequestDto toUserUpdateInfoFromManagerRequestDto(UserProfile userProfile);
         UserUpdateInfoFromUserRequestDto toUserUpdateInfoFromUserRequestDto(UserProfile userProfile);
+
+        AuthRegisterRequestDto toAuthRegisterRequestDto(UserDetailsRequestDto dto);
 
 
 

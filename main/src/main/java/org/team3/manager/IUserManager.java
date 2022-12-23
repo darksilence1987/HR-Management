@@ -3,6 +3,7 @@ package org.team3.manager;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
 import org.team3.dto.response.UserDetailsResponseDto;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.team3.constant.ApiUrls.*;
+import static org.team3.constant.ApiUrls.USERCREATE;
 
 
 @FeignClient(url="http://localhost:9091/api/v1/user" ,name="user-service-application", decode404 = true)
@@ -30,4 +32,7 @@ public interface IUserManager {
     public ResponseEntity<Boolean> updateUserFromManager(@RequestBody @Valid UserUpdateInfoFromManagerRequestDto dto , @PathVariable String email);
     @PutMapping(UPDATEUSERFROMUSER)
     public ResponseEntity<Boolean> updateUserFromUser(@RequestBody @Valid UserUpdateInfoFromUserRequestDto dto , @PathVariable String email);
+
+    @PostMapping(USERCREATE)
+    public ResponseEntity<Boolean> createUser(@RequestBody UserDetailsRequestDto dto);
 }

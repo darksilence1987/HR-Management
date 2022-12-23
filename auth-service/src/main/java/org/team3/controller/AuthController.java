@@ -4,8 +4,9 @@ package org.team3.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.team3.dto.request.AuthRegisterRequestDto;
 import org.team3.dto.request.LoginRequestDto;
-import org.team3.dto.request.RegisterRequestDto;
+
 import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.exception.AuthServiceException;
 import org.team3.exception.ErrorType;
@@ -47,7 +48,7 @@ public class AuthController {
     }
 
     @PostMapping(USERCREATE)
-    public ResponseEntity<Boolean> createUser(@RequestBody @Valid RegisterRequestDto dto) {
+    public ResponseEntity<Boolean> createUser(@RequestBody @Valid AuthRegisterRequestDto dto) {
         try {
             authService.createUser(dto);
             return ResponseEntity.ok(true);

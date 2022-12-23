@@ -32,6 +32,7 @@ public class User {
     String email;
     String phone;
     String address;
+    String corporationName;
     Role role;
 
 }
