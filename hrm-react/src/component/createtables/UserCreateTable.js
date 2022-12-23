@@ -103,7 +103,6 @@ function UserCreateTable() {
     //     return isValid;
     // };
 
-
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -266,7 +265,7 @@ function UserCreateTable() {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={register}>
+                    <Button variant="primary" onClick={register} >
                         Save Changes
                     </Button>
                 </Modal.Footer>
