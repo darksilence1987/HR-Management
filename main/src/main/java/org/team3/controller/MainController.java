@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
 import org.springframework.web.bind.annotation.*;
 import org.team3.dto.request.LoginRequestDto;
+import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.exception.ErrorType;
 import org.team3.exception.MainServiceException;
 import org.team3.manager.IAuthManager;
@@ -47,5 +48,10 @@ public class MainController {
         mainservice.updateUserInfo(userProfile, ownerMail);
     }
 
+    @CrossOrigin("*")
+    @PostMapping("/create-user")
+    public void createUser(@RequestBody UserDetailsRequestDto dto){
+        mainservice.createUser(dto);
+    }
 }
 

@@ -3,7 +3,9 @@ package org.team3.service;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.team3.dto.request.AuthRegisterRequestDto;
 import org.team3.dto.request.LoginRequestDto;
+import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.response.UserDetailsResponseDto;
 import org.team3.exception.ErrorType;
@@ -84,6 +86,21 @@ public class MainService {
             }
             else throw new MainServiceException(ErrorType.YETKI_DISI);
         }
+
+
+    public void createUser(UserDetailsRequestDto dto) {
+
+        try {
+         userManager.createUser(dto);
+         AuthRegisterRequestDto adto = IMainMapper.INSTANCE.toAuthRegisterRequestDto(dto);
+         authManager.createUser(adto);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            throw new MainServiceException(ErrorType.USER_NOT_CREATED);
+        }
+
+    }
     }
 
 

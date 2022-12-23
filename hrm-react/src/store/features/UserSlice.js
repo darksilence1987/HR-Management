@@ -24,11 +24,11 @@ const initialStateUser = {
 
 
 export const fetchUserCreate = createAsyncThunk(
-    "user/create",
+    "main/create",
 
     async (payload) => {
         try {
-            const response = await fetch(userService.usercreate, {
+            const response = await fetch(mainService.usercreate, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
