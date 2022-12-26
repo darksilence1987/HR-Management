@@ -7,6 +7,7 @@ import ProfilePage from "../profile/Profile1";
 import {useDispatch, useSelector} from "react-redux";
 import Button from "react-bootstrap/Button";
 import DataTableComp from "../companylist/CorporationList";
+import DataTableManager from "../managerlist/ManagerList";
 import {Grid} from "@mui/material";
 
 
@@ -85,6 +86,20 @@ function Index() {
                                                     </div>
                                                 </div>
                                         </Grid>
+                                    </Grid>
+
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={6}>
+                                            <h1 className="mt-4 h3">Manager List</h1>
+                                            <br/>
+                                            <div  className="card" style={{width : "100%"}}>
+                                                <div  className="card-body">
+
+                                                    <DataTableManager  style={{width : "100%"}}></DataTableManager>
+                                                </div>
+                                            </div>
+                                        </Grid>
+
                                     </Grid>
                                 </> : <></>
                             }

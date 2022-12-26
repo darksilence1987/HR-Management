@@ -62,6 +62,24 @@ export const findallUser = createAsyncThunk(
     }
 );
 
+
+export const findallManager = createAsyncThunk(
+    "user/findallManager",
+    async (payload) => {
+        try {
+            const response = await axios.get(userService.findAllManager, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            return response.data;
+
+        } catch (error) {
+            return error.response.data;
+        }
+    }
+);
+
 export const findByEmail = createAsyncThunk(
     "user/findbyemail",
     async (payload) => {
