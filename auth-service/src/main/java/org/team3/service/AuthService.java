@@ -1,43 +1,45 @@
 package org.team3.service;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.team3.dto.request.AuthRegisterRequestDto;
 import org.team3.dto.request.LoginRequestDto;
-import org.team3.dto.request.RegisterRequestDto;
-import org.team3.dto.request.UserDetailsRequestDto;
+import org.team3.dto.request.MailSenderDto;
 import org.team3.exception.AuthServiceException;
 import org.team3.exception.ErrorType;
+import org.team3.manager.IMailManager;
 import org.team3.manager.IUserManager;
 import org.team3.mapper.IAuthMapper;
 import org.team3.repository.IAuthRepository;
 import org.team3.repository.entity.UserAuth;
+import org.team3.utility.PasswordGenerator;
 import org.team3.utility.ServiceManager;
-
-import java.util.List;
-import java.util.Optional;
 
 
 @Service
 public class AuthService extends ServiceManager<UserAuth, Long> {
 
     private final IAuthRepository authRepository;
+    private final PasswordGenerator passwordGenerator;
 
 
     private final IUserManager userManager;
+    private final IMailManager mailManager;
 
 
-    public AuthService(IAuthRepository authRepository, IUserManager userManager) {
+    public AuthService(IAuthRepository authRepository, PasswordGenerator passwordGenerator, IUserManager userManager, IMailManager mailManager) {
         super(authRepository);
         this.authRepository = authRepository;
+        this.passwordGenerator = passwordGenerator;
         this.userManager = userManager;
+        this.mailManager = mailManager;
     }
-    public Boolean registerUser(UserAuth registerUserAuth) {
-        try {
-            authRepository.save(registerUserAuth);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+//    public Boolean registerUser(UserAuth registerUserAuth) {
+//        try {
+//            authRepository.save(registerUserAuth);
+//            return true;
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
     public Boolean loginUser(LoginRequestDto loginDetails) {
         try {
             UserAuth userAuth = authRepository.findByEmailAndPassword(loginDetails.getEmail(), loginDetails.getPassword());
@@ -51,11 +53,25 @@ public class AuthService extends ServiceManager<UserAuth, Long> {
         return false;
     }
 
-    public boolean createUser(RegisterRequestDto dto) {
+    public boolean createUser(AuthRegisterRequestDto dto) {
         try {
             IAuthMapper iAuthMapper = IAuthMapper.INSTANCE;
-            UserAuth user= authRepository.save(iAuthMapper.toUserAuth(dto));
-            userManager.createUser(iAuthMapper.toUserDetailsRequestDto(dto));
+
+
+            UserAuth user= iAuthMapper.toUserAuth(dto);
+            user.setPassword(passwordGenerator.generateStrongPassword());
+            authRepository.save(user);
+
+
+            mailManager.sendMailAddressAndPassword(   MailSenderDto.builder()
+                    .icerik("Dear User\n\nYou can sign in using the information below. \n\nPassword:"+user.getPassword()+
+                            "\n \nEmail :"+user.getEmail()+"\n \nHr Management")
+                    .konu("Login Information")
+                    .mailAdres(user.getEmail())
+
+                    .build());
+
+
             return true;
 
         } catch (Exception e) {

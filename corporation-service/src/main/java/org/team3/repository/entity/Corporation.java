@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.team3.repository.enums.Status;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -19,6 +20,9 @@ import java.util.Date;
 public class Corporation {
     @Id
     String id;
+// manager?,  çalışanların mailini liste olarak tutar
+
+    List<String> employeeMailList;
     String name;
     String title;
     String mersisNo;
@@ -34,4 +38,11 @@ public class Corporation {
     Date contractStart;
     Date contractEnd;
     Status status = Status.Active;
+
+
+
+   public void addEmployee(String email){
+employeeMailList.add(email);
+    }
+
 }

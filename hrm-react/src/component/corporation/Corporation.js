@@ -4,8 +4,7 @@ import Topbar from "../navbar/Topbar";
 import SideNavbar from "../navbar/SideNavbar";
 
 import ProfilePage from "../profile/Profile1";
-import UserCreateTable from "../createuser/UserCreateTable";
-import UpdateUser from "../updateuser/UpdateUser";
+
 import {useDispatch, useSelector} from "react-redux";
 
 

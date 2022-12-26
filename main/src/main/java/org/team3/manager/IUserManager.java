@@ -6,10 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
-import org.team3.dto.response.ManagerResponseDto;
 import org.team3.dto.response.UserDetailsResponseDto;
 import org.team3.dto.response.UserSummaryResponseDto;
-import org.team3.exception.ErrorType;
 
 
 import javax.validation.Valid;
@@ -17,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.team3.constant.ApiUrls.*;
+import static org.team3.constant.ApiUrls.USERCREATE;
 
 
 @FeignClient(url="http://localhost:9091/api/v1/user" ,name="user-service-application", decode404 = true)
@@ -34,12 +33,6 @@ public interface IUserManager {
     @PutMapping(UPDATEUSERFROMUSER)
     public ResponseEntity<Boolean> updateUserFromUser(@RequestBody @Valid UserUpdateInfoFromUserRequestDto dto , @PathVariable String email);
 
-    @PostMapping(MANAGERCREATE)
-    public ResponseEntity<Boolean> createManager(@RequestBody UserDetailsRequestDto dto);
-
-    @PutMapping(UPDATEMANAGER)
-    public ResponseEntity<Boolean> updateManager(@RequestBody @Valid UserUpdateInfoFromManagerRequestDto dto, @PathVariable String email);
-
-    @GetMapping(GETALLMANAGER)
-    public ResponseEntity<List<ManagerResponseDto>> getAllManager();
+    @PostMapping(USERCREATE)
+    public ResponseEntity<Boolean> createUser(@RequestBody UserDetailsRequestDto dto);
 }

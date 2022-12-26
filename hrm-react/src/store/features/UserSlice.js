@@ -9,6 +9,7 @@ const initialStateUser = {
     returnUserCreate: false,
     // token: "",
     email: "",
+    isUserProfile: false,
     userProfile: {
 
     },
@@ -23,11 +24,11 @@ const initialStateUser = {
 
 
 export const fetchUserCreate = createAsyncThunk(
-    "user/create",
+    "main/create",
 
     async (payload) => {
         try {
-            const response = await fetch(userService.usercreate, {
+            const response = await fetch(mainService.usercreate, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -66,6 +67,8 @@ export const findByEmail = createAsyncThunk(
     async (payload) => {
         try {
             const response = await axios.post(userService.findbyemail, payload, {
+
+
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -87,8 +90,6 @@ export const updateuserfromuser = createAsyncThunk(
                 headers: {
                     "Content-Type": "application/json",
                 },
-                // params: { email: "" }
-
             });
 
             return response.data;
@@ -107,7 +108,6 @@ const userSlice = createSlice({
 
         build.addCase(fetchUserCreate.fulfilled, (state, action) => {
             state.returnUserCreate = action.payload;
-            console.log(" user create dönen değer: ", state.returnUserCreate);
             state.isLoadingRegister = false;
             state.userListUpdate = true;
 

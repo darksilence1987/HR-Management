@@ -22,23 +22,20 @@ import static org.team3.constant.ApiUrls.*;
 @RequiredArgsConstructor
 public class CorporationController {
 
-    private final CorporationService userService;
+    private final CorporationService corporationService;
 
     @CrossOrigin("*")
     @PostMapping(CORPORATIONCREATE)
     public ResponseEntity<Boolean> createCorporation(@RequestBody CorporationCreateRequestDto dto) {
 
-            userService.createCorporation(dto);
+            corporationService.createCorporation(dto);
             return ResponseEntity.ok(true);
-
     }
-
-
 
     @CrossOrigin("*")
     @PostMapping(CORPORATIONUPDATE)
     public ResponseEntity<Boolean> updateCorporation(@RequestBody CorporationUpdateRequestDto dto) {
-        return ResponseEntity.ok(userService.updateCorporation(dto));
+        return ResponseEntity.ok(corporationService.updateCorporation(dto));
     }
 
 
@@ -46,13 +43,13 @@ public class CorporationController {
     @CrossOrigin("*")
     @GetMapping(GETALLCORPORATIONSSUMMARYINFO)
     public ResponseEntity<List<CorporationSummaryResponseDto>> getAllCorporationsSummaryInfo(){
-        return ResponseEntity.ok(userService.getAllCorporationsSummaryInfo());
+        return ResponseEntity.ok(corporationService.getAllCorporationsSummaryInfo());
     }
 
     @CrossOrigin("*")
     @GetMapping(GETALLCORPORATIONS)
     public ResponseEntity<List<CorporationGetAllResponseDto>> getAllCorporations(){
-        return ResponseEntity.ok(userService.getAllCorporations());
+        return ResponseEntity.ok(corporationService.getAllCorporations());
     }
 
 

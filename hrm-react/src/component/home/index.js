@@ -4,12 +4,11 @@ import Topbar from "../navbar/Topbar";
 import SideNavbar from "../navbar/SideNavbar";
 
 import ProfilePage from "../profile/Profile1";
-import UserCreateTable from "../createuser/UserCreateTable";
-import UpdateUser from "../updateuser/UpdateUser";
 import {useDispatch, useSelector} from "react-redux";
 import Button from "react-bootstrap/Button";
 import DataTableComp from "../companylist/CorporationList";
 import {Grid} from "@mui/material";
+
 
 
 function Index() {
@@ -31,23 +30,21 @@ function Index() {
 
     return (
 
-
         <body className="sb-nav-fixed">
 
         <Topbar></Topbar>
 
         <div id="layoutSidenav">
 
-            {userRole === "Manager" ? <SideNavbar></SideNavbar> : <></>
+
+            {userRole === "Manager"? <SideNavbar></SideNavbar>: <></>
             }
 
             <div id="layoutSidenav_content">
                 <main>
                     <div className="container-fluid px-4">
-                        <h1 className="mt-4">Human Resources Management</h1>
-
-
-                        <Button variant="primary" onClick={handleClick}>GetUserProfile</Button>
+                        <h1 className="mt-4 h1">Human Resources Management</h1>
+                        <Button   variant="primary" onClick={handleClick}>Get User Profile</Button>
 
                         {isShown && (
                             <>
@@ -56,32 +53,31 @@ function Index() {
                                 </ol>
                                 <ProfilePage></ProfilePage>
 
+
                             </>
                         )}
-
-
                         <>
                             {
-                                userRole === "Manager" ? <>
+                                userRole === "Manager" || userRole === "Admin"  ? <>
 
                                     <br/>
                                     <br/>
                                     <br/>
-                                    <ol className="breadcrumb mb-4">
-
-                                        <li className="breadcrumb-item active">User List</li>
-
-                                    </ol>
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
-                                                <div id="beneda" className="card" style={{width : "100%"}}>
-                                                    <div id="beneda2"  className="card-body">
+                                            <h1 className="mt-4 h3">User List</h1>
+                                            <br/>
+                                                <div  className="card" style={{width : "100%"}}>
+                                                    <div  className="card-body">
 
-                                                    <DataTable id="beneda3"  style={{width : "100%"}}></DataTable>
+                                                    <DataTable  style={{width : "100%"}}></DataTable>
                                                     </div>
                                                 </div>
                                         </Grid>
+
                                         <Grid item xs={6}>
+                                            <h1 className="mt-4 h3">Company List</h1>
+                                            <br/>
                                                 <div className="card"  style={{width : "100%"}}>
                                                     <div className="card-body">
 

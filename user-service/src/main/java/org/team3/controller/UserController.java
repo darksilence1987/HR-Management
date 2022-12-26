@@ -29,10 +29,10 @@ import static org.team3.constant.ApiUrls.GETALLMANAGER;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-    @PutMapping(UPDATEUSERFROMUSER)
+    @PostMapping(UPDATEUSERFROMUSER)
     @CrossOrigin("*")
-    public ResponseEntity<Boolean> updateUserFromUser(@RequestBody @Valid UserUpdateInfoFromUserRequestDto dto , @PathVariable String email) {
-        return ResponseEntity.ok(userService.updateUserFromUser(dto,email));
+    public ResponseEntity<Boolean> updateUserFromUser(@RequestBody @Valid UserUpdateInfoFromUserRequestDto dto) {
+        return ResponseEntity.ok(userService.updateUserFromUser(dto));
     }
     @CrossOrigin("*")
     @PostMapping(USERCREATE)
@@ -52,7 +52,7 @@ public class UserController {
 
 
     @CrossOrigin("*")
-    @PutMapping(UPDATEUSERFROMMANAGER)
+    @PostMapping(UPDATEUSERFROMMANAGER)
     public ResponseEntity<Boolean> updateUserFromManager(@RequestBody @Valid UserUpdateInfoFromManagerRequestDto dto, @PathVariable String email) {
         return ResponseEntity.ok(userService.updateUserFromManager(dto,email));
     }

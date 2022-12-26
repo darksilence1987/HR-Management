@@ -11,5 +11,7 @@ public class ApiUrls {
     public static final String UPDATEMANAGER =  "/updatemanager/{email}";
     public static final String GETALLMANAGER =  "/getallmanager";
 
+    public static final String USERCREATE =  "/usercreate";
+
 
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     MDBCol,
     MDBContainer,
@@ -18,6 +18,7 @@ import {
 } from 'mdb-react-ui-kit';
 import {useDispatch, useSelector} from "react-redux";
 import UpdateUser from "../updateuser/UpdateUser";
+import {sendMail} from "../../store/features/MailSlice";
 
 export default function ProfilePage() {
 

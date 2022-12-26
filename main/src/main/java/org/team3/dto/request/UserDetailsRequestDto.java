@@ -25,4 +25,5 @@ public class UserDetailsRequestDto {
     String phone;
     String address;
     Role role;
+    String corporationName;
 }

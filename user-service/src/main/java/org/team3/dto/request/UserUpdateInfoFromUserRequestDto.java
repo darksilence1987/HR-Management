@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class UserUpdateInfoFromUserRequestDto {
+    private String email;
     private String photo;
     private String address;
     private String phone;
