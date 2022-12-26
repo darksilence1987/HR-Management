@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.team3.constant.ApiUrls.*;
-import static org.team3.constant.ApiUrls.USERCREATE;
 
 
 @FeignClient(url="http://localhost:9091/api/v1/user" ,name="user-service-application", decode404 = true)
@@ -35,4 +34,10 @@ public interface IUserManager {
 
     @PostMapping(USERCREATE)
     public ResponseEntity<Boolean> createUser(@RequestBody UserDetailsRequestDto dto);
+    @GetMapping(GETALLMANAGERSSSUMMARYINFO)
+    public ResponseEntity<List<UserSummaryResponseDto>> getAllManagersSummaryInfo();
+
+
 }
+
+
