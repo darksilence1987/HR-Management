@@ -12,6 +12,7 @@ import org.team3.exception.UserServiceException;
 import org.team3.mapper.IUserMapper;
 import org.team3.repository.IUserRepository;
 import org.team3.repository.entity.User;
+import org.team3.repository.enums.Role;
 import org.team3.utility.ServiceManager;
 
 import java.util.List;
@@ -99,7 +100,13 @@ public class UserService extends ServiceManager<User, String> {
     }
 
     public List<UserSummaryResponseDto> getAllUsersSummaryInfo(){
-        return IUserMapper.INSTANCE.toUserListSummaryResponseDto(repository.findAll());
+
+
+        return IUserMapper.INSTANCE.toUserListSummaryResponseDto(repository.findAllByRole(Role.Employee.toString()));
+    }
+
+    public List<UserSummaryResponseDto> getAllManagersSummaryInfo(){
+        return IUserMapper.INSTANCE.toUserListSummaryResponseDto(repository.findAllByRole(Role.Manager.toString()));
     }
 
 

@@ -62,4 +62,11 @@ public class UserController {
     }
 
 
+    @CrossOrigin("*")
+    @GetMapping(GETALLMANAGERSSSUMMARYINFO)
+    public ResponseEntity<List<UserSummaryResponseDto>> getAllManagersSummaryInfo(){
+        return ResponseEntity.ok(userService.getAllManagersSummaryInfo());
+    }
+
+
 }
