@@ -9,7 +9,10 @@ import Button from "react-bootstrap/Button";
 import DataTableComp from "../companylist/CorporationList";
 import DataTableManager from "../managerlist/ManagerList";
 import {Grid} from "@mui/material";
+import logo from "../jpegs/logo.jpg"
 
+
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 function Index() {
@@ -43,9 +46,18 @@ function Index() {
 
             <div id="layoutSidenav_content">
                 <main>
+
                     <div className="container-fluid px-4">
-                        <h1 className="mt-4 h1">Human Resources Management</h1>
-                        <Button   variant="primary" onClick={handleClick}>Get User Profile</Button>
+
+
+                        <img style={{paddingLeft:"150px" , paddingTop:"50px",paddingBottom:"50px"}} src={logo} alt="logo"  />
+
+
+                        <Button   variant="primary" onClick={handleClick}>
+
+                            <i className="fa-solid fa-user-check fa-5x"></i>
+                            <br/>
+                            Get User Profile</Button>
 
                         {isShown && (
                             <>
@@ -66,10 +78,11 @@ function Index() {
                                     <br/>
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
-                                            <h1 className="mt-4 h3">User List</h1>
-                                            <br/>
-                                                <div  className="card" style={{width : "100%"}}>
-                                                    <div  className="card-body">
+
+<br/>
+                                                <div  className="card" style={{width : "100%" , backgroundColor:"#feaf51" }}>
+                                                    <h1 className="mt-4 h3" style={{paddingBottom:"10px" ,  color:"#4753ab"}}>User List</h1>
+                                                    <div  className="card-body"  style={{width : "100%" , backgroundColor:"white"}}>
 
                                                     <DataTable  style={{width : "100%"}}></DataTable>
                                                     </div>
@@ -77,10 +90,10 @@ function Index() {
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <h1 className="mt-4 h3">Company List</h1>
                                             <br/>
-                                                <div className="card"  style={{width : "100%"}}>
-                                                    <div className="card-body">
+                                                <div className="card"  style={{width : "100%" , backgroundColor:"#ff6504"}}>
+                                                    <h1 className="mt-4 h3" style={{paddingBottom:"10px" ,  color:"#4753ab"}}>Corporation List</h1>
+                                                    <div className="card-body" style={{width : "100%" , backgroundColor:"white"}}>
 
                                                     <DataTableComp style={{width : "100%"}}></DataTableComp>
                                                     </div>
@@ -90,10 +103,11 @@ function Index() {
 
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
-                                            <h1 className="mt-4 h3">Manager List</h1>
+
                                             <br/>
-                                            <div  className="card" style={{width : "100%"}}>
-                                                <div  className="card-body">
+                                            <div  className="card" style={{width : "100%" ,backgroundColor:"#fc864d"}}>
+                                                <h1 className="mt-4 h3" style={{paddingBottom:"10px" ,  color:"#4753ab"}}>Manager List</h1>
+                                                <div  className="card-body" style={{width : "100%" , backgroundColor:"white" , borderColor: 'primary.main'}} >
 
                                                     <DataTableManager  style={{width : "100%"}}></DataTableManager>
                                                 </div>
