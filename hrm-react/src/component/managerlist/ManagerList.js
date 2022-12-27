@@ -40,7 +40,7 @@ export default function DataTableManager() {
         { field: 'department', headerName: 'Department', width: 130,hide: true  },
         { field: 'phone', headerName: 'Phone', width: 130,hide: true  },
         { field: 'address', headerName: 'Address', width: 130,hide: true  },
-        { field: 'corporation', headerName: 'corporationName', width: 130 },
+        { field: 'corporationName', headerName: 'Company Name', width: 130 },
         { field: 'role', headerName: 'Role', width: 130,hide: true },
 
         {
@@ -72,21 +72,21 @@ export default function DataTableManager() {
     const dispatch = useDispatch();
 
 
-    const findAllUser = async () =>{
+    const findAllManager = async () =>{
         const response = await dispatch(findallManager());
 
 
     }
-    const userListUpdate = useSelector((state) => state.user.userListUpdate);
-    const userProfileList = useSelector((state) => state.user.userProfileList);
-    console.log("user profile list", userProfileList);
+    const managerListUpdate = useSelector((state) => state.user.managerListUpdate);
+    const managerProfileList = useSelector((state) => state.user.managerProfileList);
+    console.log("user profile list", managerProfileList);
 
     const user = useSelector((state) => state.user.userProfile);
 
 
     React.useEffect(() => {
-        findallManager();
-    }, [userListUpdate]);
+        findAllManager();
+    }, [managerListUpdate]);
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -130,7 +130,7 @@ export default function DataTableManager() {
 
                 <div style={{ height: 400, width: '100%' }}>
                     <DataGrid
-                        rows={userProfileList}
+                        rows={managerProfileList}
                         columns={columns}
                         pageSize={5}
                         rowsPerPageOptions={[5]}
@@ -163,6 +163,7 @@ export default function DataTableManager() {
                                 <br/>
                                 <MDBTypography tag="h4">{userInfo.address}</MDBTypography>
                                 <br/>
+
                                 <MDBTypography tag="h4">{userInfo.department}</MDBTypography>
                                 <br/>
                                 <div className="mb-4 pb-2">

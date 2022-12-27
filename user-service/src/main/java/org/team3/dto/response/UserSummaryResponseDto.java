@@ -18,8 +18,8 @@ public class UserSummaryResponseDto {
     private String phone;
     private String photo;
     private String address;
-    private String job;
     private String department;
     private Role role;
+    private String corporationName;
 
 }

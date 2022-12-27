@@ -6,7 +6,7 @@ import SideNavbar from "../navbar/SideNavbar";
 import ProfilePage from "../profile/Profile1";
 import {useDispatch, useSelector} from "react-redux";
 import Button from "react-bootstrap/Button";
-import DataTableComp from "../companylist/CorporationList";
+import DataTableComp from "../corporationlist/CorporationList";
 import DataTableManager from "../managerlist/ManagerList";
 import {Grid} from "@mui/material";
 import logo from "../jpegs/logo.jpg"
