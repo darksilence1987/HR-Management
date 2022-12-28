@@ -68,5 +68,11 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllManagersSummaryInfo());
     }
 
+    @CrossOrigin("*")
+    @GetMapping(ASSIGNMANAGER)
+    public void assignManager(@RequestParam String email){
+       userService.assignManager(email);
+    }
+
 
 }
