@@ -25,6 +25,11 @@ function Topbar() {
     const myProfile = () =>{
 
     }
+    const logout = () => {
+        localStorage.removeItem('email');
+        localStorage.removeItem('password');
+        window.location.reload();
+    }
 
 
 
@@ -54,8 +59,7 @@ function Topbar() {
 
                     <Dropdown.Menu>
                         <Dropdown.Item ><Link to = "/profilepage">User Profile</Link></Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2" onClick={logout}>Log out</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
 
