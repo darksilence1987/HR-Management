@@ -19,6 +19,7 @@ const initialStateUser = {
     },
     userProfileList: [],
     managerProfileList: [],
+    userCorporationNameList: [],
     isLoading: false,
     error: {
         code: "",
@@ -85,6 +86,31 @@ export const findallManager = createAsyncThunk(
     }
 );
 
+export const assignManager = createAsyncThunk(
+    "user/assignManager",
+    async (email) => {
+        try {
+            const response = await axios.get(userService.assignManager, { params:{userEmail: email}});
+            return response.data;
+
+        } catch (error) {
+            return error.response.data;
+        }
+    }
+);
+export const findCompanyWorkers = createAsyncThunk(
+    "user/findCompanyWorkers",
+    async (company) => {
+        try {
+            const response = await axios.get(userService.findCompanyWorkers, { params: { companyName: company } });
+
+            return response.data;
+        } catch (error) {
+            return error.response.data;
+        }
+    }
+);
+
 export const findByEmail = createAsyncThunk(
     "user/findbyemail",
     async (payload) => {
@@ -122,6 +148,9 @@ export const updateuserfromuser = createAsyncThunk(
     }
 );
 
+
+
+
 const userSlice = createSlice({
     name: "user",
     initialState: initialStateUser,
@@ -148,6 +177,7 @@ const userSlice = createSlice({
         build.addCase(findallUser.fulfilled, (state, action) => {
             state.userProfileList = action.payload;
             state.isLoading = false;
+            state.userCorporationNameList=action.payload;
             console.log(state.userProfileList);
         });
 
@@ -193,13 +223,40 @@ const userSlice = createSlice({
             state.isLoading = false;
         });
 
+        build.addCase(assignManager.fulfilled, (state, action) => {
+
+            state.isLoading = false;
+        });
+
         build.addCase(updateuserfromuser.rejected, (state, action) => {
+            state.error = action.payload;
+            state.isLoading = false;
+        });
+
+        build.addCase(assignManager.rejected, (state, action) => {
             state.error = action.payload;
             state.isLoading = false;
         });
         build.addCase(updateuserfromuser.pending, (state, action) => {
             state.isLoading = true;
         });
+        build.addCase(assignManager.pending, (state, action) => {
+            state.isLoading = true;
+        });
+
+        build.addCase(findCompanyWorkers.fulfilled, (state, action) => {
+
+            state.isLoading = false;
+        });
+
+        build.addCase(findCompanyWorkers.rejected, (state, action) => {
+            state.error = action.payload;
+            state.isLoading = false;
+        });
+        build.addCase(findCompanyWorkers.pending, (state, action) => {
+            state.isLoading = true;
+        });
+
     },
 });
 

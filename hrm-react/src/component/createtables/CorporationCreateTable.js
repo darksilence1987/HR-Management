@@ -10,6 +10,8 @@ import Form from "react-bootstrap/Form";
 
 function CorporationCreateTable() {
 
+
+
     const [name, setName] = useState("");
     const [title, setTitle] = useState("");
     const [mersisNo, setMersisNo] = useState("");
@@ -239,7 +241,7 @@ function CorporationCreateTable() {
 
 
                 </form>
-            </div>
+            </div>z
 
         </Form>
         </Modal.Body>

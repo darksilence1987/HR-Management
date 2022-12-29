@@ -16,8 +16,12 @@ import org.team3.repository.entity.User;
 import org.team3.repository.enums.Role;
 import org.team3.utility.ServiceManager;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static org.team3.repository.enums.Role.Employee;
+
 
 @Service
 public class UserService extends ServiceManager<User, String> {
@@ -27,6 +31,7 @@ public class UserService extends ServiceManager<User, String> {
         super(repository);
         this.repository = repository;
     }
+
     public Optional<User> findOptionalByEmail(String email) {
         return repository.findOptionalByEmail(email);
     }
@@ -49,7 +54,7 @@ public class UserService extends ServiceManager<User, String> {
     public User createUser(UserDetailsRequestDto dto) {
 
         try {
-            User user= repository.insert(IUserMapper.INSTANCE.toUser(dto));
+            User user = repository.insert(IUserMapper.INSTANCE.toUser(dto));
             return user;
         } catch (Exception e) {
 
@@ -63,7 +68,7 @@ public class UserService extends ServiceManager<User, String> {
     public UserDetailsResponseDto userDetailsResponseByEmail(String email) {
 
         try {
-            Optional<User> user= repository.findOptionalByEmail(email);
+            Optional<User> user = repository.findOptionalByEmail(email);
             UserDetailsResponseDto dto = IUserMapper.INSTANCE.toUserDetailsResponseDto(user.get());
             return dto;
         } catch (Exception e) {
@@ -112,13 +117,13 @@ public class UserService extends ServiceManager<User, String> {
         }
     }
 
-    public List<UserSummaryResponseDto> getAllUsersSummaryInfo(){
+    public List<UserSummaryResponseDto> getAllUsersSummaryInfo() {
 
 
-        return IUserMapper.INSTANCE.toUserListSummaryResponseDto(repository.findAllByRole(Role.Employee.toString()));
+        return IUserMapper.INSTANCE.toUserListSummaryResponseDto(repository.findAllByRole(Employee.toString()));
     }
 
-    public List<UserSummaryResponseDto> getAllManagersSummaryInfo(){
+    public List<UserSummaryResponseDto> getAllManagersSummaryInfo() {
         return IUserMapper.INSTANCE.toUserListSummaryResponseDto(repository.findAllByRole(Role.Manager.toString()));
     }
     public User createManager(UserDetailsRequestDto dto) {
@@ -164,6 +169,10 @@ public class UserService extends ServiceManager<User, String> {
         return IUserMapper.INSTANCE.toManagerResponseDto(repository.findAllByRole(Role.Manager));
     }
 
+
+    public List<User> findCompanyWorkers(String company ) {
+        return repository.findAllByCorporationNameAndRole(company , "Employee");
+    }
 
 }
 

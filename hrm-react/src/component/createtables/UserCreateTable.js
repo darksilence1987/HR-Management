@@ -25,6 +25,7 @@ function UserCreateTable() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
+    const [corporationName, setCorporationName] = useState("");
     const [role, setRole] = useState("");
     const [password, setPassword] = useState("");
     const [rePassword, setRePassword] = useState("");
@@ -55,6 +56,7 @@ function UserCreateTable() {
             email,
             phone,
             address,
+            corporationName,
         };
 
 
@@ -251,6 +253,16 @@ function UserCreateTable() {
                                                placeholder="name@example.com"/>
                                         <label htmlFor="inputEmail">Email address</label>
                                     </div>
+
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="form-floating mb-3">
+                                            <input name="corporationName" onChange={(e) => setCorporationName(e.target.value)} value={corporationName}
+                                                   type="corporationName" className="form-control" id="CorporationName"
+                                                   placeholder="name@example.com"/>
+                                            <label htmlFor="inputCorporationName">Corporation Name</label>
+                                        </div>
 
                                     </div>
 

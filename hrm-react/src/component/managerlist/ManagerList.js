@@ -57,7 +57,8 @@ export default function DataTableManager() {
                 return (
 
                     <Stack direction="row" spacing={2}>
-                        <Button variant="outlined" color="warning" size="small" onClick={GetUser}><Button variant="primary" onClick={handleShow}>
+                        <Button variant="outlined" color="warning" size="small" onClick={GetUser}>
+                            <Button variant="primary" onClick={handleShow}>
                             DETAILS
                         </Button></Button>
                         {/*<Button variant="outlined" color="error" size="small" onClick={onClick}>Delete</Button>*/}

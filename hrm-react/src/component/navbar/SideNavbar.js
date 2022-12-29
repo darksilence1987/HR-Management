@@ -4,11 +4,14 @@ import CorporationCreateTable from "../createtables/CorporationCreateTable";
 import ManagerCreateTable from "../createtables/ManagerCreateTable";
 import {useSelector} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import AssignManager from "../updateuser/AssignManager";
 
 function SideNavbar() {
 
 
     const userRole = useSelector((state) => state.auth.auth.role);
+    const userProfileList = useSelector((state) => state.user.userProfileList);
+    const corporationList = useSelector((state) => state.corporation.corporationList);
 
     console.log("sidenavbar role", userRole)
 
@@ -48,6 +51,9 @@ function SideNavbar() {
                             </a>
 
 
+                            <a className="nav-link" >
+                             <AssignManager userList={userProfileList} corporationList={corporationList}></AssignManager>
+                            </a>
 
 
 
