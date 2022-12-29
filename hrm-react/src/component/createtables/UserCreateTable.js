@@ -1,16 +1,16 @@
-import {Alert} from "@mui/material";
+import {Alert, InputLabel, MenuItem, Select} from "@mui/material";
 
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, redirect, useNavigate} from "react-router-dom";
-import {fetchUserCreate} from "../../store/features/UserSlice";
+import {fetchUserCreate, findCompanyWorkers} from "../../store/features/UserSlice";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
-function UserCreateTable() {
+function UserCreateTable({corporationList}) {
 
     const [name, setName] = useState("");
     const [photo, setPhoto] = useState("");
@@ -30,12 +30,14 @@ function UserCreateTable() {
     const [password, setPassword] = useState("");
     const [rePassword, setRePassword] = useState("");
 
-
+    const [chosenFilterId, setChosenFilterId] = useState(0);
     // const [isValid, setIsValid] = useState(false);
     const isSave = useSelector((state) => state.auth.isSave);
     const alertMessage = useSelector((state) => state.auth.alertMessage);
     const auth = useSelector((state) => state.auth.auth);
     // const navigate = useNavigate();
+
+
 
 
     const dispatch = useDispatch();
@@ -107,6 +109,8 @@ function UserCreateTable() {
     //     return isValid;
     // };
 
+
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -136,6 +140,37 @@ function UserCreateTable() {
                             <form>
                                 <div className="row mb-3">
 
+                                    <div className="col-md-6">
+                                        <InputLabel id="corporate-select-label">Select the Workers Company:</InputLabel>
+                                        <div className="form-floating mb-3">
+
+                                            <Select sx={{width: 200, height: 50 }}
+
+                                                    labelId="corporate-select-label"
+                                                    id="corporate-select"
+                                                    defaultValue=""
+                                                    label="Corporate List"
+                                                    name="corporationName"
+                                                    onChange={(e) => setCorporationName(e.target.value)} value={corporationName}
+                                                    placeholder="Type to search"
+
+                                            >
+                                                {corporationList.map((option, index) => {
+
+                                                    return (
+                                                        <MenuItem value={option.name} key={index}>
+                                                            {option.name}
+                                                        </MenuItem>)}
+                                                )};
+
+                                            </Select>
+                                            {/*<input name="corporationName" onChange={(e) => setCorporationName(e.target.value)} value={corporationName}*/}
+                                            {/*       type="corporationName" className="form-control" id="CorporationName"*/}
+                                            {/*       placeholder="name@example.com"/>*/}
+                                            {/*<label htmlFor="inputCorporationName">Corporation Name</label>*/}
+                                        </div>
+
+                                    </div>
 
                                     <div className="col-md-6">
                                         <div className="form-floating mb-3 mb-md-3">
@@ -256,15 +291,7 @@ function UserCreateTable() {
 
                                     </div>
 
-                                    <div className="col-md-6">
-                                        <div className="form-floating mb-3">
-                                            <input name="corporationName" onChange={(e) => setCorporationName(e.target.value)} value={corporationName}
-                                                   type="corporationName" className="form-control" id="CorporationName"
-                                                   placeholder="name@example.com"/>
-                                            <label htmlFor="inputCorporationName">Corporation Name</label>
-                                        </div>
 
-                                    </div>
 
                                     <div className="col-md-6">
                                         <div className="form-floating mb-3 mb-md-0">

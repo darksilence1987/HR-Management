@@ -181,3 +181,5 @@ function AssignManager({userList,corporationList}) {
     );
 }
 export default AssignManager;
+
+
