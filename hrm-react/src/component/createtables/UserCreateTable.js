@@ -10,7 +10,7 @@ import Form from "react-bootstrap/Form";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
-function UserCreateTable({corporationList}) {
+function UserCreateTable({userList,corporationList}) {
 
     const [name, setName] = useState("");
     const [photo, setPhoto] = useState("");

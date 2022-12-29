@@ -38,7 +38,7 @@ function SideNavbar() {
 
 
 
-                                <UserCreateTable corporationList={corporationList}>
+                                <UserCreateTable userList={userProfileList} corporationList={corporationList}>
 
                                 </UserCreateTable>
 
