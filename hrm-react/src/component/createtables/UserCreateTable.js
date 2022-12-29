@@ -7,6 +7,7 @@ import {fetchUserCreate} from "../../store/features/UserSlice";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 function UserCreateTable() {
@@ -107,11 +108,14 @@ function UserCreateTable() {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = ()=> setShow(true);
     return (
 
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button style={{maxWidth: '30px', maxHeight: '100px', minWidth: '190px', minHeight: '100px'}} variant="primary" onClick={handleShow}>
+                <i className="fa-solid fa-user-plus fa-2x"></i>
+
+                <br/>
                 Create User
             </Button>
 
@@ -122,6 +126,8 @@ function UserCreateTable() {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
+
+
 
 
                         <div className="card-body">

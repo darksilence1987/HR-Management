@@ -6,6 +6,8 @@ const userService = {
     findbyemail: RestApis.userService + "/user/get-user-by-email",
     updateuserfromuser: RestApis.userService + "/user/updateuserfromuser/{email}",
     usercreate: RestApis.userService + "/user/usercreate",
+    findAllManager: RestApis.userService + "/user/getallmanagersssummaryinfo",
+    assignManager: RestApis.userService + "/user/assignmanager/{email}",
 
 
 

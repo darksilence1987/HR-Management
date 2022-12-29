@@ -100,8 +100,26 @@ public class UserService extends ServiceManager<User, String> {
         }
     }
 
+
+    public void assignManager(String email) {
+
+        Optional<User> userProfileDb = repository.findOptionalByEmail(email);
+        if (userProfileDb.isPresent()) {
+            userProfileDb.get().setRole(Role.Manager);
+            save(userProfileDb.get());
+        } else {
+            throw new UserServiceException(ErrorType.USER_NOT_FOUND);
+        }
+    }
+
     public List<UserSummaryResponseDto> getAllUsersSummaryInfo(){
-        return IUserMapper.INSTANCE.toUserListSummaryResponseDto(repository.findAll());
+
+
+        return IUserMapper.INSTANCE.toUserListSummaryResponseDto(repository.findAllByRole(Role.Employee.toString()));
+    }
+
+    public List<UserSummaryResponseDto> getAllManagersSummaryInfo(){
+        return IUserMapper.INSTANCE.toUserListSummaryResponseDto(repository.findAllByRole(Role.Manager.toString()));
     }
     public User createManager(UserDetailsRequestDto dto) {
 

@@ -7,12 +7,17 @@ import {useNavigate} from "react-router-dom";
 export default function SignIn() {
 
     const dispatch = useDispatch();
+    if(localStorage.getItem('email') && localStorage.getItem('password')){
+        dispatch(fetchLogin({email: localStorage.getItem('email'), password: localStorage.getItem('password')}));
+    }
 // const navigate = useNavigate()
     const [auth, setAuth] = useState({
         email: "",
         password: "",
     });
     const doLogin =  () => {
+        localStorage.setItem('email', auth.email);
+        localStorage.setItem('password', auth.password);
      dispatch(fetchLogin(auth));
 
        // await navigate("/");
@@ -25,7 +30,6 @@ export default function SignIn() {
     };
 
     return (
-
         <body className="bg-light">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">

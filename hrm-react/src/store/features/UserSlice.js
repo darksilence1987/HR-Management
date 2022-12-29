@@ -7,13 +7,18 @@ import authService from "../../config/AuthService";
 const initialStateUser = {
     userListUpdate: false,
     returnUserCreate: false,
+    managerListUpdate: false,
     // token: "",
     email: "",
     isUserProfile: false,
     userProfile: {
 
     },
+    managerProfile: {
+
+    },
     userProfileList: [],
+    managerProfileList: [],
     isLoading: false,
     error: {
         code: "",
@@ -50,6 +55,24 @@ export const findallUser = createAsyncThunk(
     async (payload) => {
         try {
             const response = await axios.get(userService.findall, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            return response.data;
+
+        } catch (error) {
+            return error.response.data;
+        }
+    }
+);
+
+
+export const findallManager = createAsyncThunk(
+    "user/findallManager",
+    async (payload) => {
+        try {
+            const response = await axios.get(userService.findAllManager, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -132,10 +155,25 @@ const userSlice = createSlice({
             state.error = action.payload;
             state.isLoading = false;
         });
+
         build.addCase(findallUser.pending, (state, action) => {
             state.isLoading = true;
         });
 
+        build.addCase(findallManager.fulfilled, (state, action) => {
+            state.managerProfileList = action.payload;
+            state.isLoading = false;
+            console.log(state.managerProfileList);
+        });
+
+        build.addCase(findallManager.rejected, (state, action) => {
+            state.error = action.payload;
+            state.isLoading = false;
+        });
+
+        build.addCase(findallManager.pending, (state, action) => {
+            state.isLoading = true;
+        });
 
         build.addCase(findByEmail.fulfilled, (state, action) => {
             state.otherUserProfile = action.payload;

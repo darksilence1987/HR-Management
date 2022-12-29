@@ -29,9 +29,8 @@ const [userInfo, setUserInfo] = useState([]);
   const columns = [
     { field: 'id', headerName: 'ID', width: 70, hide: true  },
 
-
-    { field: 'email', headerName: 'Email', width: 150 },
       { field: 'photo', headerName: 'Photo', width: 100 },
+    { field: 'email', headerName: 'Email', width: 150 },
     { field: 'name', headerName: 'First Name', width: 130 },
     { field: 'surname', headerName: 'Last Name', width: 130, hide: true },
 
@@ -251,16 +250,6 @@ Send
                   </Button>
               </Modal.Footer>
           </Modal>
-
-
-
-
-
-
-
-
-
-
 
 
         </>

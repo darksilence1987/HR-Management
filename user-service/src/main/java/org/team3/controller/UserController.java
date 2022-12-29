@@ -85,4 +85,17 @@ public class UserController {
     }
 
 
+    @CrossOrigin("*")
+    @GetMapping(GETALLMANAGERSSSUMMARYINFO)
+    public ResponseEntity<List<UserSummaryResponseDto>> getAllManagersSummaryInfo(){
+        return ResponseEntity.ok(userService.getAllManagersSummaryInfo());
+    }
+
+    @CrossOrigin("*")
+    @GetMapping(ASSIGNMANAGER)
+    public void assignManager(@RequestParam String email){
+       userService.assignManager(email);
+    }
+
+
 }
