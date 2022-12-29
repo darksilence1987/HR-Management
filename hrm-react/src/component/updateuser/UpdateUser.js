@@ -2,83 +2,102 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import {useDispatch} from "react-redux";
-import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import React, {useState} from "react";
 import {fetchLogin} from "../../store/features/AuthSlice";
+import {updateuserfromuser} from "../../store/features/UserSlice";
+import Modal from 'react-bootstrap/Modal';
 
 function GridComplexExample() {
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const dispatch = useDispatch();
+
+    const email = useSelector((state) => state.auth.auth.email);
 // const navigate = useNavigate()
-    const [auth, setAuth] = useState({
-        email: "",
-        password: "",
+    const [user, setUser] = useState({
+        address: "",
+        phone: "",
+        photo: "",
+        email:"",
     });
     const update =  () => {
-        dispatch(fetchLogin(auth));
+        dispatch(updateuserfromuser(user));
         // await navigate("/");
 
-
     };
-    const onChangeAuth = (e) => {
+    const onChangeUser = (e) => {
         const { name, value } = e.target;
-        setAuth({ ...auth, [name]: value });
+        setUser({ ...user, [name]: value });
     };
 
 
     return (
-        <Form>
-            <Row className="mb-3">
-                <Form.Group as={Col} controlId="formGridEmail">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                </Form.Group>
-
-                <Form.Group as={Col} controlId="formGridPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-            </Row>
-
-            <Form.Group className="mb-3" controlId="formGridAddress1">
-                <Form.Label>Address</Form.Label>
-                <Form.Control placeholder="1234 Main St" />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formGridAddress2">
-                <Form.Label>Address 2</Form.Label>
-                <Form.Control placeholder="Apartment, studio, or floor" />
-            </Form.Group>
-
-            <Row className="mb-3">
-                <Form.Group as={Col} controlId="formGridCity">
-                    <Form.Label>City</Form.Label>
-                    <Form.Control />
-                </Form.Group>
-
-                <Form.Group as={Col} controlId="formGridState">
-                    <Form.Label>State</Form.Label>
-                    <Form.Select defaultValue="Choose...">
-                        <option>Choose...</option>
-                        <option>...</option>
-                    </Form.Select>
-                </Form.Group>
-
-                <Form.Group as={Col} controlId="formGridZip">
-                    <Form.Label>Zip</Form.Label>
-                    <Form.Control />
-                </Form.Group>
-            </Row>
-
-            <Form.Group className="mb-3" id="formGridCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-                Submit
+        <>
+            <Button variant="primary" onClick={handleShow}>
+                Update User
             </Button>
-        </Form>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <form>
+                            <div className="row mb-3">
+                                <div className="col-md-6">
+                                    <div className="form-floating mb-3 mb-md-0">
+                                        <input name="address" onChange={onChangeUser} className="form-control" id="inputAddress" type="text"
+                                               placeholder="Enter your address"/>
+                                        <label htmlFor="inputAddress">Address</label>
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="form-floating">
+                                        <input name="phone" onChange={onChangeUser} className="form-control" id="inputPhone" type="text"
+                                               placeholder="Enter your phone"/>
+                                        <label htmlFor="inputPhone">Phone</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="form-floating mb-3">
+                                <input name="photo" onChange={onChangeUser} type="text" className="form-control" id="inputPhoto"
+                                       placeholder="photo"/>
+                                <label htmlFor="inputPhoto">Photo</label>
+                            </div>
+
+                            <div className="form-floating mb-3">
+                                <input name="email" onChange={onChangeUser} type="email" className="form-control" id="inputEmail"
+                                       placeholder="email"/>
+                                <label htmlFor="inputPhoto">Email</label>
+                            </div>
+
+                            {/*<div className="mt-4 mb-0">*/}
+                            {/*    <div className="d-grid">*/}
+                            {/*        <button  onClick={update} type={"button"}>Update</button></div>*/}
+                            {/*</div>*/}
+                        </form>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={update}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
+
     );
 }
 
 export default GridComplexExample;
+
+

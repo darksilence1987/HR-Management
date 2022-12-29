@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
 import org.springframework.web.bind.annotation.*;
 import org.team3.dto.request.LoginRequestDto;
+import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.exception.ErrorType;
 import org.team3.exception.MainServiceException;
 import org.team3.manager.IAuthManager;
@@ -31,17 +32,26 @@ public class MainController {
         }
         else throw new MainServiceException(ErrorType.LOGIN_ERROR_001);
     }
-    @GetMapping("/get-user-details-list")
+    @CrossOrigin("*")
+    @PostMapping("/get-user-details-list")
     public List<UserProfile> getUserDetailsList(@RequestParam String managerMail){
         return mainservice.getUserDetailsList(managerMail);
     }
+    @CrossOrigin("*")
     @PostMapping("/get-user-details")
     public UserProfile getUserDetails(@RequestParam String recipientMail, @RequestParam String ownerMail){
         return mainservice.getUserDetails(recipientMail, ownerMail);
     }
+    @CrossOrigin("*")
+    @PostMapping("/update-user-details")
+    public void updateUserDetails(@RequestBody UserProfile userProfile, @RequestParam String ownerMail){
+        mainservice.updateUserInfo(userProfile, ownerMail);
+    }
 
-
-
-
+    @CrossOrigin("*")
+    @PostMapping("/create-user")
+    public void createUser(@RequestBody UserDetailsRequestDto dto){
+        mainservice.createUser(dto);
+    }
 }
 

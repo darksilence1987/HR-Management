@@ -4,6 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 import org.team3.dto.request.UserDetailsRequestDto;
+import org.team3.dto.response.ManagerResponseDto;
 import org.team3.dto.response.UserDetailsResponseDto;
 import org.team3.dto.response.UserSummaryResponseDto;
 import org.team3.repository.entity.User;
@@ -17,6 +18,6 @@ public interface IUserMapper {
 
     User toUser(UserDetailsRequestDto dto);
     List<UserSummaryResponseDto> toUserListSummaryResponseDto(final List<User> users);
-
+    List<ManagerResponseDto> toManagerResponseDto(final List<User> users);
     UserDetailsResponseDto toUserDetailsResponseDto(User user);
 }

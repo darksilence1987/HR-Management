@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8889
+  profiles:
+    active: properties
+  config:
+    import: "optional:configserver:"
+  application:
+    name: corporation-service-application
+
+  data:
+    mongodb:
+      auto-index-creation: true

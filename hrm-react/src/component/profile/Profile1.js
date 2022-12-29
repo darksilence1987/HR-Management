@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     MDBCol,
     MDBContainer,
@@ -17,47 +17,59 @@ import {
     MDBListGroupItem
 } from 'mdb-react-ui-kit';
 import {useDispatch, useSelector} from "react-redux";
+import UpdateUser from "../updateuser/UpdateUser";
+import {sendMail} from "../../store/features/MailSlice";
 
 export default function ProfilePage() {
 
+
     const dispatch = useDispatch();
     const email = useSelector((state) => state.auth.auth.email);
-    const user = useSelector((state) => state.auth);
 
-    console.log("Profile page user: ", user);
+    const user = useSelector((state) => state.auth.auth);
+    const userRole = useSelector((state) => state.auth.auth.role);
+
+    console.log("Profile page user: ", user.email);
+    console.log("Profile page use1: ", user);
 
     return (
         <section style={{ backgroundColor: '#eee' }}>
             <MDBContainer className="py-5">
-                <MDBRow>
-                    <MDBCol>
-                        <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
-                            <MDBBreadcrumbItem>
-                                <a href='#'>Home</a>
-                            </MDBBreadcrumbItem>
-                            <MDBBreadcrumbItem>
-                                <a href="#">User</a>
-                            </MDBBreadcrumbItem>
-                            <MDBBreadcrumbItem active>User Profile</MDBBreadcrumbItem>
-                        </MDBBreadcrumb>
-                    </MDBCol>
-                </MDBRow>
-
+                {/*<MDBRow>*/}
+                {/*    <MDBCol>*/}
+                {/*        <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">*/}
+                {/*            <MDBBreadcrumbItem>*/}
+                {/*                /!*<a href='#'>Home</a>*!/*/}
+                {/*            </MDBBreadcrumbItem>*/}
+                {/*            <MDBBreadcrumbItem>*/}
+                {/*                /!*<a href="#">User</a>*!/*/}
+                {/*            </MDBBreadcrumbItem>*/}
+                {/*            <MDBBreadcrumbItem active>User Profile</MDBBreadcrumbItem>*/}
+                {/*        </MDBBreadcrumb>*/}
+                {/*    </MDBCol>*/}
+                {/*</MDBRow>*/}
                 <MDBRow>
                     <MDBCol lg="4">
                         <MDBCard className="mb-4">
                             <MDBCardBody className="text-center">
+                                <div className="d-flex justify-content-center mb-2">
                                 <MDBCardImage
+
                                     src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                                     alt="avatar"
                                     className="rounded-circle"
-                                    style={{ width: '150px' }}
+                                    style={{ width: '200px' }}
                                     fluid />
-                                <p className="text-muted mb-1">Full Stack Developer</p>
-                                <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+
+                                </div>
+                                <p className="text-muted mb-1">{user.job}</p>
+                                <p className="text-muted mb-4">{user.address}</p>
+                                {/*<div className="d-flex justify-content-center mb-2">*/}
+                                {/*    <MDBBtn outline className="ms-1">Message</MDBBtn>*/}
+                                {/*</div>*/}
                                 <div className="d-flex justify-content-center mb-2">
-                                    <MDBBtn>Follow</MDBBtn>
-                                    <MDBBtn outline className="ms-1">Message</MDBBtn>
+                                    {userRole === "Manager"? <UpdateUser></UpdateUser>: <></>
+                                    }
                                 </div>
                             </MDBCardBody>
                         </MDBCard>
@@ -97,7 +109,7 @@ export default function ProfilePage() {
                                         <MDBCardText>Full Name</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">{user.firstName}</MDBCardText>
+                                        <MDBCardText className="text-muted">{user.name + "  " + user.surname }</MDBCardText>
                                     </MDBCol>
                                 </MDBRow>
                                 <hr />
@@ -106,7 +118,7 @@ export default function ProfilePage() {
                                         <MDBCardText>Email</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">{email}</MDBCardText>
+                                        <MDBCardText className="text-muted">{user.email}</MDBCardText>
                                     </MDBCol>
                                 </MDBRow>
                                 <hr />
@@ -115,16 +127,16 @@ export default function ProfilePage() {
                                         <MDBCardText>Phone</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
+                                        <MDBCardText className="text-muted">{user.phone}</MDBCardText>
                                     </MDBCol>
                                 </MDBRow>
                                 <hr />
                                 <MDBRow>
                                     <MDBCol sm="3">
-                                        <MDBCardText>Mobile</MDBCardText>
+                                        <MDBCardText>Role</MDBCardText>
                                     </MDBCol>
                                     <MDBCol sm="9">
-                                        <MDBCardText className="text-muted">(098) 765-4321</MDBCardText>
+                                        <MDBCardText className="text-muted">{user.role}</MDBCardText>
                                     </MDBCol>
                                 </MDBRow>
                                 <hr />
@@ -207,6 +219,8 @@ export default function ProfilePage() {
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
+
         </section>
+
     );
 }

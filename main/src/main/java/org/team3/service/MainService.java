@@ -3,7 +3,10 @@ package org.team3.service;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.team3.dto.request.AuthRegisterRequestDto;
 import org.team3.dto.request.LoginRequestDto;
+import org.team3.dto.request.UserDetailsRequestDto;
+import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.response.UserDetailsResponseDto;
 import org.team3.exception.ErrorType;
 import org.team3.exception.MainServiceException;
@@ -26,6 +29,7 @@ public class MainService {
         this.userManager = userManager;
         this.authManager = authManager;
     }
+
     public UserProfile getUserProfile(String email) {
         UserDetailsResponseDto login = userManager.loginRequest(email);
         UserProfile userProfile = IMainMapper.INSTANCE.toUserProfile(login);
@@ -41,8 +45,7 @@ public class MainService {
             UserDetailsResponseDto login = userManager.loginRequest(dto.getEmail());
             UserProfile userProfile = IMainMapper.INSTANCE.toUserProfile(login);
             return ResponseEntity.ok(userProfile);
-        }
-        else return null;
+        } else return null;
     }
 
     public List<UserProfile> getUserDetailsList(String managerMail) {
@@ -50,25 +53,52 @@ public class MainService {
         userProfiles = IMainMapper.INSTANCE.toUserProfileList(userManager.getAllUsersSummaryInfo());
         UserDetailsResponseDto userdto = userManager.loginRequest(managerMail);
 
-        if(userdto.getRole().equals(Role.Manager)){
-         userProfiles= IMainMapper.INSTANCE.toUserProfileList(userManager.getAllUsersSummaryInfo());
+        if (userdto.getRole().equals(Role.Manager)) {
+            userProfiles = IMainMapper.INSTANCE.toUserProfileList(userManager.getAllUsersSummaryInfo());
             return userProfiles;
-        }else throw new MainServiceException(ErrorType.YETKI_DISI);
-        }
+        } else throw new MainServiceException(ErrorType.YETKI_DISI);
+    }
+
     public UserProfile getUserDetails(String recipientMail, String ownerMail) {
         if (recipientMail.equals(ownerMail)) {
             UserDetailsResponseDto userdto = userManager.loginRequest(ownerMail);
             UserProfile userProfile = IMainMapper.INSTANCE.toUserProfile(userdto);
             return userProfile;
-        }
-        else if(userManager.loginRequest(recipientMail).getRole().equals(Role.Manager)){
+        } else if (userManager.loginRequest(recipientMail).getRole().equals(Role.Manager)) {
             UserDetailsResponseDto userdto = userManager.loginRequest(ownerMail);
             UserProfile userProfile = IMainMapper.INSTANCE.toUserProfile(userdto);
             return userProfile;
-        }
-        else throw new MainServiceException(ErrorType.YETKI_DISI);
+        } else throw new MainServiceException(ErrorType.YETKI_DISI);
 
-        }
     }
+
+    public void updateUserInfo(UserProfile userProfile, String actorMail) {
+        if (userManager.loginRequest(actorMail).getRole().equals(Role.Manager)) {
+            UserUpdateInfoFromManagerRequestDto dto = IMainMapper.INSTANCE.toUserUpdateInfoFromManagerRequestDto(userProfile);
+            dto.setRole(userManager.loginRequest(userProfile.getEmail()).getRole());
+            userManager.updateUserFromManager(dto, actorMail);
+            //return true;
+        } else if (userProfile.getEmail().equals(actorMail)) {
+            userManager.updateUserFromUser(IMainMapper.INSTANCE.toUserUpdateInfoFromUserRequestDto(userProfile), actorMail);
+            //return true;
+        } else throw new MainServiceException(ErrorType.YETKI_DISI);
+    }
+
+
+    public void createUser(UserDetailsRequestDto dto) {
+
+        try {
+            dto.setRole(Role.Employee);
+            userManager.createUser(dto);
+            AuthRegisterRequestDto registerRequestDto = IMainMapper.INSTANCE.toAuthRegisterRequestDto(dto);
+            authManager.createUser(registerRequestDto);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            throw new MainServiceException(ErrorType.USER_NOT_CREATED);
+        }
+
+    }
+}
 
 

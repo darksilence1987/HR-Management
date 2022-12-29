@@ -4,9 +4,8 @@ import LoginPage from "./pages/login/LoginPage";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 import HomePage from "./pages/home/HomePage";
-import RegisterPage from "./component/createuser/RegisterPage";
-import Chart from "./component/charts/Chart";
-import Table from "./component/tables/Table";
+import UserPage from "./pages/userprofile/UserPage";
+import Corporation from "./component/corporation/Corporation";
 
 function App() {
 
@@ -24,21 +23,14 @@ function App() {
                     ></Route>
 
                     <Route
-                        path="/register"
-                        element={ <RegisterPage></RegisterPage>}
-                    ></Route>
-
-
-                    <Route
-                        path="/chart"
-                        element={ <Chart></Chart>}
+                        path="/profilepage"
+                        element={ <UserPage></UserPage>}
                     ></Route>
 
                     <Route
-                        path="/table"
-                        element={ <Table></Table>}
+                        path="/corporation"
+                        element={ <Corporation></Corporation>}
                     ></Route>
-
 
 
                 </Routes>

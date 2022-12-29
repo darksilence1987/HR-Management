@@ -13,10 +13,6 @@ import javax.validation.constraints.Size;
 @Data
 @Builder
 public class LoginRequestDto {
-    @NotNull(message = "Email adresi girilmesi zorunludur.")
-    @Size(min=3, max=64)
     String email;
-    @NotNull(message = "Şifre girilmesi zorunludur.")
-    @Size(min = 8, max=64)
     String password;
 }

@@ -12,7 +12,9 @@
             <option value="$PROJECT_DIR$/api-gateway" />
             <option value="$PROJECT_DIR$/auth-service" />
             <option value="$PROJECT_DIR$/config-server" />
+            <option value="$PROJECT_DIR$/corporation-service" />
             <option value="$PROJECT_DIR$/elastic-service" />
+            <option value="$PROJECT_DIR$/mail-service" />
             <option value="$PROJECT_DIR$/main" />
             <option value="$PROJECT_DIR$/user-service" />
           </set>

@@ -41,27 +41,6 @@ export const fetchLogin = createAsyncThunk(
 );
 
 
-export const fetchRegister = createAsyncThunk(
-    "auth/register",
-
-    async (payload) => {
-        try {
-            const response = await fetch(authService.register, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(payload),
-            })
-                .then((response) => response.json())
-                .catch((error) => console.log(error));
-            return response;
-        } catch (err) {
-            return err.response;
-        }
-    }
-);
-
 
 
 const authSlice = createSlice({
@@ -71,26 +50,11 @@ const authSlice = createSlice({
     reducers: {},
     extraReducers: (build) => {
 
-        build.addCase(fetchRegister.fulfilled, (state, action) => {
-                state.auth = action.payload;
-                console.log("auth degeri", state.auth);
-                state.isSave = true
-                state.alertMessage = "Kayıt Başarılı";
-            state.isLoadingRegister = false;
-
-        });
-        build.addCase(fetchRegister.pending, (state, action) => {
-            state.isLoadingRegister = true;
-            state.isSave = false;
-        });
-        build.addCase(fetchRegister.rejected, (state, action) => {
-            state.isLoadingRegister = false;
-            state.isSave = false;
-            state.alertMessage = state.error.message;
-        });
 
         build.addCase(fetchLogin.fulfilled, (state, action) => {
             state.auth = action.payload;
+            if(action.payload.code === 190){return false;}
+            console.log("action.payload", action.payload);
             // state.token = action.payload.token;
             state.isAuthanticated = true;
 

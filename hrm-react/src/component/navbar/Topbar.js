@@ -2,6 +2,8 @@ import React, {} from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useDispatch, useSelector } from "react-redux";
 import {findByEmail} from "../../store/features/UserSlice";
+import Button from "react-bootstrap/Button";
+import {Link} from "react-router-dom";
 
 
 function Topbar() {
@@ -20,6 +22,15 @@ function Topbar() {
     //     getUser();
     // }, []);
 
+    const myProfile = () =>{
+
+    }
+    const logout = () => {
+        localStorage.removeItem('email');
+        localStorage.removeItem('password');
+        window.location.reload();
+    }
+
 
 
     return (
@@ -27,7 +38,7 @@ function Topbar() {
         <>
 
             <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-                <a className="navbar-brand ps-3" >Human Resources Management </a>
+                <a className="navbar-brand ps-3" >Team 3 </a>
 
                 <button type={"button"} className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                     className="fas fa-bars"></i> </button>
@@ -47,9 +58,8 @@ function Topbar() {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                        <Dropdown.Item ><Link to = "/profilepage">User Profile</Link></Dropdown.Item>
+                        <Dropdown.Item href="#/action-2" onClick={logout}>Log out</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
 
@@ -66,11 +76,6 @@ function Topbar() {
                 {/*    </li>*/}
                 {/*</ul>*/}
             </nav>
-
-
-
-
-
 
 
         </>

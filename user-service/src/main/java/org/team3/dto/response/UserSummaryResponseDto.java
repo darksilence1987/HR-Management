@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.team3.repository.enums.Role;
 
 @Data
 @Builder
@@ -11,13 +12,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserSummaryResponseDto {
     private String id;
-    private String firstName;
-    private String lastName;
+    private String name;
+    private String surname;
     private String email;
     private String phone;
     private String photo;
     private String address;
-    private String job;
     private String department;
+    private Role role;
+    private String corporationName;
 
 }
