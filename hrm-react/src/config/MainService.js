@@ -2,7 +2,7 @@ import RestApis from "./RestApiUrls";
 
 const mainService = {
 
-    loginrequest: RestApis.mainService + "/main/login-request",
+    loginrequest:  "http://10.8.3.169:9098/api/v1/main/login-request",
 
 };
 

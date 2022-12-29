@@ -1,8 +1,7 @@
 import RestApis from "./RestApiUrls";
 
 const authService = {
-    login: RestApis.authService + "/auth/login",
-    register: RestApis.authService + "/auth/register",
+    login: "http://10.8.2.218:9090/api/v1/auth/login",
 
 };
 
