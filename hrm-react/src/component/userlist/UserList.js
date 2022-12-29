@@ -26,6 +26,8 @@ export default function DataTable() {
 
 const [userInfo, setUserInfo] = useState([]);
 
+
+
   const columns = [
     { field: 'id', headerName: 'ID', width: 70, hide: true  },
 
@@ -81,7 +83,7 @@ const [userInfo, setUserInfo] = useState([]);
   }
   const userListUpdate = useSelector((state) => state.user.userListUpdate);
   const userProfileList = useSelector((state) => state.user.userProfileList);
-  console.log("user profile list", userProfileList);
+
 
   const user = useSelector((state) => state.user.userProfile);
 
@@ -140,6 +142,8 @@ const [userInfo, setUserInfo] = useState([]);
               isCellEditable={(params) => params.row.age % 2 === 0}
               experimentalFeatures={{ newEditingApi: true }}
               disableMultipleSelection={true}
+
+
           />
         </div>
       </div>

@@ -7,7 +7,8 @@ const userService = {
     updateuserfromuser: RestApis.userService + "/user/updateuserfromuser/{email}",
     usercreate: RestApis.userService + "/user/usercreate",
     findAllManager: RestApis.userService + "/user/getallmanagersssummaryinfo",
-    assignManager: RestApis.userService + "/user/assignmanager/{email}",
+    assignManager: RestApis.userService + "/user/assignmanager",
+    findCompanyWorkers: RestApis.userService + "/user/companyworkers",
 
 
 

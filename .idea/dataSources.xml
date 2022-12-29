@@ -15,5 +15,12 @@
       <jdbc-url>mongodb://34.171.87.50:27777/userDb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="authDb@35.192.150.187" uuid="9e18a800-3661-4990-8f01-b33884acd21e">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://35.192.150.187:5444/authDb</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
