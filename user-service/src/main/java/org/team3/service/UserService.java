@@ -99,6 +99,18 @@ public class UserService extends ServiceManager<User, String> {
         }
     }
 
+
+    public void assignManager(String email) {
+
+        Optional<User> userProfileDb = repository.findOptionalByEmail(email);
+        if (userProfileDb.isPresent()) {
+            userProfileDb.get().setRole(Role.Manager);
+            save(userProfileDb.get());
+        } else {
+            throw new UserServiceException(ErrorType.USER_NOT_FOUND);
+        }
+    }
+
     public List<UserSummaryResponseDto> getAllUsersSummaryInfo(){
 
 

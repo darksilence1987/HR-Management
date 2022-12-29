@@ -13,6 +13,7 @@ public class ApiUrls {
     public static final String UPDATEUSERFROMMANAGER =  "/updateuserfrommanager/{email}";
     public static final String GETALLUSERSSUMMARYINFO =  "/getalluserssummaryinfo";
     public static final String GETALLMANAGERSSSUMMARYINFO =  "/getallmanagersssummaryinfo";
+    public static final String ASSIGNMANAGER =  "/assignmanager/{email}";
     public static final String FINDBYID =  "/findbyid";
     public static final String GETALL =  "/getall";
 
