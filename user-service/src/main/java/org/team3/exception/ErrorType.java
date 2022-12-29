@@ -19,7 +19,9 @@ public enum ErrorType {
     GECERSIZ_TOKEN(101,"Token gecerli degil", INTERNAL_SERVER_ERROR),
 
     USER_NOT_CREATED(1005, "Kullanıcı KAYDEDİLEMEDİ", INTERNAL_SERVER_ERROR),
-    USER_NOT_FOUND(1004, "Kullanıcı bulunamadı", INTERNAL_SERVER_ERROR);
+    USER_NOT_FOUND(1004, "Kullanıcı bulunamadı", INTERNAL_SERVER_ERROR),
+    MANAGER_NOT_CREATED(1005, "Manager KAYDEDİLEMEDİ", INTERNAL_SERVER_ERROR);
+
 
 
     private int code;

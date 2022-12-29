@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
+import org.team3.dto.response.ManagerResponseDto;
 import org.team3.dto.response.UserDetailsResponseDto;
 import org.team3.dto.response.UserSummaryResponseDto;
 import org.team3.exception.ErrorType;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.team3.constant.ApiUrls.*;
+import static org.team3.constant.ApiUrls.GETALLMANAGER;
 
 
 @RestController
@@ -63,6 +65,27 @@ public class UserController {
     @GetMapping(GETALLUSERSSUMMARYINFO)
     public ResponseEntity<List<UserSummaryResponseDto>> getAllUsersSummaryInfo() {
         return ResponseEntity.ok(userService.getAllUsersSummaryInfo());
+    }
+
+    @CrossOrigin("*")
+    @PostMapping(MANAGERCREATE)
+    public ResponseEntity<Boolean> createManager(@RequestBody UserDetailsRequestDto dto) {
+        try {
+            userService.createManager(dto);
+            return ResponseEntity.ok(true);
+        } catch (Exception e) {
+            throw new UserServiceException(ErrorType.MANAGER_NOT_CREATED);
+        }
+    }
+    @CrossOrigin("*")
+    @PutMapping(UPDATEMANAGER)
+    public ResponseEntity<Boolean> updateManager(@RequestBody @Valid UserUpdateInfoFromManagerRequestDto dto, @PathVariable String email) {
+        return ResponseEntity.ok(userService.updateManager(dto,email));
+    }
+    @CrossOrigin("*")
+    @GetMapping(GETALLMANAGER)
+    public ResponseEntity<List<ManagerResponseDto>> getAllManager(){
+        return ResponseEntity.ok(userService.getAllManager());
     }
 
 
