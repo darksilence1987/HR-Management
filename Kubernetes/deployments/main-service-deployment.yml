@@ -1,28 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-gateway-deployment
+  name: main-service-deployment
   labels:
     team: team3
 spec:
   selector:
     matchLabels:
-      app: api-gateway
+      app: main-service
   template:
     metadata:
       labels:
-        app: api-gateway
+        app: main-service
     spec:
       containers:
-        - name: api-gateway-container
-          image: mhkars/api1:v001
+        - name: main-server-container
+          image: mhkars/main2:v001
           resources:
             requests:
-              memory: "1Gi"
+              memory: "128Mi"
               cpu: "0.1"
             limits:
-              memory: "2Gi"
+              memory: "512Mi"
               cpu: "0.2"
           ports:
-            - containerPort: 80
-
+            - containerPort: 9098

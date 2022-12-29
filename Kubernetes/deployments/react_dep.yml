@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-gateway-deployment
+  name: react-hrm-deployment
   labels:
     team: team3
 spec:
   selector:
     matchLabels:
-      app: api-gateway
+      app: react-hrm
   template:
     metadata:
       labels:
-        app: api-gateway
+        app: react-hrm
     spec:
       containers:
-        - name: api-gateway-container
-          image: mhkars/api1:v001
+        - name: react-service
+          image: mhkars/react:v003
           resources:
             requests:
               memory: "1Gi"
@@ -24,5 +24,5 @@ spec:
               memory: "2Gi"
               cpu: "0.2"
           ports:
-            - containerPort: 80
+            - containerPort: 3000
 
