@@ -34,5 +34,6 @@ public class User {
     String address;
     String corporationName;
     Role role;
+    String corporationName;
 
 }

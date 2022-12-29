@@ -12,6 +12,7 @@ import org.team3.repository.enums.Role;
 @AllArgsConstructor
 
 public class UserUpdateInfoFromManagerRequestDto {
+    String address;
     String photo;
     String name;
     String surname;
@@ -24,8 +25,6 @@ public class UserUpdateInfoFromManagerRequestDto {
     String department;
     String email;
     String phone;
-    String address;
-
     Role role;
 
 }
