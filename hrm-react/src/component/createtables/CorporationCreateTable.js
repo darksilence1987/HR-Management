@@ -62,6 +62,13 @@ function CorporationCreateTable() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+
+
+    function handleChange(e) {
+
+        setLogo(URL.createObjectURL(e.target.files[0]));
+    }
     return (
 
         <>
@@ -138,15 +145,6 @@ function CorporationCreateTable() {
                                     </div>
                                 </div>
 
-                                <div className="col-md-6">
-                                    <div className="form-floating mb-3 mb-md-3">
-                                        <input name="logo" onChange={(e) => setLogo(e.target.value)}
-                                               value={logo} className="form-control" id="inputLogo"
-                                               type="text"
-                                               placeholder="Enter Company Logo"/>
-                                        <label htmlFor="inputName">Company Logo</label>
-                                    </div>
-                                </div>
 
                                 <div className="col-md-6">
                                     <div className="form-floating mb-3 mb-md-3">
@@ -173,7 +171,7 @@ function CorporationCreateTable() {
                                     <div className="form-floating mb-3 mb-md-3">
                                         <input name="email" onChange={(e) => setEmail(e.target.value)}
                                                value={email} className="form-control" id="inputEmail"
-                                               type="text"
+                                               type="email"
                                                placeholder="Enter Company Email Addres"/>
                                         <label htmlFor="inputName"> Company Email Address</label>
                                     </div>
@@ -186,7 +184,7 @@ function CorporationCreateTable() {
                                                onChange={(e) => setNumberOfEmployees(e.target.value)}
                                                value={numberOfEmployees} className="form-control"
                                                id="inputNumberOfEmployees"
-                                               type="text"
+                                               type="number"
                                                placeholder="Enter Number Of Employees"/>
                                         <label htmlFor="inputName">Number of Employees</label>
                                     </div>
@@ -197,7 +195,7 @@ function CorporationCreateTable() {
                                         <input name="foundationYear"
                                                onChange={(e) => setFoundationYear(e.target.value)}
                                                value={foundationYear}
-                                               className="form-control" id="inputfoundationYear" type="text"
+                                               className="form-control" id="inputfoundationYear" type="date"
                                                placeholder="Enter Company Foundation Year"/>
                                         <label htmlFor="inputName">Foundation Year</label>
                                     </div>
@@ -208,12 +206,11 @@ function CorporationCreateTable() {
                                                onChange={(e) => setContractStart(e.target.value)}
                                                value={contractStart} className="form-control"
                                                id="inputContractStart"
-                                               type="text"
+                                               type="date"
                                                placeholder="Enter Contract Start Date"/>
                                         <label htmlFor="inputName">Start of the Contract Day</label>
                                     </div>
                                 </div>
-
 
                                 <div className="col-md-6">
                                     <div className="form-floating mb-3 mb-md-3">
@@ -237,11 +234,20 @@ function CorporationCreateTable() {
                                         </div>
                                     </div>
 
+                                <div className="col-md-6">
+                                    <p>Company Logo</p>
+                                    <div className="form-floating mb-3 mb-md-0">
+                                        {/*<label >Logo</label>*/}
+                                        <input name="logo" type="file" onChange={handleChange}
+                                               className="form-control" id="inputLogo"
+                                        />
+                                        {/*<img src={logo} />*/}
+                                    </div>
+                                </div>
+
                     </div>
-
-
                 </form>
-            </div>z
+            </div>
 
         </Form>
         </Modal.Body>
