@@ -36,9 +36,7 @@ function SideNavbar() {
                                     :
                                 <a className="nav-link" >
 
-
-
-                                <UserCreateTable userList={userProfileList} corporationList={corporationList}>
+                                    <UserCreateTable userList={userProfileList} corporationList={corporationList}>
 
                                 </UserCreateTable>
 
@@ -96,7 +94,5 @@ function SideNavbar() {
 }
 
 export default SideNavbar
-
-
 
 
