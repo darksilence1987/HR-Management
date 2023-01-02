@@ -31,9 +31,9 @@ const [userInfo, setUserInfo] = useState([]);
   const columns = [
     { field: 'id', headerName: 'ID', width: 70, hide: true  },
 
-      { field: 'photo', headerName: 'Photo', width: 100 },
-    { field: 'email', headerName: 'Email', width: 150 },
-    { field: 'name', headerName: 'First Name', width: 130 },
+      { field: 'photo', headerName: 'Photo', width: 200 },
+    { field: 'email', headerName: 'Email', width: 300 },
+    { field: 'name', headerName: 'First Name', width: 300 },
     { field: 'surname', headerName: 'Last Name', width: 130, hide: true },
 
     // { field: 'secondName', headerName: 'Second Name', width: 130, hide: true  },

@@ -112,7 +112,10 @@ function ManagerCreateTable() {
     return (
 
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button  style={{maxWidth: '30px', maxHeight: '100px', minWidth: '190px', minHeight: '100px'}} variant="primary" onClick={handleShow}>
+                <i className="fa-solid fa-user-plus fa-2x"></i>
+
+                <br/>
                 Create Manager
             </Button>
 

@@ -24,12 +24,12 @@ export default function DataTableManager() {
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 70, hide: true  },
+        { field: 'photo', headerName: 'Photo', width: 150 },
 
+        { field: 'email', headerName: 'Email', width: 300 },
 
-        { field: 'email', headerName: 'Email', width: 150 },
-        { field: 'photo', headerName: 'Photo', width: 100 },
-        { field: 'name', headerName: 'First Name', width: 130 },
-        { field: 'surname', headerName: 'Last Name', width: 130, hide: true },
+        { field: 'name', headerName: 'First Name', width: 175 },
+        { field: 'surname', headerName: 'Last Name', width: 175, hide: true },
 
         // { field: 'secondName', headerName: 'Second Name', width: 130, hide: true  },
         // { field: 'secondSurname', headerName: 'Second Surname', width: 130, hide: true   },
@@ -40,7 +40,7 @@ export default function DataTableManager() {
         { field: 'department', headerName: 'Department', width: 130,hide: true  },
         { field: 'phone', headerName: 'Phone', width: 130,hide: true  },
         { field: 'address', headerName: 'Address', width: 130,hide: true  },
-        { field: 'corporationName', headerName: 'Company Name', width: 130 },
+        { field: 'corporationName', headerName: 'Company Name', width: 250 },
         { field: 'role', headerName: 'Role', width: 130,hide: true },
 
         {

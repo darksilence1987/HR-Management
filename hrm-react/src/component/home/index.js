@@ -41,7 +41,7 @@ function Index() {
         <div id="layoutSidenav">
 
 
-            {userRole === "Manager"? <SideNavbar></SideNavbar>: <></>
+            {userRole === "Manager" || userRole === "Admin" ? <SideNavbar></SideNavbar>: <></>
             }
 
             <div id="layoutSidenav_content">
@@ -75,68 +75,85 @@ function Index() {
                         )}
                         <>
                             {
-                                userRole === "Manager" || userRole === "Admin"  ? <>
+                                userRole === "Manager" ? <>
 
                                     <br/>
                                     <br/>
                                     <br/>
                                     <Grid container spacing={2}>
-                                        <Grid item xs={6}>
-
-<br/>
-                                                <div  className="card" style={{width : "100%" , backgroundColor:"#feaf51" }}>
-                                                    <h1 className="mt-4 h3" style={{paddingBottom:"10px" ,  color:"#4753ab"}}>User List</h1>
-                                                    <div  className="card-body"  style={{width : "100%" , backgroundColor:"white"}}>
-
-                                                    <DataTable  style={{width : "100%"}}></DataTable>
-                                                    </div>
-                                                </div>
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-
-
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <br/>
-                                                <div className="card"  style={{width : "100%" , backgroundColor:"#ff6504"}}>
-                                                    <h1 className="mt-4 h3" style={{paddingBottom:"10px" ,  color:"#4753ab"}}>Corporation List</h1>
-                                                    <div className="card-body" style={{width : "100%" , backgroundColor:"white"}}>
-
-                                                    <DataTableComp style={{width : "100%"}}></DataTableComp>
-                                                    </div>
-                                                </div>
-                                        </Grid>
-                                    </Grid>
-
-                                    <Grid container spacing={2}>
-                                        <Grid item xs={6}>
+                                        <Grid item xs={10}>
 
                                             <br/>
-                                            <div  className="card" style={{width : "100%" ,backgroundColor:"#fc864d"}}>
-                                                <h1 className="mt-4 h3" style={{paddingBottom:"10px" ,  color:"#4753ab"}}>Manager List</h1>
-                                                <div  className="card-body" style={{width : "100%" , backgroundColor:"white" , borderColor: 'primary.main'}} >
+                                            <div className="card" style={{width: "100%", backgroundColor: "#feaf51"}}>
+                                                <h1 className="mt-4 h3"
+                                                    style={{paddingBottom: "10px", color: "#4753ab"}}>User List</h1>
+                                                <div className="card-body"
+                                                     style={{width: "100%", backgroundColor: "white"}}>
 
-                                                    <DataTableManager  style={{width : "100%"}}></DataTableManager>
+                                                    <DataTable style={{width: "100%"}}></DataTable>
                                                 </div>
                                             </div>
                                         </Grid>
-
-                                        <Grid item xs={6}>
-
-
-                                        </Grid>
-
                                     </Grid>
+                                    </>    : <></>
+                                        }
+
+                                        {userRole === "Admin" ?
+                                            <>
+                                                <Grid container spacing={2}>
+
+
+                                                <Grid Grid item xs={10}>
+                                                    <br/>
+                                                    <div className="card"
+                                                         style={{width: "100%", backgroundColor: "#ff6504"}}>
+                                                        <h1 className="mt-4 h3" style={{
+                                                            paddingBottom: "10px",
+                                                            color: "#4753ab"
+                                                        }}>Corporation List</h1>
+                                                        <div className="card-body"
+                                                             style={{width: "100%", backgroundColor: "white"}}>
+
+                                                            <DataTableComp style={{width: "100%"}}></DataTableComp>
+                                                        </div>
+                                                    </div>
+                                                </Grid>
+
+                                            </Grid>
+
+                                            </>       : <></>
+                                        }
+
+                                        {userRole === "Admin" ?
+                                            <>
+                                                <Grid container spacing={2}>
+                                            <Grid item xs={10}>
+
+                                                <br/>
+                                                <div className="card"
+                                                     style={{width: "100%", backgroundColor: "#fc864d"}}>
+                                                    <h1 className="mt-4 h3"
+                                                        style={{paddingBottom: "10px", color: "#4753ab"}}>Manager
+                                                        List</h1>
+                                                    <div className="card-body" style={{
+                                                        width: "100%",
+                                                        backgroundColor: "white",
+                                                        borderColor: 'primary.main'
+                                                    }}>
+
+                                                        <DataTableManager style={{width: "100%"}}></DataTableManager>
+                                                    </div>
+                                                </div>
+                                            </Grid>
+                                                </Grid>
+                                            </>    : <></>
+                                        }
+
+
                                 </> : <></>
                             }
 
-                        </>
+
 
                     </div>
                 </main>

@@ -26,10 +26,10 @@ function SideNavbar() {
                         <div className="nav">
                             <div className="sb-sidenav-menu-heading">CREATES</div>
                             {
-                                userRole ==="Admin"?
+                                userRole ==="Admin" ?
 
                                 <a className="nav-link">
-                                    <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
+
                                     <ManagerCreateTable></ManagerCreateTable>
 
                                 </a>
@@ -44,15 +44,18 @@ function SideNavbar() {
 
                             }
 
+                            {userRole === "Admin"  ?
                             <a className="nav-link" >
                                 <CorporationCreateTable></CorporationCreateTable>
                             </a>
-
-
+                                : <></>
+                            }
+                            {userRole === "Admin"  ?
                             <a className="nav-link" >
                              <AssignManager userList={userProfileList} corporationList={corporationList}></AssignManager>
                             </a>
-
+                                : <></>
+                            }
 
 
 
