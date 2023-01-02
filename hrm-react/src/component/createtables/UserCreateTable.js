@@ -1,5 +1,6 @@
-import {Alert} from "@mui/material";
-
+import {Alert, MenuItem, Select} from "@mui/material";
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link, redirect, useNavigate} from "react-router-dom";
@@ -10,7 +11,7 @@ import Form from "react-bootstrap/Form";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
-function UserCreateTable() {
+function UserCreateTable({userList,corporationList}) {
 
     const [name, setName] = useState("");
     const [photo, setPhoto] = useState("");
@@ -29,7 +30,6 @@ function UserCreateTable() {
     const [role, setRole] = useState("");
     const [password, setPassword] = useState("");
     const [rePassword, setRePassword] = useState("");
-
 
     // const [isValid, setIsValid] = useState(false);
     const isSave = useSelector((state) => state.auth.isSave);
@@ -58,61 +58,17 @@ function UserCreateTable() {
             address,
             corporationName,
         };
-
-
-        // dispatch(setAuth(auth));
-
-        // if (isValid) {
-        //     dispatch(fecthRegister(auth));
-        // }
-
         dispatch(fetchUserCreate(auth));
-
-
-        // setTimeout(() => {
-        //     dispatch(setIsSave());
-        // }, 3000);
     };
+    function handleChange(e) {
 
-
-    //
-    // const navigateLogin = () => {
-    //     if (isSave) {
-    //         setTimeout(() => {
-    //             navigate("/");
-    //         }, 3000);
-    //     } else {
-    //         setTimeout(() => {
-    //             dispatch(setIsSave());
-    //         }, 3000);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     navigateLogin();
-    // }, [isSave]);
-    //
-    // useEffect(() => {
-    //     checkPassword();
-    // }, [rePassword, password]);
-    //
-    // const checkPassword = async (e) => {
-    //     if (password === rePassword) {
-    //         setIsVAlid(true);
-    //         dispatch(setAllertMsssage(""));
-    //     } else {
-    //         setIsVAlid(false);
-    //         dispatch(setAllertMsssage("Şifreler Uyuşmuyor"));
-    //     }
-    //     return isValid;
-    // };
-
+        setPhoto(URL.createObjectURL(e.target.files[0]));
+    }
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = ()=> setShow(true);
     return (
-
         <>
             <Button style={{maxWidth: '30px', maxHeight: '100px', minWidth: '190px', minHeight: '100px'}} variant="primary" onClick={handleShow}>
                 <i className="fa-solid fa-user-plus fa-2x"></i>
@@ -120,18 +76,12 @@ function UserCreateTable() {
                 <br/>
                 Create User
             </Button>
-
-
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Create User</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-
-
-
-
                         <div className="card-body">
                             <form>
                                 <div className="row mb-3">
@@ -181,7 +131,7 @@ function UserCreateTable() {
                                         <div className="form-floating mb-3 mb-md-3">
                                             <input name="birthDate" onChange={(e) => setBirthDate(e.target.value)}
                                                    value={birthDate} className="form-control" id="inputBirthDate"
-                                                   type="text"
+                                                   type="date"
                                                    placeholder="Enter your  birthDate"/>
                                             <label htmlFor="inputName">BirthDate</label>
                                         </div>
@@ -201,7 +151,7 @@ function UserCreateTable() {
                                         <div className="form-floating mb-3 mb-md-3">
                                             <input name="startDate" onChange={(e) => setStartDate(e.target.value)}
                                                    value={startDate} className="form-control" id="inputStartDate"
-                                                   type="text"
+                                                   type="date"
                                                    placeholder="Enter your  startDate"/>
                                             <label htmlFor="inputName">StartDate</label>
                                         </div>
@@ -228,9 +178,10 @@ function UserCreateTable() {
 
                                     <div className="col-md-6">
                                         <div className="form-floating mb-3 mb-md-3">
-                                            <input name="phone" onChange={(e) => setPhone(e.target.value)} value={phone}
-                                                   className="form-control" id="inputPhoto" type="text"
-                                                   placeholder="Enter your phone"/>
+                                            <PhoneInput name="phone" onChange={setPhone} value={phone}
+                                                   className="form-control" id="inputPhone"
+                                                   placeholder="Enter your phone"
+                                            />
                                             <label htmlFor="inputName">Phone</label>
                                         </div>
                                     </div>
@@ -257,21 +208,47 @@ function UserCreateTable() {
                                     </div>
 
                                     <div className="col-md-6">
-                                        <div className="form-floating mb-3">
-                                            <input name="corporationName" onChange={(e) => setCorporationName(e.target.value)} value={corporationName}
-                                                   type="corporationName" className="form-control" id="CorporationName"
-                                                   placeholder="name@example.com"/>
-                                            <label htmlFor="inputCorporationName">Corporation Name</label>
+                                        <div className="form-floating mb-3 mb-md-0">
+
+                                            <p>Corporation Name</p>
+                                            <Select sx={{width: 200, height: 50 }}
+
+                                                    labelId="corporate-select-label"
+                                                    id="corporate-select"
+                                                    defaultValue=""
+                                                    label="Corporate List"
+                                                    name="corporationName"
+                                                    onChange={(e) => setCorporationName(e.target.value)} value={corporationName}
+                                                    placeholder="Type to search"
+                                            >
+
+
+                                                {corporationList.map((option, index) => {
+
+                                                    return (
+                                                        <MenuItem value={option.name} key={index}>
+                                                            {option.name}
+                                                        </MenuItem>)}
+                                                )};
+
+
+                                            </Select>
                                         </div>
 
                                     </div>
 
                                     <div className="col-md-6">
-                                        <div className="form-floating mb-3 mb-md-0">
-                                            <input name="photo" onChange={(e) => setPhoto(e.target.value)} value={photo}
-                                                   className="form-control" id="inputPhoto" type="text"
-                                                   placeholder="Enter your photo"/>
-                                            <label htmlFor="inputName">Photo</label>
+
+                                        <p>Photo</p>
+                                        <div className="form-floating mb-3 mb-md-0 ">
+
+
+                                            {/*<label htmlFor="inputName">Photo</label>*/}
+                                            <input name="photo" type="file" onChange={handleChange}
+                                                   className="form-control" id="inputPhoto"
+                                            />
+                                            {/*<img src={photo} />*/}
+                                            
                                         </div>
                                     </div>
                                 </div>

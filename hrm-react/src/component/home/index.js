@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import DataTableComp from "../corporationlist/CorporationList";
 import DataTableManager from "../managerlist/ManagerList";
 import {Grid} from "@mui/material";
-import logo from "../jpegs/logo.jpg"
+import logo1 from "../jpegs/logo1.jpg"
 
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -47,18 +47,22 @@ function Index() {
             <div id="layoutSidenav_content">
                 <main>
 
-                    <div className="container-fluid px-4">
+                    <div className="container-fluid px-4 ">
+                        <div className="container" style={{paddingTop:"50px"}}>
 
 
-                        <img style={{paddingLeft:"150px" , paddingTop:"50px",paddingBottom:"50px"}} src={logo} alt="logo"  />
+                            <img style={{opacity: '0.8', position:'center',  borderRadius: '10px', height: '600px', }}   src={logo1} alt="logo"  />
+
+                            <Button style={{position: 'absolute', left:'300px', top:'70px',fontSize:"20px"}}  variant="primary" onClick={handleClick} >
+
+                                <i className="fa-solid fa-user-check fa-1x"></i>
+                                <br/>
+                                User Profile</Button>
 
 
-                        <Button   variant="primary" onClick={handleClick}>
+                        </div>
 
-                            <i className="fa-solid fa-user-check fa-5x"></i>
-                            <br/>
-                            Get User Profile</Button>
-
+                        {/*<img  style={     { paddingLeft:"50px" , paddingTop:"50px",paddingBottom:"50px"}} src={logo1} alt="logo"  />*/}
                         {isShown && (
                             <>
                                 <ol className="breadcrumb mb-4">
@@ -90,6 +94,15 @@ function Index() {
                                         </Grid>
 
                                         <Grid item xs={6}>
+
+
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+
+                                        </Grid>
+
+                                        <Grid item xs={6}>
                                             <br/>
                                                 <div className="card"  style={{width : "100%" , backgroundColor:"#ff6504"}}>
                                                     <h1 className="mt-4 h3" style={{paddingBottom:"10px" ,  color:"#4753ab"}}>Corporation List</h1>
@@ -112,6 +125,11 @@ function Index() {
                                                     <DataTableManager  style={{width : "100%"}}></DataTableManager>
                                                 </div>
                                             </div>
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+
+
                                         </Grid>
 
                                     </Grid>
