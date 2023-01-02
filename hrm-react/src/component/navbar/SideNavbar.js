@@ -5,7 +5,7 @@ import ManagerCreateTable from "../createtables/ManagerCreateTable";
 import {useSelector} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import AssignManager from "../updateuser/AssignManager";
-
+import  './../../App.css';
 function SideNavbar() {
 
 
@@ -85,9 +85,9 @@ function SideNavbar() {
 
                         </div>
                     </div>
-                    <div className="sb-sidenav-footer">
-                        <div className="small">Logged in as:</div>
-                        Start Bootstrap
+                    <div className="sb-sidenav-footer-special">
+                        <div className="small" style={{color:"white"}}>Logged in as:</div>
+                        {userRole}
                     </div>
                 </nav>
             </div>
