@@ -98,6 +98,10 @@ function Index() {
                                     </>    : <></>
                                         }
 
+                            <br/>
+                            <br/>
+                            <br/>
+
                                         {userRole === "Admin" ?
                                             <>
                                                 <Grid container spacing={2}>
@@ -124,7 +128,35 @@ function Index() {
                                             </>       : <></>
                                         }
 
+                            {
+                                userRole === "Admin" ? <>
+
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={10}>
+
+                                            <br/>
+                                            <div className="card" style={{width: "100%", backgroundColor: "#feaf51"}}>
+                                                <h1 className="mt-4 h3"
+                                                    style={{paddingBottom: "10px", color: "#4753ab"}}>User List</h1>
+                                                <div className="card-body"
+                                                     style={{width: "100%", backgroundColor: "white"}}>
+
+                                                    <DataTable style={{width: "100%"}}></DataTable>
+                                                </div>
+                                            </div>
+                                        </Grid>
+                                    </Grid>
+                                </>    : <></>
+                            }
+                            <br/>
+                            <br/>
+                            <br/>
                                         {userRole === "Admin" ?
+
+
                                             <>
                                                 <Grid container spacing={2}>
                                             <Grid item xs={10}>

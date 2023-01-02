@@ -10,10 +10,10 @@ function SideNavbar() {
 
 
     const userRole = useSelector((state) => state.auth.auth.role);
+    const userCorporateName = useSelector((state) => state.auth.auth.corporationName);
+
     const userProfileList = useSelector((state) => state.user.userProfileList);
     const corporationList = useSelector((state) => state.corporation.corporationList);
-
-    console.log("sidenavbar role", userRole)
 
     return (
 
@@ -36,7 +36,7 @@ function SideNavbar() {
                                     :
                                 <a className="nav-link" >
 
-                                    <UserCreateTable userList={userProfileList} corporationList={corporationList}>
+                                    <UserCreateTable userList={userProfileList} userCorporationName={userCorporateName}>
 
                                 </UserCreateTable>
 

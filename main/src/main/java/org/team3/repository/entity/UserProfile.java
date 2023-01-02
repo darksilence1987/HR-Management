@@ -26,4 +26,5 @@ public class UserProfile {
     String phone;
     String address;
     Role role;
+    String corporationName;
 }
