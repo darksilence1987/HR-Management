@@ -24,9 +24,10 @@ export default function DataTableComp() {
     const [companyInfo, setCompanyInfo] = useState([]);
     const columns = [
         { field: 'id', headerName: 'ID', width: 100, hide: true },
-        { field: 'name', headerName: 'Company  Name', width: 120 },
-        { field: 'title', headerName: 'Title', width: 120 },
-        { field: 'email', headerName: 'Email', width: 150 },
+
+        { field: 'name', headerName: 'Company  Name', width: 200 },
+        { field: 'title', headerName: 'Title', width: 200 },
+        { field: 'email', headerName: 'Email', width: 250 },
         { field: 'phone', headerName: 'Phone', width: 120,hide: true },
         { field: 'address', headerName: 'Address', width: 100, hide: true },
 

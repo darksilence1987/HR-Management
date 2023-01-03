@@ -5,15 +5,15 @@ import ManagerCreateTable from "../createtables/ManagerCreateTable";
 import {useSelector} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import AssignManager from "../updateuser/AssignManager";
-
+import  './../../App.css';
 function SideNavbar() {
 
 
     const userRole = useSelector((state) => state.auth.auth.role);
+    const userCorporateName = useSelector((state) => state.auth.auth.corporationName);
+
     const userProfileList = useSelector((state) => state.user.userProfileList);
     const corporationList = useSelector((state) => state.corporation.corporationList);
-
-    console.log("sidenavbar role", userRole)
 
     return (
 
@@ -26,17 +26,17 @@ function SideNavbar() {
                         <div className="nav">
                             <div className="sb-sidenav-menu-heading">CREATES</div>
                             {
-                                userRole ==="Admin"?
+                                userRole ==="Admin" ?
 
                                 <a className="nav-link">
-                                    <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
-                                    <ManagerCreateTable></ManagerCreateTable>
+
+                                    <ManagerCreateTable corporationList={corporationList}></ManagerCreateTable>
 
                                 </a>
                                     :
                                 <a className="nav-link" >
 
-                                    <UserCreateTable userList={userProfileList} corporationList={corporationList}>
+                                    <UserCreateTable userList={userProfileList} userCorporationName={userCorporateName}>
 
                                 </UserCreateTable>
 
@@ -44,15 +44,18 @@ function SideNavbar() {
 
                             }
 
+                            {userRole === "Admin"  ?
                             <a className="nav-link" >
                                 <CorporationCreateTable></CorporationCreateTable>
                             </a>
-
-
+                                : <></>
+                            }
+                            {userRole === "Admin"  ?
                             <a className="nav-link" >
                              <AssignManager userList={userProfileList} corporationList={corporationList}></AssignManager>
                             </a>
-
+                                : <></>
+                            }
 
 
 
@@ -82,9 +85,9 @@ function SideNavbar() {
 
                         </div>
                     </div>
-                    <div className="sb-sidenav-footer">
-                        <div className="small">Logged in as:</div>
-                        Start Bootstrap
+                    <div className="sb-sidenav-footer-special">
+                        <div className="small" style={{color:"white"}}>Logged in as:</div>
+                        {userRole}
                     </div>
                 </nav>
             </div>

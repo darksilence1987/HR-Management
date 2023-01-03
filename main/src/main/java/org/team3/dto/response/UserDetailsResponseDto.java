@@ -23,7 +23,7 @@ public class UserDetailsResponseDto {
     String startDate;
     String job;
     String department;
-
+    String corporationName;
     String phone;
     String address;
     Role role;
