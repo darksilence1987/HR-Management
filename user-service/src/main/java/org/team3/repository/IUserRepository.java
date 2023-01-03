@@ -13,5 +13,7 @@ public interface IUserRepository extends MongoRepository<User, String> {
     List<User> findAllByRole(String role);
     List<User> findAllByCorporationNameAndRole(String company , String role);
 
+    //    List <UserSummaryResponseDto> findAllByCorporationNameAndRole(String corporationName, String role);
+
 }
 

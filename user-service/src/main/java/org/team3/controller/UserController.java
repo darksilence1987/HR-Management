@@ -3,6 +3,7 @@ package org.team3.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.team3.dto.request.ManagersEmployersRequestDto;
 import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
@@ -84,5 +85,11 @@ public class UserController {
         return userService.findCompanyWorkers(companyName );
     }
 
+
+    @CrossOrigin("*")
+    @PostMapping(MANAGERSEMPLOYERS)
+    public List<User> findManagersEmployer(@RequestBody ManagersEmployersRequestDto dto) {
+        return userService.findManagersEmployers(dto);
+    }
 
 }

@@ -2,6 +2,7 @@ package org.team3.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.team3.dto.request.ManagersEmployersRequestDto;
 import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromManagerRequestDto;
 import org.team3.dto.request.UserUpdateInfoFromUserRequestDto;
@@ -117,8 +118,6 @@ public class UserService extends ServiceManager<User, String> {
     }
 
     public List<UserSummaryResponseDto> getAllUsersSummaryInfo() {
-
-
         return IUserMapper.INSTANCE.toUserListSummaryResponseDto(repository.findAllByRole(Employee.toString()));
     }
 
@@ -126,9 +125,13 @@ public class UserService extends ServiceManager<User, String> {
         return IUserMapper.INSTANCE.toUserListSummaryResponseDto(repository.findAllByRole(Role.Manager.toString()));
     }
 
-
     public List<User> findCompanyWorkers(String company ) {
         return repository.findAllByCorporationNameAndRole(company , "Employee");
+    }
+
+    public List<User> findManagersEmployers(ManagersEmployersRequestDto dto) {
+        User user = findOptionalByEmail(dto.getEmail()).get();
+       return repository.findAllByCorporationNameAndRole(user.getCorporationName() , "Employee");
     }
 
 }

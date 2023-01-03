@@ -9,8 +9,7 @@ const userService = {
     findAllManager: RestApis.userService + "/user/getallmanagersssummaryinfo",
     assignManager: RestApis.userService + "/user/assignmanager",
     findCompanyWorkers: RestApis.userService + "/user/companyworkers",
-
-
+    managersEmployers: RestApis.userService + "/user/managersemployers",
 
 };
 
