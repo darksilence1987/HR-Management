@@ -27,7 +27,7 @@ function UserCreateTable({userList,userCorporationName}) {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [corporationName, setCorporationName] = useState(userCorporationName);
-    const [role, setRole] = useState("");
+    const [role, setRole] = useState("Employee");
     const [password, setPassword] = useState("");
     const [rePassword, setRePassword] = useState("");
 
@@ -56,7 +56,8 @@ function UserCreateTable({userList,userCorporationName}) {
             email,
             phone,
             address,
-            corporationName
+            corporationName,
+            role,
         };
         dispatch(fetchUserCreate(auth));
     };
