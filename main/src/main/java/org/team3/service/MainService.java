@@ -88,7 +88,8 @@ public class MainService {
     public void createUser(UserDetailsRequestDto dto) {
 
         try {
-            dto.setRole(Role.Employee);
+
+
             userManager.createUser(dto);
             AuthRegisterRequestDto registerRequestDto = IMainMapper.INSTANCE.toAuthRegisterRequestDto(dto);
             authManager.createUser(registerRequestDto);

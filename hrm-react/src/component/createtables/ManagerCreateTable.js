@@ -1,4 +1,4 @@
-import {Alert} from "@mui/material";
+import {Alert, MenuItem, Select} from "@mui/material";
 
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
@@ -9,7 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 
-function ManagerCreateTable() {
+function ManagerCreateTable({corporationList}) {
 
     const [name, setName] = useState("");
     const [photo, setPhoto] = useState("");
@@ -24,7 +24,8 @@ function ManagerCreateTable() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
-    const [role, setRole] = useState("");
+    const [role, setRole] = useState("Manager");
+    const [corporationName, setCorporationName] = useState("");
     const [password, setPassword] = useState("");
     const [rePassword, setRePassword] = useState("");
 
@@ -35,7 +36,7 @@ function ManagerCreateTable() {
     const auth = useSelector((state) => state.auth.auth);
     // const navigate = useNavigate();
 
-
+console.log("corplist" + corporationList)
     const dispatch = useDispatch();
     const register = async (e) => {
         e.preventDefault();
@@ -53,6 +54,7 @@ function ManagerCreateTable() {
             email,
             phone,
             address,
+            corporationName,
             role,
         };
 
@@ -204,14 +206,6 @@ function ManagerCreateTable() {
                                     </div>
 
 
-                                    <div className="col-md-6">
-                                        <div className="form-floating mb-3 mb-md-3">
-                                            <input name="role" onChange={(e) => setRole(e.target.value)} value={role}
-                                                   className="form-control" id="inputRole" type="text"
-                                                   placeholder="Enter your role"/>
-                                            <label htmlFor="inputName">Role</label>
-                                        </div>
-                                    </div>
 
                                     <div className="col-md-6">
                                         <div className="form-floating mb-3">
@@ -231,10 +225,39 @@ function ManagerCreateTable() {
                                             <label htmlFor="inputName">Photo</label>
                                         </div>
                                     </div>
+
+
+                                <div className="col-md-6">
+                                    <div className="form-floating mb-3 mb-md-0">
+
+                                        <p>Corporation Name</p>
+                                        <Select sx={{width: 200, height: 50 }}
+
+                                                labelId="corporate-select-label"
+                                                id="corporate-select"
+                                                defaultValue=""
+                                                label="Corporate List"
+                                                name="corporationName"
+                                                onChange={(e) => setCorporationName(e.target.value)} value={corporationName}
+                                                placeholder="Type to search"
+                                        >
+
+
+                                            {corporationList?.map((option, index) => {
+
+                                                return (
+                                                    <MenuItem value={option.name} key={index}>
+                                                        {option.name}
+                                                    </MenuItem>)}
+                                            )};
+
+
+                                        </Select>
+                                    </div>
+
                                 </div>
 
-
-
+                                </div>
                             </form>
                         </div>
 

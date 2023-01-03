@@ -30,7 +30,7 @@ function SideNavbar() {
 
                                 <a className="nav-link">
 
-                                    <ManagerCreateTable></ManagerCreateTable>
+                                    <ManagerCreateTable corporationList={corporationList}></ManagerCreateTable>
 
                                 </a>
                                     :
