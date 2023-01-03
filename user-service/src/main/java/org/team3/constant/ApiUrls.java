@@ -17,6 +17,9 @@ public class ApiUrls {
     public static final String FINDBYID =  "/findbyid";
     public static final String GETALL =  "/getall";
     public static final String COMPANYWORKERS =  "/companyworkers";
+    public static final String MANAGERSEMPLOYERS =  "/managersemployers";
+
+
 
 
 

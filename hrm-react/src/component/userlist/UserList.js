@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from "react-redux";
-import {findallUser} from "../../store/features/UserSlice";
+import {findallUser, findManagersEmployers} from "../../store/features/UserSlice";
 import {Stack, Button} from "@mui/material";
 import {Form, Modal} from "react-bootstrap";
 import Topbar from "../navbar/Topbar";
@@ -19,14 +19,9 @@ import {
 } from "mdb-react-ui-kit";
 import {sendMail} from "../../store/features/MailSlice";
 
-
-
-
 export default function DataTable() {
 
 const [userInfo, setUserInfo] = useState([]);
-
-
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70, hide: true  },
@@ -75,31 +70,35 @@ const [userInfo, setUserInfo] = useState([]);
 
   const dispatch = useDispatch();
 
+  //
+  // const findAllUser = async () =>{
+  //   const response = await dispatch(findallUser());
+  //
+  // }
+  //
+  //   React.useEffect(() => {
+  //       findAllUser()
+  //   }, [userListUpdate]);
 
-  const findAllUser = async () =>{
-    const response = await dispatch(findallUser());
+ const userListUpdate = useSelector((state) =>state.user.userListUpdate);
 
+  const managersEmployers = useSelector((state) => state.user.managersEmployers);
 
-  }
-  const userListUpdate = useSelector((state) => state.user.userListUpdate);
-  const userProfileList = useSelector((state) => state.user.userProfileList);
+    const managerEmail = {email: `${useSelector((state) => state.auth.auth.email)}`};
 
+    const findManagersEmployerss = async () =>{
+        const response = await dispatch(findManagersEmployers(managerEmail));
+    }
 
   const user = useSelector((state) => state.user.userProfile);
 
-
   React.useEffect(() => {
-    findAllUser();
+    findManagersEmployerss()
   }, [userListUpdate]);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  console.log("user info", userInfo);
-
-
-
 
     const [mail, setMail] = useState({
         mailAdres: "",
@@ -108,7 +107,6 @@ const [userInfo, setUserInfo] = useState([]);
 
     });
 
-    console.log("mailim", mail)
     const sendEmail =  () => {
         dispatch(sendMail(mail));
 
@@ -123,18 +121,13 @@ const [userInfo, setUserInfo] = useState([]);
     const handleClose1 = () => setShow1(false);
     const handleShow1 = () => setShow1(true);
 
-
-
-
-
-
     return (
       <>
       <div className="container">
 
         <div style={{ height: 400, width: '100%' }}>
           <DataGrid
-              rows={userProfileList}
+              rows={managersEmployers}
               columns={columns}
               pageSize={5}
               rowsPerPageOptions={[5]}
@@ -142,7 +135,6 @@ const [userInfo, setUserInfo] = useState([]);
               isCellEditable={(params) => params.row.age % 2 === 0}
               experimentalFeatures={{ newEditingApi: true }}
               disableMultipleSelection={true}
-
 
           />
         </div>
@@ -200,11 +192,6 @@ const [userInfo, setUserInfo] = useState([]);
               </Button>
             </Modal.Footer>
           </Modal>
-
-
-
-
-
           <Modal show={show1} onHide={handleClose1}>
               <Modal.Header closeButton>
                   <Modal.Title>Modal heading</Modal.Title>
@@ -250,12 +237,10 @@ const [userInfo, setUserInfo] = useState([]);
                       Close
                   </Button>
                   <Button variant="primary" onClick={sendEmail}>
-Send
+                    Send
                   </Button>
               </Modal.Footer>
           </Modal>
-
-
         </>
   );
 }

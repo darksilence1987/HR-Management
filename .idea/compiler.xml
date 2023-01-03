@@ -11,13 +11,13 @@
         </processorPath>
         <module name="org.team3.HR-Management.auth-service.main" />
         <module name="org.team3.HR-Management.elastic-service.main" />
-        <module name="bilgeadam.HR-Management.main" />
         <module name="HR-Management.main.main" />
         <module name="org.team3.HR-Management.user-service.main" />
         <module name="HR-Management.api-gateway.main" />
         <module name="org.team3.HR-Management.mail-service.main" />
         <module name="org.team3.HR-Management.corporation-service.main" />
         <module name="org.team3.HR-Management.config-server.main" />
+        <module name="JavaProje.HR-Management.main" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
