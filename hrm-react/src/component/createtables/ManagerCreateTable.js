@@ -57,52 +57,13 @@ function ManagerCreateTable() {
         };
 
 
-        // dispatch(setAuth(auth));
-
-        // if (isValid) {
-        //     dispatch(fecthRegister(auth));
-        // }
 
         dispatch(fetchUserCreate(auth));
 
 
-        // setTimeout(() => {
-        //     dispatch(setIsSave());
-        // }, 3000);
     };
 
 
-    //
-    // const navigateLogin = () => {
-    //     if (isSave) {
-    //         setTimeout(() => {
-    //             navigate("/");
-    //         }, 3000);
-    //     } else {
-    //         setTimeout(() => {
-    //             dispatch(setIsSave());
-    //         }, 3000);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     navigateLogin();
-    // }, [isSave]);
-    //
-    // useEffect(() => {
-    //     checkPassword();
-    // }, [rePassword, password]);
-    //
-    // const checkPassword = async (e) => {
-    //     if (password === rePassword) {
-    //         setIsVAlid(true);
-    //         dispatch(setAllertMsssage(""));
-    //     } else {
-    //         setIsVAlid(false);
-    //         dispatch(setAllertMsssage("Şifreler Uyuşmuyor"));
-    //     }
-    //     return isValid;
-    // };
 
 
     const [show, setShow] = useState(false);
@@ -112,7 +73,10 @@ function ManagerCreateTable() {
     return (
 
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button  style={{maxWidth: '30px', maxHeight: '100px', minWidth: '190px', minHeight: '100px'}} variant="primary" onClick={handleShow}>
+                <i className="fa-solid fa-user-plus fa-2x"></i>
+
+                <br/>
                 Create Manager
             </Button>
 

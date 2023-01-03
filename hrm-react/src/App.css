@@ -35,3 +35,9 @@
         transform: rotate(360deg);
     }
 }
+
+
+.sb-sidenav-footer-special{
+    background-color:  #343a40;
+    color: #e96900;
+}

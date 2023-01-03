@@ -11,7 +11,7 @@ import Form from "react-bootstrap/Form";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
-function UserCreateTable({userList,corporationList}) {
+function UserCreateTable({userList,userCorporationName}) {
 
     const [name, setName] = useState("");
     const [photo, setPhoto] = useState("");
@@ -26,7 +26,7 @@ function UserCreateTable({userList,corporationList}) {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
-    const [corporationName, setCorporationName] = useState("");
+    const [corporationName, setCorporationName] = useState(userCorporationName);
     const [role, setRole] = useState("");
     const [password, setPassword] = useState("");
     const [rePassword, setRePassword] = useState("");
@@ -56,7 +56,7 @@ function UserCreateTable({userList,corporationList}) {
             email,
             phone,
             address,
-            corporationName,
+            corporationName
         };
         dispatch(fetchUserCreate(auth));
     };
@@ -207,35 +207,7 @@ function UserCreateTable({userList,corporationList}) {
 
                                     </div>
 
-                                    <div className="col-md-6">
-                                        <div className="form-floating mb-3 mb-md-0">
 
-                                            <p>Corporation Name</p>
-                                            <Select sx={{width: 200, height: 50 }}
-
-                                                    labelId="corporate-select-label"
-                                                    id="corporate-select"
-                                                    defaultValue=""
-                                                    label="Corporate List"
-                                                    name="corporationName"
-                                                    onChange={(e) => setCorporationName(e.target.value)} value={corporationName}
-                                                    placeholder="Type to search"
-                                            >
-
-
-                                                {corporationList.map((option, index) => {
-
-                                                    return (
-                                                        <MenuItem value={option.name} key={index}>
-                                                            {option.name}
-                                                        </MenuItem>)}
-                                                )};
-
-
-                                            </Select>
-                                        </div>
-
-                                    </div>
 
                                     <div className="col-md-6">
 
