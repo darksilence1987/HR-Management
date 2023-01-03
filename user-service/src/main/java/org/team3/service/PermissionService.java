@@ -31,29 +31,31 @@ public class PermissionService extends ServiceManager<Permission, String> {
 
     public boolean createPermission(PermissionRequestDto dto, String email) {
         Optional<User> user = userRepository.findOptionalByEmail(email);
+        Optional<Permission> userPermission = repository.findOptionalByUserIdAndStatus(user.get().getId(), Status.PENDING);
         try {
-            if(user.isPresent()){
+            if(user.isPresent() && userPermission.isEmpty()){
                 Permission permission = repository.insert(IPermissionMapper.INSTANCE.toPermission(dto));
                 permission.setStatus(Status.PENDING);
                 permission.setUserId(user.get().getId());
                 permission.setCorporationName(user.get().getCorporationName());
                 permission.setRequestDate(LocalDate.now());
                 repository.save(permission);
+            }else {
+                throw new UserServiceException(ErrorType.USER_HAS_PERMISSION);
             }
             return true;
         } catch (Exception e) {
             e.printStackTrace();
-            throw new UserServiceException(ErrorType.USER_NOT_CREATED);
+            throw new UserServiceException(ErrorType.PERM_NOT_CREATED);
         }
     }
 
     public ResponseEntity<String> rejectPermission(String userId) {
-        System.out.println(userId);
         Optional<Permission> permission = repository.findOptionalByUserIdAndStatus(userId, Status.PENDING);
-        System.out.println(permission.toString());
         try {
             if(permission.get().getStatus().equals(Status.PENDING)){
                 permission.get().setStatus(Status.REJECTED);
+                permission.get().setResponseDate(LocalDate.now());
                 save(permission.get());
             }
             return ResponseEntity.ok("Permission request denied.");
@@ -67,6 +69,7 @@ public class PermissionService extends ServiceManager<Permission, String> {
         try {
             if(permission.get().getStatus().equals(Status.PENDING)){
                 permission.get().setStatus(Status.CONFIRMED);
+                permission.get().setResponseDate(LocalDate.now());
                 save(permission.get());
             }
             return ResponseEntity.ok("Permission request accepted.");
@@ -94,7 +97,7 @@ public class PermissionService extends ServiceManager<Permission, String> {
     public Permission findByUserId(String userId) {
 
         System.out.println("2");
-        return repository.findByUserId(userId);
+        return repository.findOptionalByUserIdAndStatus(userId, Status.PENDING).get();
 
     }
 }

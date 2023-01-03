@@ -4,17 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.team3.dto.request.PermissionRequestDto;
-import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.exception.ErrorType;
 import org.team3.exception.UserServiceException;
 import org.team3.repository.entity.Permission;
-import org.team3.repository.enums.Status;
 import org.team3.service.PermissionService;
-import org.team3.service.UserService;
-
 import java.util.List;
-import java.util.Optional;
-
 import static org.team3.constant.ApiUrls.*;
 
 @RestController
@@ -35,17 +29,16 @@ public class PermissionController {
     }
 
     @CrossOrigin("*")
-    @PostMapping(PERMISSIONREJECTED)
-    public ResponseEntity<String> rejected(@RequestBody String userId) {
+    @PutMapping(PERMISSIONREJECTED)
+    public ResponseEntity<String> rejected( String userId) {
         return service.rejectPermission(userId);
     }
 
 
 
     @CrossOrigin("*")
-    @PostMapping(PERMISSIONCONFIRMED)
-    public ResponseEntity<String> confirmed(@RequestBody String userId) {
-        System.out.println(userId);
+    @PutMapping(PERMISSIONCONFIRMED)
+    public ResponseEntity<String> confirmed(String userId) {
         return service.acceptPermission(userId);
     }
 
@@ -61,11 +54,4 @@ public class PermissionController {
         return ResponseEntity.ok(service.getAllOld(email));
     }
 
-
-    @CrossOrigin("*")
-    @PostMapping("/findbyid")
-    public ResponseEntity<Permission> findById(@RequestBody String userId) {
-        System.out.println("1");
-        return ResponseEntity.ok(service.findByUserId(userId));
-    }
 }
