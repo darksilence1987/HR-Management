@@ -66,7 +66,6 @@ public class UserService extends ServiceManager<User, String> {
 
     @Transactional
     public UserDetailsResponseDto userDetailsResponseByEmail(String email) {
-
         try {
             Optional<User> user = repository.findOptionalByEmail(email);
             UserDetailsResponseDto dto = IUserMapper.INSTANCE.toUserDetailsResponseDto(user.get());
