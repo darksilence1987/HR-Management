@@ -9,6 +9,7 @@ import org.team3.dto.request.LoginRequestDto;
 
 import javax.validation.Valid;
 
+import static org.team3.constant.ApiUrls.REQUESTPASSWORD;
 import static org.team3.constant.ApiUrls.USERCREATE;
 
 @FeignClient(url="http://localhost:9090/api/v1/auth", name="auth-service-application", decode404 = true)
@@ -18,4 +19,7 @@ public interface IAuthManager {
 
     @PostMapping(USERCREATE)
     public ResponseEntity<Boolean> createUser(@RequestBody @Valid AuthRegisterRequestDto dto);
+
+    @PostMapping(REQUESTPASSWORD)
+    boolean requestPassword(@RequestBody  String email);
 }

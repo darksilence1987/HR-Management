@@ -22,6 +22,17 @@ import static org.team3.constant.ApiUrls.*;
 public class MainController {
     private final MainService mainservice;
     private final IAuthManager authManager;
+    @CrossOrigin("*")
+    @GetMapping(REQUESTPASSWORD)
+    public ResponseEntity<String> requestPassword(@RequestParam(name="email") String email) {
+        System.out.println("requestPassword : "+email);
+        if(mainservice.requestPassword(email)) {
+            return ResponseEntity.ok("Password reset link sent to your email");
+        }
+        else {
+            return ResponseEntity.ok("Email not found");
+        }
+    }
 
     @CrossOrigin("*")
     @PostMapping("/login-request")

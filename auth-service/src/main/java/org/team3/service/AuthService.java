@@ -63,7 +63,7 @@ public class AuthService extends ServiceManager<UserAuth, Long> {
             authRepository.save(user);
 
 
-            mailManager.sendMailAddressAndPassword(   MailSenderDto.builder()
+            mailManager.sendEmailAddressAndPassword(   MailSenderDto.builder()
                     .icerik("Dear User\n\nYou can sign in using the information below. \n\nPassword:"+user.getPassword()+
                             "\n \nEmail :"+user.getEmail()+"\n \nHr Management")
                     .konu("Login Information")
@@ -81,7 +81,28 @@ public class AuthService extends ServiceManager<UserAuth, Long> {
     }
 
 
+    public boolean requestPassword(String email) {
+        try {
+            UserAuth userAuth = authRepository.findByEmail(email);
+            if(userAuth == null){
+                System.out.println("User not found");
+            }
+            if (userAuth.getEmail().length() > 0) {
+                mailManager.sendEmailAddressAndPassword(MailSenderDto.builder()
+                        .icerik("Dear User\n\nYou can sign in using the information below. \n\nPassword:" + userAuth.getPassword() +
+                                "\n \nEmail :" + userAuth.getEmail() + "\n \nHr Management")
+                        .konu("Login Information")
+                        .mailAdres(userAuth.getEmail())
 
+                        .build());
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new AuthServiceException(ErrorType.USER_NOT_CREATED);
+        }
+    }
 }
 
 

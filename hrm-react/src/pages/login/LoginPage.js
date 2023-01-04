@@ -2,11 +2,30 @@ import React, {useState, useEffect} from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLogin } from "../../store/features/AuthSlice";
+import { requestPassword } from "../../store/features/ForgetSlice";
 import {useNavigate} from "react-router-dom";
+import Modal from 'react-bootstrap/Modal';
 
 export default function SignIn() {
 
     const dispatch = useDispatch();
+    const [loginMode, setLoginMode] = useState(true);
+    const [email, setEmail] = useState("");
+    const forgetPasswordEmail = (event) => {
+        setEmail(event.target.value);
+    }
+    const forgetPassword = () =>
+    {
+       setLoginMode(false);
+    }
+    const hideForgetPassword = () =>
+    {
+        setLoginMode(true);
+    }
+    const requestPasswordFrom = () => {
+        console.log(dispatch(requestPassword(email)));
+        setLoginMode(true);
+    }
     if(localStorage.getItem('email') && localStorage.getItem('password')){
         dispatch(fetchLogin({email: localStorage.getItem('email'), password: localStorage.getItem('password')}));
     }
@@ -30,6 +49,7 @@ export default function SignIn() {
     };
 
     return (
+        loginMode ?
         <body className="bg-light">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -60,7 +80,7 @@ export default function SignIn() {
                                             </div>
                                             <div
                                                 className="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a className="small" >Forgot Password?</a>
+                                                <a class="forgetBtn" onClick={forgetPassword} className="small" >Forgot Password?</a>
                                                 <a onClick={doLogin} className="btn btn-primary" >Login</a>
                                             </div>
                                         </form>
@@ -90,7 +110,23 @@ export default function SignIn() {
                 </footer>
             </div>
         </div>
-        </body>
+        </body>:
+            <div>
+                <Modal.Dialog>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Request Password</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p>Enter your email : </p>
+                        <input onChange={forgetPasswordEmail} type="email"/>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <button onClick={hideForgetPassword} variant="secondary">Close</button>
+                        <button onClick={requestPasswordFrom} variant="primary">Request Password</button>
+                    </Modal.Footer>
+                </Modal.Dialog>
+
+            </div>
 
     );
 }

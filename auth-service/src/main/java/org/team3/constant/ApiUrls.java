@@ -7,6 +7,7 @@ public class ApiUrls {
 
     public static final String USERCREATE =  "/usercreate";
     public static final String SENDMAIL =  "/sendmail";
+    public static final String REQUESTPASSWORD =  "/request-password";
 
 
 }

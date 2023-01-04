@@ -68,7 +68,7 @@ function SideNavbar() {
                                         Authentication
                                         <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i>
                                         </div>
-                                    </a>
+                                    </a>{/*
                                     <div className="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
                                          data-bs-parent="#sidenavAccordionPages">
                                         <nav className="sb-sidenav-menu-nested nav">
@@ -76,7 +76,7 @@ function SideNavbar() {
                                             <a className="nav-link" href="register.html">Register</a>
                                             <a className="nav-link" href="password.html">Forgot Password</a>
                                         </nav>
-                                    </div>
+                                    </div>*/}
 
 
                                 </nav>
