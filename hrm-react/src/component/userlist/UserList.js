@@ -130,10 +130,17 @@ const [userInfo, setUserInfo] = useState([]);
 
     return (
       <>
-      <div className="container">
+      <div className="container "  sx={{
+          boxShadow: 2,
+          border: 2,
+          borderColor: 'white',
+          color: 'white',
+
+      }}>
 
         <div style={{ height: 400, width: '100%' }}>
           <DataGrid
+
               rows={userProfileList}
               columns={columns}
               pageSize={5}
@@ -143,7 +150,13 @@ const [userInfo, setUserInfo] = useState([]);
               experimentalFeatures={{ newEditingApi: true }}
               disableMultipleSelection={true}
 
+              sx={{
+                  boxShadow: 2,
+                  border: 2,
+                  borderColor: 'white',
+                  color: 'white',
 
+              }}
           />
         </div>
       </div>
