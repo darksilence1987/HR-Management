@@ -1,26 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
+import axios from "axios";
+import mainService from "../../config/MainService";
 const initialState = {
     email : ""
 }
 
 export const requestPassword = createAsyncThunk(
-    "forget/requestPassword",
-    async (payload) => {
+    "main/requestPassword",
+    async (email) => {
         try {
-            const response = await fetch("http://localhost:9098/api/v1/main/request-password", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(payload),
-            })
-                .then((response) => response.json())
-                .catch((error) => console.log(error));
-            console.log("response", response);
-            return response;
-        } catch (err) {
-            return err.response;
+            const response = await axios.get(mainService.requestPassword, { params:{email: email}});
+            return response.data;
+
+        } catch (error) {
+            return error.response.data;
         }
     }
 );

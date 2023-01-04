@@ -58,7 +58,7 @@ public class AuthController {
 
     @CrossOrigin("*")
     @PostMapping(REQUESTPASSWORD)
-    boolean requestPassword(@RequestParam String email){
+    boolean requestPassword(@RequestBody String email){
 
         System.out.println("email: " + email);
         try {
@@ -67,8 +67,6 @@ public class AuthController {
             throw new AuthServiceException(ErrorType.USER_NOT_CREATED);
         }
     }
-
-
 
 
 }

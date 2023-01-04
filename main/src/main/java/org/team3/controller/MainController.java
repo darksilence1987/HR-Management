@@ -23,8 +23,8 @@ public class MainController {
     private final MainService mainservice;
     private final IAuthManager authManager;
     @CrossOrigin("*")
-    @PostMapping(REQUESTPASSWORD)
-    public ResponseEntity<String> requestPassword(@RequestBody String email) {
+    @GetMapping(REQUESTPASSWORD)
+    public ResponseEntity<String> requestPassword(@RequestParam(name="email") String email) {
         System.out.println("requestPassword : "+email);
         if(mainservice.requestPassword(email)) {
             return ResponseEntity.ok("Password reset link sent to your email");
