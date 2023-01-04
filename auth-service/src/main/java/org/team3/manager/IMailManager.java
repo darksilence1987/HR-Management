@@ -14,7 +14,7 @@ import static org.team3.constant.ApiUrls.SENDMAIL;
 public interface IMailManager {
     @CrossOrigin("*")
     @PostMapping(SENDMAIL)
-    public void sendMailAddressAndPassword(@RequestBody MailSenderDto dto);
+    public void sendEmailAddressAndPassword(@RequestBody MailSenderDto dto);
 
 }
 

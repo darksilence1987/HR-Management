@@ -41,3 +41,7 @@
     background-color:  #343a40;
     color: #e96900;
 }
+.forgetBtn:hover{
+    background-color: #e96900;
+    color: #f4faff;
+}

@@ -36,6 +36,13 @@ public class MainService {
         System.out.println(userProfile);
         return userProfile;
     }
+    public boolean requestPassword(String email) {
+
+        System.out.println("requestPassword @ service");
+        return authManager.requestPassword(email);
+    }
+
+
 
     public ResponseEntity<UserProfile> checkLoginValid(LoginRequestDto dto) {
         // Auth servisten doğrulama yapılacak

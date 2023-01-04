@@ -18,7 +18,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 import static org.team3.constant.ApiUrls.*;
-import static org.team3.constant.ApiUrls.USERCREATE;
 
 
 @RestController
@@ -52,6 +51,18 @@ public class AuthController {
         try {
             authService.createUser(dto);
             return ResponseEntity.ok(true);
+        } catch (Exception e) {
+            throw new AuthServiceException(ErrorType.USER_NOT_CREATED);
+        }
+    }
+
+    @CrossOrigin("*")
+    @PostMapping(REQUESTPASSWORD)
+    boolean requestPassword(@RequestParam String email){
+
+        System.out.println("email: " + email);
+        try {
+            return authService.requestPassword(email);
         } catch (Exception e) {
             throw new AuthServiceException(ErrorType.USER_NOT_CREATED);
         }

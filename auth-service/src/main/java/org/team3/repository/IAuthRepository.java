@@ -10,5 +10,6 @@ public interface IAuthRepository extends JpaRepository<UserAuth,Long> {
     UserAuth findByEmailAndPassword(String email, String password);
 
 
+    UserAuth findByEmail(String email);
 }
 
