@@ -43,8 +43,8 @@ function Index() {
     };
     return (
 
-        <body className="sb-nav-fixed">
-
+        <body className="sb-nav-fixed" >
+<div style={{marginLeft:"10%"}}>
         <Topbar></Topbar>
 
         <div id="layoutSidenav">
@@ -63,14 +63,15 @@ function Index() {
                     ,
                     "particles": {
                         "number": {
-                            "value": 10,
+                            "value":50,
                             "density": {
                                 "enable": false,
                                 "value_area": 800
                             }
                         },
                         "color": {
-                            "value": "#fff"
+                            "value": "#0d6efd"
+
                         },
                         "shape": {
                             "type": "star",
@@ -104,15 +105,15 @@ function Index() {
                             "direction": "clockwise",
                             "animation": {
                                 "enable": true,
-                                "speed": 5,
+                                "speed": 7,
                                 "sync": false
                             }
                         },
                         "line_linked": {
                             "enable": true,
-                            "distance": 600,
-                            "color": "#ffffff",
-                            "opacity": 0.4,
+                            "distance": 400,
+                            "color": "#e96900",
+                            "opacity": 0.35,
                             "width": 2
                         },
                         "move": {
@@ -176,7 +177,8 @@ function Index() {
                     }
                 }}/>
 
-            {userRole === "Manager" || userRole === "Admin" ? <SideNavbar></SideNavbar>: <></>
+
+            {userRole === "Manager" || userRole === "Admin" ? <SideNavbar > </SideNavbar>: <></>
             }
 
             <div id="layoutSidenav_content">
@@ -209,6 +211,8 @@ function Index() {
                             </>
                         )}
                         <>
+
+
                             {
                                 userRole === "Manager" ? <>
 
@@ -219,13 +223,14 @@ function Index() {
                                         <Grid item xs={10}>
 
                                             <br/>
-                                            <div className="card" style={{width: "100%" , backgroundColor: "transparent",color:"white" , borderColor:"white"}}>
+                                            <div className="card" style={{width: "100%", backgroundColor: "#ff6504"}}>
                                                 <h1 className="mt-4 h3"
-                                                    style={{paddingBottom: "10px", color: "white"}}>User List</h1>
+                                                    style={{ paddingBottom: "10px",
+                                                        color: "#4753ab"}}>User List</h1>
                                                 <div className="card-body"
-                                                     style={{width: "100%", backgroundColor: "transparent",color:"white"}}>
+                                                     style={{width: "100%", backgroundColor: "white"}}>
 
-                                                    <DataTable style={{width: "100%" ,color:"white"}}></DataTable>
+                                                    <DataTable style={{width: "100%" }}></DataTable>
                                                 </div>
                                             </div>
                                         </Grid>
@@ -347,6 +352,7 @@ function Index() {
 
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossOrigin="anonymous"></script>
+        </div>
 
         </body>
     )
