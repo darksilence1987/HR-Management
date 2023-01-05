@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { AuthSlice, UserSlice,CorporationSlice, MailSlice } from "./features";
+import {AuthSlice, UserSlice, CorporationSlice, MailSlice, PermissionSlice} from "./features";
 
 
 const store = configureStore({
@@ -8,6 +8,7 @@ const store = configureStore({
         user: UserSlice,
         corporation: CorporationSlice,
         mail: MailSlice,
+        permission: PermissionSlice,
     },
 });
 

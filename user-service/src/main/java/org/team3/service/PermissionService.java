@@ -29,14 +29,14 @@ public class PermissionService extends ServiceManager<Permission, String> {
         this.userRepository = userRepository;
     }
 
-    public boolean createPermission(PermissionRequestDto dto, String email) {
-        Optional<User> user = userRepository.findOptionalByEmail(email);
-        Optional<Permission> userPermission = repository.findOptionalByUserIdAndStatus(user.get().getId(), Status.PENDING);
+    public boolean createPermission(PermissionRequestDto dto) {
+        Optional<User> user = userRepository.findOptionalByEmail(dto.getUserEmail());
+        Optional<Permission> userPermission = repository.findOptionalByUserEmailAndStatus(user.get().getEmail(), Status.PENDING);
         try {
             if(user.isPresent() && userPermission.isEmpty()){
                 Permission permission = repository.insert(IPermissionMapper.INSTANCE.toPermission(dto));
                 permission.setStatus(Status.PENDING);
-                permission.setUserId(user.get().getId());
+                permission.setUserEmail(user.get().getEmail());
                 permission.setCorporationName(user.get().getCorporationName());
                 permission.setRequestDate(LocalDate.now());
                 repository.save(permission);
@@ -50,8 +50,8 @@ public class PermissionService extends ServiceManager<Permission, String> {
         }
     }
 
-    public ResponseEntity<String> rejectPermission(String userId) {
-        Optional<Permission> permission = repository.findOptionalByUserIdAndStatus(userId, Status.PENDING);
+    public ResponseEntity<String> rejectPermission(String userEmail) {
+        Optional<Permission> permission = repository.findOptionalByUserEmailAndStatus(userEmail, Status.PENDING);
         try {
             if(permission.get().getStatus().equals(Status.PENDING)){
                 permission.get().setStatus(Status.REJECTED);
@@ -64,8 +64,8 @@ public class PermissionService extends ServiceManager<Permission, String> {
         }
     }
 
-    public ResponseEntity<String> acceptPermission(String userId) {
-        Optional<Permission> permission = repository.findOptionalByUserIdAndStatus(userId, Status.PENDING);
+    public ResponseEntity<String> acceptPermission(String userEmail) {
+        Optional<Permission> permission = repository.findOptionalByUserEmailAndStatus(userEmail, Status.PENDING);
         try {
             if(permission.get().getStatus().equals(Status.PENDING)){
                 permission.get().setStatus(Status.CONFIRMED);
@@ -86,6 +86,9 @@ public class PermissionService extends ServiceManager<Permission, String> {
 
     }
 
+
+
+
     public List<Permission> getAllOld(String email) {
         List<Permission> all = getAll(email);
         List<Permission> allOld = all.stream().filter(
@@ -94,10 +97,10 @@ public class PermissionService extends ServiceManager<Permission, String> {
         return allOld;
     }
 
-    public Permission findByUserId(String userId) {
+    public Permission findByUserId(String userEmail) {
 
         System.out.println("2");
-        return repository.findOptionalByUserIdAndStatus(userId, Status.PENDING).get();
+        return repository.findOptionalByUserEmailAndStatus(userEmail, Status.PENDING).get();
 
     }
 }

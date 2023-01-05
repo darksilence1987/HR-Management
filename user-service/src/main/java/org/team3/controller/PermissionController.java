@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.team3.dto.request.PermissionRequestDto;
+import org.team3.dto.request.PermissionUserEmailRequestDto;
 import org.team3.exception.ErrorType;
 import org.team3.exception.UserServiceException;
 import org.team3.repository.entity.Permission;
@@ -19,9 +20,9 @@ public class PermissionController {
 
     @CrossOrigin("*")
     @PostMapping(PERMISSIONCREATE)
-    public ResponseEntity<String> createPermission(@RequestBody PermissionRequestDto dto, String email) {
+    public ResponseEntity<String> createPermission(@RequestBody PermissionRequestDto dto) {
         try {
-            service.createPermission(dto, email);
+            service.createPermission(dto);
             return ResponseEntity.ok("permission request created");
         } catch (Exception e) {
             throw new UserServiceException(ErrorType.PERM_NOT_CREATED);
@@ -29,29 +30,29 @@ public class PermissionController {
     }
 
     @CrossOrigin("*")
-    @PutMapping(PERMISSIONREJECTED)
-    public ResponseEntity<String> rejected( String userId) {
-        return service.rejectPermission(userId);
+    @PostMapping(PERMISSIONREJECTED)
+    public ResponseEntity<String> rejected(@RequestBody PermissionUserEmailRequestDto dto) {
+        return service.rejectPermission(dto.getUserEmail());
     }
 
 
-
     @CrossOrigin("*")
-    @PutMapping(PERMISSIONCONFIRMED)
-    public ResponseEntity<String> confirmed(String userId) {
-        return service.acceptPermission(userId);
+    @PostMapping(PERMISSIONCONFIRMED)
+    public ResponseEntity<String> confirmed(@RequestBody PermissionUserEmailRequestDto dto) {
+        return service.acceptPermission(dto.getUserEmail());
     }
 
     @CrossOrigin("*")
-    @GetMapping(ALLPPERMISSIONS)
-    public ResponseEntity<List<Permission>> findAll(String email) {
-        return ResponseEntity.ok(service.getAll(email));
+    @PostMapping(ALLPPERMISSIONS)
+    public ResponseEntity<List<Permission>> findAll(@RequestBody PermissionUserEmailRequestDto dto) {
+
+        return ResponseEntity.ok(service.getAll(dto.getUserEmail()));
     }
 
     @CrossOrigin("*")
-    @GetMapping(ALLFINALIZEDPERMISSIONS)
-    public ResponseEntity<List<Permission>> findOldPermissions(String email) {
-        return ResponseEntity.ok(service.getAllOld(email));
+    @PostMapping(ALLFINALIZEDPERMISSIONS)
+    public ResponseEntity<List<Permission>> findOldPermissions(@RequestBody PermissionUserEmailRequestDto dto) {
+        return ResponseEntity.ok(service.getAllOld(dto.getUserEmail()));
     }
 
 }
