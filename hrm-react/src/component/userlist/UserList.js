@@ -25,7 +25,9 @@ const [userInfo, setUserInfo] = useState([]);
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70, hide: true  },
-    { field: 'photo', headerName: 'Photo', width: 200 },
+
+      { field: 'photo', headerName: 'Photo', width: 200 },
+
     { field: 'email', headerName: 'Email', width: 300 },
     { field: 'name', headerName: 'First Name', width: 300 },
     { field: 'surname', headerName: 'Last Name', width: 130, hide: true },
@@ -46,7 +48,8 @@ const [userInfo, setUserInfo] = useState([]);
         };
         return (
             <Stack direction="row" spacing={2}>
-              <Button variant="outlined" color="warning" size="small" onClick={GetUser}><Button variant="primary" onClick={handleShow}>
+              <Button variant="outlined" color="warning" size="small" onClick={GetUser}>
+                  <Button variant="primary" onClick={handleShow}>
                 DETAILS
               </Button></Button>
               {/*<Button variant="outlined" color="error" size="small" onClick={onClick}>Delete</Button>*/}

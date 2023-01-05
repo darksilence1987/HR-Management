@@ -1,16 +1,12 @@
-import {Alert, InputLabel, MenuItem, Select, Stack} from "@mui/material";
+import {InputLabel, MenuItem, Select, Stack} from "@mui/material";
 
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {Link, redirect, useNavigate} from "react-router-dom";
+import React, {useState} from "react";
+import {useDispatch} from "react-redux";
 import {assignManager, findCompanyWorkers} from "../../store/features/UserSlice";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {DataGrid} from "@mui/x-data-grid";
-import {Dropdown} from "react-bootstrap";
-import AsyncSelect from 'react-select/async';
 
 
 function AssignManager({userList,corporationList}) {
@@ -48,9 +44,6 @@ function AssignManager({userList,corporationList}) {
 
     const dispatch = useDispatch();
 
-
-
-
     const columns = [
         { field: 'id', headerName: 'ID', width: 70, hide: true },
 
@@ -70,16 +63,14 @@ function AssignManager({userList,corporationList}) {
             sortable: false,
             disableClickEventBubbling: true,
             renderCell: (params) => {
-                const GetUser = () => {
-                    setUserInfo(params.row);
-                    console.log(userInfo);
-                };
+
                 return (
-                    <Stack direction="row" spacing={3}>
-                        <Button variant="outlined" color="warning" size="small" onClick={GetUser}>
-                            <Button variant="primary" onClick={makeManager} >
-                            <i className="fa-solid fa-person-arrow-up-from-line"></i> Make Manager
-                        </Button></Button>
+                    <Stack direction="row" spacing={3}  >
+                        <Button variant="outlined" color="warning" size="small" >
+                            <Button variant="primary" onClick={makeManager} value={params.row.email} >
+                                <i className="fa-solid fa-person-arrow-up-from-line"></i> Make Manager
+                            </Button></Button>
+
                         {/*<Button variant="outlined" color="error" size="small" onClick={onClick}>Delete</Button>*/}
                     </Stack>
                 );
@@ -87,11 +78,10 @@ function AssignManager({userList,corporationList}) {
         },
     ];
 
-
     const makeManager = async (e) => {
         e.preventDefault();
         handleClose();
-        dispatch(assignManager(userInfo.email));
+        dispatch(assignManager(e.target.value));
         setUsers([]);
 
     };
@@ -100,9 +90,6 @@ function AssignManager({userList,corporationList}) {
 
     const handleClose = () => setShow(false);
     const handleShow = ()=> setShow(true);
-    // useEffect(() => {
-    //     loadRows().then(r => r);
-    // }, []);
     return (
 
         <>
