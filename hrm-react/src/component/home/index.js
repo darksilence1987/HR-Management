@@ -10,37 +10,29 @@ import DataTableComp from "../corporationlist/CorporationList";
 import DataTableManager from "../managerlist/ManagerList";
 import {Grid} from "@mui/material";
 import logo1 from "../jpegs/logo1.jpg"
+import PermissionList from "../permissionform/PermissionList";
+import ApprovedPermissionList from "../permissionform/ApprovedPermissionList";
 
-
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 function Index() {
 
+
+
     const [isShown, setIsShown] = useState(false);
 
     const handleClick = event => {
-
         setIsShown(current => !current);
-
     };
-
-
     const dispatch = useDispatch();
     const userRole = useSelector((state) => state.auth.auth.role);
 
-
-    console.log("user role ", userRole);
-
     return (
 
+
         <body className="sb-nav-fixed">
-
         <Topbar></Topbar>
-
         <div id="layoutSidenav">
-
-
             {userRole === "Manager" || userRole === "Admin" ? <SideNavbar></SideNavbar>: <></>
             }
 
@@ -59,8 +51,8 @@ function Index() {
                                 <br/>
                                 User Profile</Button>
 
-
                         </div>
+
 
                         {/*<img  style={     { paddingLeft:"50px" , paddingTop:"50px",paddingBottom:"50px"}} src={logo1} alt="logo"  />*/}
                         {isShown && (
@@ -69,14 +61,11 @@ function Index() {
                                     <li className="breadcrumb-item active">User Profile</li>
                                 </ol>
                                 <ProfilePage></ProfilePage>
-
-
                             </>
                         )}
                         <>
                             {
                                 userRole === "Manager" ? <>
-
                                     <br/>
                                     <br/>
                                     <br/>
@@ -97,16 +86,12 @@ function Index() {
                                     </Grid>
                                     </>    : <></>
                                         }
-
                             <br/>
                             <br/>
                             <br/>
-
                                         {userRole === "Admin" ?
                                             <>
                                                 <Grid container spacing={2}>
-
-
                                                 <Grid Grid item xs={10}>
                                                     <br/>
                                                     <div className="card"
@@ -117,20 +102,15 @@ function Index() {
                                                         }}>Corporation List</h1>
                                                         <div className="card-body"
                                                              style={{width: "100%", backgroundColor: "white"}}>
-
                                                             <DataTableComp style={{width: "100%"}}></DataTableComp>
                                                         </div>
                                                     </div>
                                                 </Grid>
-
                                             </Grid>
-
                                             </>       : <></>
                                         }
-
                             {
                                 userRole === "Admin" ? <>
-
                                     <br/>
                                     <br/>
                                     <br/>
@@ -182,8 +162,56 @@ function Index() {
                                         }
 
 
-                                </> : <></>
-                            }
+                                </>
+                              <>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <Grid container spacing={2}>
+                                <Grid item xs={10}>
+
+                                    <br/>
+                                    <div className="card" style={{width: "100%", backgroundColor: "#feaf51"}}>
+                                        <h1 className="mt-4 h3"
+                                            style={{paddingBottom: "10px", color: "#4753ab"}}>All Permissions</h1>
+                                        <div className="card-body"
+                                             style={{width: "100%", backgroundColor: "white"}}>
+
+                                            <PermissionList style={{width: "100%"}}></PermissionList>
+                                        </div>
+                                    </div>
+                                </Grid>
+                            </Grid>
+                        </>
+
+
+                        <>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <Grid container spacing={2}>
+                                <Grid item xs={10}>
+
+                                    <br/>
+                                    <div className="card" style={{width: "100%", backgroundColor: "#feaf51"}}>
+                                        <h1 className="mt-4 h3"
+                                            style={{paddingBottom: "10px", color: "#4753ab"}}>Finalized Permissions</h1>
+                                        <div className="card-body"
+                                             style={{width: "100%", backgroundColor: "white"}}>
+
+                                            <ApprovedPermissionList style={{width: "100%"}}></ApprovedPermissionList>
+                                        </div>
+                                    </div>
+                                </Grid>
+                            </Grid>
+                        </>
+
+
+
+
+
+
+
 
 
 
@@ -214,6 +242,8 @@ function Index() {
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossOrigin="anonymous"></script>
 
         </body>
+
+
     )
 }
 

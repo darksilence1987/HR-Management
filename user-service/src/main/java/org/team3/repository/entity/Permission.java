@@ -19,7 +19,7 @@ import java.util.Date;
 public class Permission {
     @Id
     String id;
-    String userId;
+    String userEmail;
     String corporationName;
     String permissionType;
     LocalDate startDate;

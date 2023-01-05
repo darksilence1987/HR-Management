@@ -39,6 +39,8 @@ function UserCreateTable({userList,userCorporationName}) {
 
 
     const dispatch = useDispatch();
+
+
     const register = async (e) => {
         e.preventDefault();
         handleClose();
@@ -61,6 +63,9 @@ function UserCreateTable({userList,userCorporationName}) {
         };
         dispatch(fetchUserCreate(auth));
     };
+
+
+
     function handleChange(e) {
 
         setPhoto(URL.createObjectURL(e.target.files[0]));

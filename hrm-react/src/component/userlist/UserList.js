@@ -25,36 +25,26 @@ const [userInfo, setUserInfo] = useState([]);
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70, hide: true  },
-
-      { field: 'photo', headerName: 'Photo', width: 200 },
+    { field: 'photo', headerName: 'Photo', width: 200 },
     { field: 'email', headerName: 'Email', width: 300 },
     { field: 'name', headerName: 'First Name', width: 300 },
     { field: 'surname', headerName: 'Last Name', width: 130, hide: true },
-
-    // { field: 'secondName', headerName: 'Second Name', width: 130, hide: true  },
-    // { field: 'secondSurname', headerName: 'Second Surname', width: 130, hide: true   },
-    // { field: 'birthDate', headerName: 'Birth Date', width: 130, hide: true  },
-    // { field: 'birthPlace', headerName: 'Birth Place', width: 130,hide: true  },
-    // { field: 'startDate', headerName: 'Start Date', width: 130,hide: true  },
     { field: 'job', headerName: 'Job', width: 130,hide: true  },
     { field: 'department', headerName: 'Department', width: 130,hide: true  },
     { field: 'phone', headerName: 'Phone', width: 130,hide: true  },
     { field: 'address', headerName: 'Address', width: 130,hide: true  },
     { field: 'role', headerName: 'Role', width: 130,hide: true  },
-
     {
       field: 'action',
       headerName: 'Action',
       width: 220,
       sortable: false,
       disableClickEventBubbling: true,
-
       renderCell: (params) => {
         const GetUser = () => {
            setUserInfo(params.row);
         };
         return (
-
             <Stack direction="row" spacing={2}>
               <Button variant="outlined" color="warning" size="small" onClick={GetUser}><Button variant="primary" onClick={handleShow}>
                 DETAILS
@@ -64,29 +54,14 @@ const [userInfo, setUserInfo] = useState([]);
         );
       },
     },
-
-
   ];
 
-  const dispatch = useDispatch();
-
-  //
-  // const findAllUser = async () =>{
-  //   const response = await dispatch(findallUser());
-  //
-  // }
-  //
-  //   React.useEffect(() => {
-  //       findAllUser()
-  //   }, [userListUpdate]);
-
+ const dispatch = useDispatch();
  const userListUpdate = useSelector((state) =>state.user.userListUpdate);
-
   const managersEmployers = useSelector((state) => state.user.managersEmployers);
+  const managerEmail = {email: `${useSelector((state) => state.auth.auth.email)}`};
 
-    const managerEmail = {email: `${useSelector((state) => state.auth.auth.email)}`};
-
-    const findManagersEmployerss = async () =>{
+  const findManagersEmployerss = async () =>{
         const response = await dispatch(findManagersEmployers(managerEmail));
     }
 
@@ -106,21 +81,16 @@ const [userInfo, setUserInfo] = useState([]);
         konu: "",
 
     });
-
     const sendEmail =  () => {
         dispatch(sendMail(mail));
-
     };
     const onChangeMail = (e) => {
         const { name, value } = e.target;
         setMail({ ...mail, [name]: value });
     };
-
     const [show1, setShow1] = useState(false);
-
     const handleClose1 = () => setShow1(false);
     const handleShow1 = () => setShow1(true);
-
     return (
       <>
       <div className="container">

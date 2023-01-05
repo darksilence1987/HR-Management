@@ -32,6 +32,7 @@ public class UserService extends ServiceManager<User, String> {
         this.repository = repository;
     }
 
+
     public Optional<User> findOptionalByEmail(String email) {
         return repository.findOptionalByEmail(email);
     }
