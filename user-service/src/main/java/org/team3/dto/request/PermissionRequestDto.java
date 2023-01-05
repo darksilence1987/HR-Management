@@ -14,6 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PermissionRequestDto {
+    String userEmail;
     String permissionType;
     LocalDate startDate;
     int dayAmount;

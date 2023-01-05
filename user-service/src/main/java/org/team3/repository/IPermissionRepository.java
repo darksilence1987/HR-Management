@@ -11,8 +11,8 @@ import java.util.Optional;
 
 @Repository
 public interface IPermissionRepository extends MongoRepository<Permission, String> {
-    Optional<Permission> findOptionalByUserIdAndStatus(String id, Status status);
-    Permission findByUserId(String userId);
+    Optional<Permission> findOptionalByUserEmailAndStatus(String userEmail, Status status);
+    Permission findByUserEmail(String userEmail);
 
     Optional<List<Permission>> findAllByCorporationName(String corporation);
 }

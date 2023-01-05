@@ -8,7 +8,6 @@ function UserPage() {
 
     return (
         <>
-
             <ProfilePage>
 
         </ProfilePage>
