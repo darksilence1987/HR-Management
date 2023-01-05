@@ -32,7 +32,7 @@ function Topbar() {
             <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
                 <a className="navbar-brand ps-3" >Team 3 </a>
                 {/*<button type={"button"} className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">Main Page </button>*/}
-                <Button variant="primary"> <Link to = "/approvedList">Finalized Permission List</Link></Button>
+                {/*<Button variant="primary"> <Link to = "/approvedList">Finalized Permission List</Link></Button>*/}
 
                 <PermissionForm></PermissionForm>
 
