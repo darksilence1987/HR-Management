@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-service-deployment
+  name: react-deployment
   labels:
-    team: team3
+    app: reactwebdeployment
 spec:
   selector:
     matchLabels:
-      app: user-service
+      app: react-web-service
   template:
     metadata:
       labels:
-        app: user-service
+        app: react-web-service
     spec:
       containers:
-        - name: user-service
-          image: burakozer1/team3user
+        - name: react-web-service
+          image: burakozer1/react:v003
           resources:
             requests:
               memory: "1Gi"
@@ -24,4 +24,5 @@ spec:
               memory: "2Gi"
               cpu: "0.2"
           ports:
-            - containerPort: 9091
+            - containerPort: 80
+            - containerPort: 3000

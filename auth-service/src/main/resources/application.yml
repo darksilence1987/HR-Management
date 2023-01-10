@@ -1,10 +1,10 @@
 spring:
   cloud:
     config:
-      uri: http://localhost:8889
+      uri: http://10.72.0.12:8889
   profiles:
     active: properties
   config:
-    import: "optional:configserver:"
+    import: "configserver:"
   application:
     name: auth-service-application

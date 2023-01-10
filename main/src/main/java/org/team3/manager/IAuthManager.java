@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import static org.team3.constant.ApiUrls.REQUESTPASSWORD;
 import static org.team3.constant.ApiUrls.USERCREATE;
 
-@FeignClient(url="http://localhost:9090/api/v1/auth", name="auth-service-application", decode404 = true)
+@FeignClient(url="http://10.76.4.36:9090/api/v1/auth", name="auth-service-application", decode404 = true)
 public interface IAuthManager {
     @PostMapping("/login")
     public Boolean loginUser(@RequestBody @Valid LoginRequestDto loginUserAuth);

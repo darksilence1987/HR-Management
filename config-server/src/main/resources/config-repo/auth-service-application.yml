@@ -1,0 +1,35 @@
+server:
+  port: 9090
+spring:
+  #   rabbitmq:
+  #     host: localhost
+  #     username: portname
+  #     password: 123
+  #     port: 5672
+  datasource:
+    dialect: org.hibernate.dialect.PostgreSQLDialect
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://34.122.82.48:5444/authDb
+    username: postgres
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+    show-sql: true
+
+
+#rabbitmq:
+#  exchange-auth: ${rabbitmq-exchange-auth}
+#  bindingKey: ${rabbitmq-bindingKey}
+#  queueActivatedCode: ${rabbitmq-queueActivatedCode}
+#  userUpdateQueue: ${rabbitmq-userUpdateQueue}
+rabbitmq:
+  exchange-auth: "exchange-auth"
+  bindingKey: "bindingKey"
+  queueActivatedCode: "queueActivatedCode"
+  userUpdateQueue: "userUpdateQueue"
+myjwt:
+  secretKey: "testKey"
+  audience: "testAudience"
+  issuer: "testIssuer"

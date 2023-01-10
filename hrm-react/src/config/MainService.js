@@ -2,10 +2,10 @@ import RestApis from "./RestApiUrls";
 
 const mainService = {
 
-    loginrequest: RestApis.mainService + "/main/login-request",
-    getuserdetailslist: RestApis.mainService + "/main/get-user-details-list",
-    usercreate: RestApis.mainService + "/main/create-user",
-    requestPassword: RestApis.mainService + "/main/request-password",
+    loginrequest: RestApis.mainService + "/login-request",
+    getuserdetailslist: RestApis.mainService + "/get-user-details-list",
+    usercreate: RestApis.mainService + "/create-user",
+    requestPassword: RestApis.mainService + "/request-password",
 
 };
 

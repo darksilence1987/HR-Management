@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-service-deployment
+  name: mail-service-deployment
   labels:
     team: team3
 spec:
   selector:
     matchLabels:
-      app: user-service
+      app: mail-service
   template:
     metadata:
       labels:
-        app: user-service
+        app: mail-service
     spec:
       containers:
-        - name: user-service
-          image: burakozer1/team3user
+        - name: mail-service
+          image: burakozer1/team3mail
           resources:
             requests:
               memory: "1Gi"
@@ -24,4 +24,4 @@ spec:
               memory: "2Gi"
               cpu: "0.2"
           ports:
-            - containerPort: 9091
+            - containerPort: 9191

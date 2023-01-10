@@ -17,7 +17,7 @@ import java.util.Optional;
 import static org.team3.constant.ApiUrls.*;
 
 
-@FeignClient(url="http://localhost:9091/api/v1/user" ,name="user-service-application", decode404 = true)
+@FeignClient(url="http://10.76.11.124:9091/api/v1/user" ,name="user-service-application", decode404 = true)
 
 public interface IUserManager {
     @PostMapping("/get-user-by-email")

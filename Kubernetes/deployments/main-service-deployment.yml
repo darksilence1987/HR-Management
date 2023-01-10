@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zipkin
+  name: main-service-deployment
   labels:
-    team: socialmediadev
+    team: team3
 spec:
   selector:
     matchLabels:
-      app: zipkin
+      app: main-service
   template:
     metadata:
       labels:
-        app: zipkin
+        app: main-service
     spec:
       containers:
-        - name: zipkin-pod
-          image: openzipkin/zipkin
+        - name: main-service
+          image: burakozer1/team3main
           resources:
             requests:
               memory: "1Gi"
               cpu: "0.1"
             limits:
               memory: "2Gi"
-              cpu: "0.25"
+              cpu: "0.2"
           ports:
-            - containerPort: 9411
+            - containerPort: 9098

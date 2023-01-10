@@ -8,6 +8,6 @@ spec:
     app: api-gateway
 
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 3333
+      targetPort: 3333
       name: api-gateway-port

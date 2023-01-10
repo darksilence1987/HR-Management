@@ -23,6 +23,7 @@ import static org.team3.constant.ApiUrls.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(AUTH)
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AuthController {
 
     private final AuthService authService;
@@ -36,7 +37,7 @@ public class AuthController {
 //            return ResponseEntity.badRequest().build();
 //        }
 //    }
-    @CrossOrigin("*")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/login")
     public Boolean loginUser(@RequestBody @Valid LoginRequestDto loginUserAuth) {
         try {
@@ -45,7 +46,7 @@ public class AuthController {
             return false;
         }
     }
-
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping(USERCREATE)
     public ResponseEntity<Boolean> createUser(@RequestBody @Valid AuthRegisterRequestDto dto) {
         try {
@@ -56,7 +57,7 @@ public class AuthController {
         }
     }
 
-    @CrossOrigin("*")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping(REQUESTPASSWORD)
     boolean requestPassword(@RequestBody String email){
 

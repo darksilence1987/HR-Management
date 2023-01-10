@@ -10,7 +10,7 @@ import org.team3.dto.request.MailSenderDto;
 
 import static org.team3.constant.ApiUrls.SENDMAIL;
 
-@FeignClient(url="http://localhost:8080/api/v1/mail", name="mail-service-application", decode404 = true)
+@FeignClient(url="http://10.76.5.161:9191/api/v1/mail", name="mail-service-application", decode404 = true)
 public interface IMailManager {
     @CrossOrigin("*")
     @PostMapping(SENDMAIL)

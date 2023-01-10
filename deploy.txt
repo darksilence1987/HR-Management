@@ -1,0 +1,26 @@
+java için build:
+docker build --build-arg JAR_FILE=config-server/build/libs/config-server-v.0.1.jar -t burakozer1/team3config .
+react için build:
+docker build -t  burakozer1/react .
+
+
+
+16/101->kubernates devamı
+
+33/101->cloud/mustafahoca
+
+
+
+
+https://robertcollege.sharepoint.com/sites/BoostAnkara-Java-3Snf/Shared%20Documents/Forms/AllItems.aspx?FolderCTID=0x01200076EAE57E577D1E4488942B712BE5CDA8&isAscending=false&sortField=Modified&id=%2Fsites%2FBoostAnkara%2DJava%2D3Snf%2FShared%20Documents%2FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%2FRecordings%2FJava%203%20S%2DU%2DSpring%2D20221111%5F091304%2DToplant%C4%B1%20Kayd%C4%B1%2Emp4&viewid=d70b905e%2D4822%2D47ca%2D9c63%2D654e7f41f5d3&parent=%2Fsites%2FBoostAnkara%2DJava%2D3Snf%2FShared%20Documents%2FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%2FRecordings
+
+https://robertcollege.sharepoint.com/sites/BoostAnkara-Java-3Snf/_layouts/15/stream.aspx?id=%2Fsites%2FBoostAnkara%2DJava%2D3Snf%2FShared%20Documents%2FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%2FRecordings%2FJava%203%20%C3%96%2DU%2DSpring%20%28Microservices%20%2D%20ApiGateway%29%2D20221024%5F134736%2DToplant%C4%B1%20Kayd%C4%B1%2Emp4
+
+
+muhammet hoca cloud
+
+https://robertcollege.sharepoint.com/sites/BoostAnkara-Java-3Snf/Shared%20Documents/Forms/AllItems.aspx?FolderCTID=0x01200076EAE57E577D1E4488942B712BE5CDA8&isAscending=false&sortField=Modified&id=%2Fsites%2FBoostAnkara%2DJava%2D3Snf%2FShared%20Documents%2FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%2FRecordings%2F%5FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%5F%20kanal%C4%B1ndaki%20toplant%C4%B1%2D20221108%5F133945%2DToplant%C4%B1%20Kayd%C4%B1%2Emp4&viewid=d70b905e%2D4822%2D47ca%2D9c63%2D654e7f41f5d3&parent=%2Fsites%2FBoostAnkara%2DJava%2D3Snf%2FShared%20Documents%2FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%2FRecordings
+
+https://robertcollege.sharepoint.com/sites/BoostAnkara-Java-3Snf/Shared%20Documents/Forms/AllItems.aspx?FolderCTID=0x01200076EAE57E577D1E4488942B712BE5CDA8&isAscending=false&sortField=Modified&id=%2Fsites%2FBoostAnkara%2DJava%2D3Snf%2FShared%20Documents%2FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%2FRecordings%2F%5FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%5F%20kanal%C4%B1ndaki%20toplant%C4%B1%2D20221109%5F133833%2DToplant%C4%B1%20Kayd%C4%B1%2Emp4&viewid=d70b905e%2D4822%2D47ca%2D9c63%2D654e7f41f5d3&parent=%2Fsites%2FBoostAnkara%2DJava%2D3Snf%2FShared%20Documents%2FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%2FRecordings
+
+https://robertcollege.sharepoint.com/sites/BoostAnkara-Java-3Snf/Shared%20Documents/Forms/AllItems.aspx?FolderCTID=0x01200076EAE57E577D1E4488942B712BE5CDA8&isAscending=false&sortField=Modified&id=%2Fsites%2FBoostAnkara%2DJava%2D3Snf%2FShared%20Documents%2FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%2FRecordings%2F%5FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%5F%20kanal%C4%B1ndaki%20toplant%C4%B1%2D20221125%5F133416%2DToplant%C4%B1%20Kayd%C4%B1%2Emp4&viewid=d70b905e%2D4822%2D47ca%2D9c63%2D654e7f41f5d3&parent=%2Fsites%2FBoostAnkara%2DJava%2D3Snf%2FShared%20Documents%2FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%2FRecordings

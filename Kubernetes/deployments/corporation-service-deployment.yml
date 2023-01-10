@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis-deployment
+  name: corporation-service-deployment
   labels:
-    team: socialmediadev
+    team: team3
 spec:
   selector:
     matchLabels:
-      app: redis
+      app: corporation-service
   template:
     metadata:
       labels:
-        app: redis
+        app: corporation-service
     spec:
       containers:
-        - name: redis-pod
-          image: redis
+        - name: corporation-service
+          image: burakozer1/team3corporation
           resources:
             requests:
               memory: "1Gi"
               cpu: "0.1"
             limits:
               memory: "2Gi"
-              cpu: "0.25"
+              cpu: "0.2"
           ports:
-            - containerPort: 6379
+            - containerPort: 8891

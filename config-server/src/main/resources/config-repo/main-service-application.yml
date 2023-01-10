@@ -1,0 +1,16 @@
+server:
+  port: 9098
+spring:
+#   rabbitmq:
+#     host: localhost
+#     username: portname
+#     password: 123
+#     port: 5672
+rabbitmq:
+  exchange-main: "main-service-exchange"
+  bindingKey:     "main-binding-key"
+  queueActivatedCode: "main-queue-code"
+myjwt:
+  secretKey: "testKey"
+  audience: "testAudience"
+  issuer: "testIssuer"

@@ -1,8 +1,8 @@
 import RestApis from "./RestApiUrls";
 
 const authService = {
-    login: RestApis.authService + "/auth/login",
-    register: RestApis.authService + "/auth/register",
+    login: RestApis.authService + "/login",
+    register: RestApis.authService + "/register",
 
 };
 

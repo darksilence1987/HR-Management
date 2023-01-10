@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: configserverdeployment
+  name: config-service-deployment
   labels:
-    team: socialmediadev
+    team: team3
 spec:
   selector:
     matchLabels:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: config-server-container
-          image: musty1406/config-serverj3:v002
+          image: burakozer1/team3config
           resources:
             requests:
               memory: "128Mi"
@@ -24,15 +24,4 @@ spec:
               memory: "512Mi"
               cpu: "0.2"
           ports:
-            - containerPort: 8888
-          env:
-            - name: config-port
-              valueFrom:
-                secretKeyRef:
-                  name: socialmediasecret
-                  key: config-port
-            - name: zipkin-url
-              valueFrom:
-                secretKeyRef:
-                  name: socialmediasecret
-                  key: zipkin-url
+            - containerPort: 8889

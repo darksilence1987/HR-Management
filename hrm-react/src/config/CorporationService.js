@@ -3,8 +3,8 @@ import RestApis from "./RestApiUrls";
 const corporationService = {
 
 
-    findall: RestApis.corporationService + "/corporation/getallcorporationssummaryinfo",
-    createCorporation: RestApis.corporationService + "/corporation/corporationcreate",
+    findall: RestApis.corporationService + "/getallcorporationssummaryinfo",
+    createCorporation: RestApis.corporationService + "/corporationcreate",
 
 };
 

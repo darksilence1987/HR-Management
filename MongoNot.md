@@ -18,4 +18,4 @@ roles: [ "readWrite", "dbAdmin" ]
 
 
 
-db.createUser({user: "bilgeuser",pwd: "bilge!!**",roles: [ "readWrite", "dbAdmin" ]})
+db.createUser({user: "team3": "root",roles: [ "readWrite", "dbAdmin" ]})

@@ -7,11 +7,12 @@ const mailPort = "8080";
 const version = "/api/v1";
 
 const RestApis = {
-    authService: "http://localhost:" + authPort + version,
-    userService: "http://localhost:" + userPort + version,
-    mainService: "http://localhost:" + mainPort + version,
-    corporationService: "http://localhost:" + corporationPort + version,
-    mailService: "http://localhost:" + mailPort + version,
+    authService: "http://35.192.135.28:3333/auth",
+    userService: "http://35.192.135.28:3333/user",
+    mainService: "http://35.192.135.28:3333/main",
+    corporationService: "http://35.192.135.28:3333/corporation",
+    mailService: "http://35.192.135.28:3333/mail",
 };
+
 
 export default RestApis;

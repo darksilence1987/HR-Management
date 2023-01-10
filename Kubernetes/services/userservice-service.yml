@@ -7,6 +7,6 @@ spec:
   selector:
     app: user-service
   ports:
-    - port: 8091
-      targetPort: 8091
+    - port: 9091
+      targetPort: 9091
       name: user-service-port

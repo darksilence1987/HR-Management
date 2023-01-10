@@ -7,6 +7,6 @@ spec:
   selector:
     app: mail-service
   ports:
-    - port: 8094
-      targetPort: 8094
+    - port: 9191
+      targetPort: 9191
       name: mail-service-port

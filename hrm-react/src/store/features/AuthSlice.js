@@ -24,10 +24,21 @@ export const fetchLogin = createAsyncThunk(
 
     async (payload) => {
         try {
+            /**
+             * 'http://35.192.135.28:3333/api/v1/auth/login'
+             * @type {any}
+             *
+             * authService.login
+             * mainService.loginrequest,
+             */
+
             const response = await fetch(mainService.loginrequest, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Accept-Encoding': 'gzip;q=1.0, compress;q=0.5',
                 },
                 body: JSON.stringify(payload),
             })

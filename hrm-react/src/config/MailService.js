@@ -1,7 +1,7 @@
 import RestApis from "./RestApiUrls";
 
 const mailService = {
-    sendmail: RestApis.mailService + "/mail/sendmail",
+    sendmail: RestApis.mailService + "/sendmail",
 
 
 };
