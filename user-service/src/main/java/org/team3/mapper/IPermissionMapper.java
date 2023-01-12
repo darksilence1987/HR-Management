@@ -3,10 +3,11 @@ package org.team3.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
+import org.team3.dto.request.ExpenseRequestDto;
 import org.team3.dto.request.PermissionRequestDto;
-import org.team3.dto.request.UserDetailsRequestDto;
 import org.team3.dto.response.UserDetailsResponseDto;
 import org.team3.dto.response.UserSummaryResponseDto;
+import org.team3.repository.entity.Expense;
 import org.team3.repository.entity.Permission;
 import org.team3.repository.entity.User;
 
