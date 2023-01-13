@@ -81,7 +81,6 @@ public class PermissionService extends ServiceManager<Permission, String> {
 
     public List<Permission> getAll(String email) {
         String corporation = userRepository.findOptionalByEmail(email).get().getCorporationName();
-        System.out.println(corporation);
         return repository.findAllByCorporationName(corporation).get();
 
     }
@@ -96,6 +95,8 @@ public class PermissionService extends ServiceManager<Permission, String> {
                 .collect(Collectors.toList());
         return allOld;
     }
+
+
 
     public Permission findByUserId(String userEmail) {
 

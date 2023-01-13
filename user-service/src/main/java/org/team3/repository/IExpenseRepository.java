@@ -17,6 +17,6 @@ public interface IExpenseRepository extends MongoRepository<Expense, String> {
 
     Optional<List<Expense>> findAllOptionalByUserEmail(String userEmail);
 
-    List<Expense> findAllByCorporationName(String corporationName);
+    Optional<List<Expense>> findAllByCorporationName(String corporationName);
 }
 

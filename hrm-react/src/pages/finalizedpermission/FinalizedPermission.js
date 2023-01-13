@@ -1,18 +1,16 @@
 import React from 'react'
-import ApprovedPermissionList from "../../component/permissionform/ApprovedPermissionList";
+import FinalizedExpenseList from "../../component/expenseform/FinalizedExpenseList";
 
-
-
-function FinalizedPermission() {
+function FinalizedExpenses() {
 
 
 
     return (
         <>
-            <ApprovedPermissionList>
-            </ApprovedPermissionList>
+            <FinalizedExpenseList>
+            </FinalizedExpenseList>
         </>
     )
 }
 
-export default FinalizedPermission
+export default FinalizedExpenses

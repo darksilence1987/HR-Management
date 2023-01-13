@@ -5,6 +5,7 @@ import {findByEmail} from "../../store/features/UserSlice";
 import Button from "react-bootstrap/Button";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import PermissionForm from "../permissionform/PermissionForm";
+import ExpenseForm from "../expenseform/ExpenseForm";
 
 
 
@@ -35,6 +36,9 @@ function Topbar() {
                 {/*<Button variant="primary"> <Link to = "/approvedList">Finalized Permission List</Link></Button>*/}
 
                 <PermissionForm></PermissionForm>
+                <br/>
+
+                <ExpenseForm></ExpenseForm>
 
 
 

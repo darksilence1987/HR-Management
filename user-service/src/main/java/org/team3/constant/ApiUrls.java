@@ -21,6 +21,13 @@ public class ApiUrls {
     public static final String ALLPPERMISSIONS =  "/allpermissions";
     public static final String ALLFINALIZEDPERMISSIONS =  "/allfinalizedpermissions";
     public static final String GET_ALL_BY_USER_EMAIL = "/getallbyuseremail";
+
+
+
+
+
+
+
     public static final String EXPENSE_CREATE = "/expensecreate";
     public static final String EXPENSE_REJECTED = "/expenserejected";
     public static final String EXPENSE_CONFIRMED = "/expenseconfirmed";

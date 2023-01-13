@@ -17,15 +17,11 @@ import java.util.List;
 public interface IPermissionMapper {
     IPermissionMapper INSTANCE= Mappers.getMapper(IPermissionMapper.class);
 
-    Permission toPermission(PermissionRequestDto dto);
-
-
-
-
+    Permission toPermission(final PermissionRequestDto dto);
 
     List<UserSummaryResponseDto> toUserListSummaryResponseDto(final List<User> users);
 
-    UserDetailsResponseDto toUserDetailsResponseDto(User user);
+    UserDetailsResponseDto toUserDetailsResponseDto(final User user);
 
 
 }

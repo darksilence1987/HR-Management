@@ -5,9 +5,6 @@ import {Button, Stack} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import {
     findAllFinalizedPermissions,
-    findAllPermission,
-    permissionConfirmed,
-    permissionRejected
 } from "../../store/features/PermissionSlice";
 
 export default function ApprovedPermissionList() {

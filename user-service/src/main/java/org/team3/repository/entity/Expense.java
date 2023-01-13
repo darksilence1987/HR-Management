@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.team3.repository.enums.ExpenseStatus;
 
@@ -15,15 +16,15 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 public class Expense {
+    @Id
     private String id;
-    private String name;
-    private String description;
-    private String amount;
-    private String date;
-    private String category;
+    private String corporationName;
+    private String expenseName;
+    private String expenseDescription;
+    private Long expenseAmount;
+    private LocalDate expenseDate;
     private String userEmail;
     private ExpenseStatus expenseStatus;
-    private String corporationName;
     private LocalDate createdDate;
 
 
