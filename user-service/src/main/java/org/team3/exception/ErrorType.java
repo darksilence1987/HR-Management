@@ -21,7 +21,9 @@ public enum ErrorType {
     USER_NOT_CREATED(1005, "Kullanıcı KAYDEDİLEMEDİ", INTERNAL_SERVER_ERROR),
     PERM_NOT_CREATED(900, "izin isteği KAYDEDİLEMEDİ", INTERNAL_SERVER_ERROR),
     USER_NOT_FOUND(1004, "Kullanıcı bulunamadı", INTERNAL_SERVER_ERROR),
-    USER_HAS_PERMISSION(901, "Kullanıcıya ait bir izin isteği zaten mevcut", INTERNAL_SERVER_ERROR);
+    USER_HAS_PERMISSION(901, "Kullanıcıya ait bir izin isteği zaten mevcut", INTERNAL_SERVER_ERROR),
+
+    EXP_NOT_CREATED(801,"Kullanıcıya ait bir harcama isteği zaten mevcut" , INTERNAL_SERVER_ERROR );
 
 
     private int code;

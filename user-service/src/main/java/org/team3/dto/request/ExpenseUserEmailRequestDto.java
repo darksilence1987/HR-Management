@@ -1,16 +1,14 @@
 package org.team3.dto.request;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class ExpenseUserEmailRequestDto {
 
-public class ManagersEmployersRequestDto {
-
-    String email;
+   private String userEmail;
 }

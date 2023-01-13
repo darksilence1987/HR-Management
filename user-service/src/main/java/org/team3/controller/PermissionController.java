@@ -13,7 +13,7 @@ import java.util.List;
 import static org.team3.constant.ApiUrls.*;
 
 @RestController
-@RequestMapping(PERMISSION)
+@RequestMapping(USER)
 @RequiredArgsConstructor
 public class PermissionController {
     private final PermissionService service;

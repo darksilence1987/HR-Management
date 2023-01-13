@@ -19,6 +19,8 @@ import {loadFull} from "tsparticles";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import ApprovedPermissionList from "../permissionform/ApprovedPermissionList";
 import PermissionList from "../permissionform/PermissionList";
+import FinalizedExpenseList from "../expenseform/FinalizedExpenseList";
+import ExpenseList from "../expenseform/ExpenseList";
 
 
 function Index() {
@@ -271,6 +273,47 @@ function Index() {
                                                          style={{width: "100%", backgroundColor: "white"}}>
 
                                                         <ApprovedPermissionList style={{width: "100%"}}></ApprovedPermissionList>
+                                                    </div>
+                                                </div>
+                                            </Grid>
+                                        </Grid>
+                                    </>
+
+
+
+
+                                    <br/>
+                                    <br/>
+                                    <>
+                                        <br/>
+                                        <br/>
+                                        <Grid container spacing={2}>
+                                            <Grid item xs={10}>
+                                                <br/>
+                                                <div className="card" style={{width: "100%", backgroundColor: "#ff6504" ,marginLeft: "10%"}}>
+                                                    <h1 className="mt-4 h3"
+                                                        style={{paddingBottom: "10px", color: "#4753ab"}}>All Expenses</h1>
+                                                    <div className="card-body"
+                                                         style={{width: "100%", backgroundColor: "white"}}>
+
+                                                        <ExpenseList style={{width: "100%"}}></ExpenseList>
+                                                    </div>
+                                                </div>
+                                            </Grid>
+                                        </Grid>
+                                    </>
+                                    <>
+                                        <br/>
+                                        <br/>
+                                        <Grid container spacing={2}>
+                                            <Grid item xs={10}>
+                                                <br/>
+                                                <div className="card" style={{width: "100%", backgroundColor: "#ff6504" ,marginLeft: "10%"}}>
+                                                    <h1 className="mt-4 h3"
+                                                        style={{paddingBottom: "10px", color: "#4753ab"}}>Finalized Expenses</h1>
+                                                    <div className="card-body"
+                                                         style={{width: "100%", backgroundColor: "white"}}>
+                                                        <FinalizedExpenseList style={{width: "100%"}}></FinalizedExpenseList>
                                                     </div>
                                                 </div>
                                             </Grid>

@@ -4,6 +4,9 @@ react için build:
 docker build -t  burakozer1/react .
 
 
+ burak@gmail.com "tE6-kw5C"
+
+
 
 16/101->kubernates devamı
 
@@ -24,3 +27,6 @@ https://robertcollege.sharepoint.com/sites/BoostAnkara-Java-3Snf/Shared%20Docume
 https://robertcollege.sharepoint.com/sites/BoostAnkara-Java-3Snf/Shared%20Documents/Forms/AllItems.aspx?FolderCTID=0x01200076EAE57E577D1E4488942B712BE5CDA8&isAscending=false&sortField=Modified&id=%2Fsites%2FBoostAnkara%2DJava%2D3Snf%2FShared%20Documents%2FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%2FRecordings%2F%5FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%5F%20kanal%C4%B1ndaki%20toplant%C4%B1%2D20221109%5F133833%2DToplant%C4%B1%20Kayd%C4%B1%2Emp4&viewid=d70b905e%2D4822%2D47ca%2D9c63%2D654e7f41f5d3&parent=%2Fsites%2FBoostAnkara%2DJava%2D3Snf%2FShared%20Documents%2FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%2FRecordings
 
 https://robertcollege.sharepoint.com/sites/BoostAnkara-Java-3Snf/Shared%20Documents/Forms/AllItems.aspx?FolderCTID=0x01200076EAE57E577D1E4488942B712BE5CDA8&isAscending=false&sortField=Modified&id=%2Fsites%2FBoostAnkara%2DJava%2D3Snf%2FShared%20Documents%2FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%2FRecordings%2F%5FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%5F%20kanal%C4%B1ndaki%20toplant%C4%B1%2D20221125%5F133416%2DToplant%C4%B1%20Kayd%C4%B1%2Emp4&viewid=d70b905e%2D4822%2D47ca%2D9c63%2D654e7f41f5d3&parent=%2Fsites%2FBoostAnkara%2DJava%2D3Snf%2FShared%20Documents%2FBoost%20Ankara%20%2D%20Java%20%2D%203%20S%C4%B1n%C4%B1f%2FRecordings
+
+
+

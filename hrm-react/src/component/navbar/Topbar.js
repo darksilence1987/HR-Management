@@ -5,6 +5,7 @@ import {findByEmail} from "../../store/features/UserSlice";
 import Button from "react-bootstrap/Button";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import PermissionForm from "../permissionform/PermissionForm";
+import ExpenseForm from "../expenseform/ExpenseForm";
 
 
 
@@ -36,6 +37,9 @@ function Topbar() {
 
                 <PermissionForm></PermissionForm>
 
+                <br/>
+
+                <ExpenseForm></ExpenseForm>
 
 
                 <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">

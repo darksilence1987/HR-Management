@@ -3,36 +3,32 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import {useDispatch, useSelector} from "react-redux";
-import {permissionCreate} from "../../store/features/PermissionSlice";
-import {render} from "react-dom";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import {fetchUserCreate} from "../../store/features/UserSlice";
+import {expenseCreate} from "../../store/features/ExpenseSlice";
 
 
-function PermissionForm() {
+function ExpenseForm() {
 
     const userEmail = useSelector((state) => state.auth.auth.email);
 
+    const [expenseName, setExpenseName] = useState("");
+    const [expenseDescription, setExpenseDescription] = useState("");
+    const [expenseDate, setExpenseDate] = useState("");
+    const [expenseAmount, setExpenseAmount] = useState("");
 
-    const [permissionType, setPermissionType] = useState("");
-    const [dayAmount, setDayAmount] = useState("");
-    const [startDate, setStartDate] = useState("");
+    const dispatch = useDispatch();
 
-const dispatch = useDispatch();
+    const createExpense = async () => {
 
-    const createPermission = async () => {
-
-        const permission = {
+        const expense = {
             userEmail,
-            permissionType,
-            dayAmount,
-            startDate,
+            expenseDescription,
+            expenseName,
+            expenseAmount,
+            expenseDate,
 
         };
-        dispatch(permissionCreate(permission));
+        dispatch(expenseCreate(expense));
     };
-
 
     const [show, setShow] = useState(false);
 
@@ -43,51 +39,63 @@ const dispatch = useDispatch();
 
     }, []);
 
-
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-               Create Permission Request
+                Create Expense Request
             </Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Permission Request Form</Modal.Title>
+                    <Modal.Title>Expense Request Form</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Permission Type</Form.Label>
-                            <Form.Control
-                                name="permissionType" onChange={(e) => setPermissionType(e.target.value)} value={permissionType}
 
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label>Expense Name</Form.Label>
+                            <Form.Control
+                                name="expenseName" onChange={(e) => setExpenseName(e.target.value)} value={expenseName}
                                 type="text"
-                                placeholder="Permission Type"
+                                placeholder="Expense Name"
                                 autoFocus
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Day</Form.Label>
+                            <Form.Label>Expense Amount</Form.Label>
                             <Form.Control
-                                name="dayAmount" onChange={(e) => setDayAmount(e.target.value)} value={dayAmount}
-
+                                name="expenseAmount" onChange={(e) => setExpenseAmount(e.target.value)} value={expenseAmount}
                                 type="number"
-                                placeholder="Number of Days"
+                                placeholder="Expense Amount"
                                 autoFocus
                             />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Start Date</Form.Label>
+
                             <Form.Control
-                                name="startDate" onChange={(e) => setStartDate(e.target.value)} value={startDate}
+                                name="expenseDate" onChange={(e) => setExpenseDate(e.target.value)} value={expenseDate}
 
                                 type="date"
-                                placeholder="Start Date"
+                                placeholder="Expense Date"
                                 autoFocus
                             />
                         </Form.Group>
+
+                        <Form.Group controlId="formFileLg" className="mb-3">
+
+                            <Form.Label>Upload Invoice</Form.Label>
+
+                            <Form.Control
+                                    name="expenseDescription" onChange={(e) => setExpenseDescription(e.target.value)} value={expenseDescription}
+
+                                type="file"
+
+                                size="lg" />
+                        </Form.Group>
+
 
                     </Form>
                 </Modal.Body>
@@ -95,7 +103,7 @@ const dispatch = useDispatch();
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={createPermission}>
+                    <Button variant="primary" onClick={createExpense}>
                         Save Changes
                     </Button>
                 </Modal.Footer>
@@ -104,4 +112,4 @@ const dispatch = useDispatch();
     );
 }
 
-export default PermissionForm
+export default ExpenseForm

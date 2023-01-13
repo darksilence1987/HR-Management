@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
+public class ExpenseCorporationNameRequestDto {
 
-public class ManagersEmployersRequestDto {
-
-    String email;
+    private String corporationName;
 }

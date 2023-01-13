@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: burakozer1/team3user
+          image: burakozer1/team3user:v001
           resources:
             requests:
               memory: "1Gi"

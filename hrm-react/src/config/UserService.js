@@ -12,13 +12,21 @@ const userService = {
     managersEmployers: RestApis.userService + "/managersemployers",
 
 
-
-
     permissionCreate: RestApis.userService + "/permissioncreate",
     findAllPermission: RestApis.userService + "/allpermissions",
     findAllFinalizedPermission: RestApis.userService + "/allfinalizedpermissions",
     permissionConfirmed: RestApis.userService + "/permissionconfirmed",
     permissionRejected: RestApis.userService + "/permissionrejected",
+
+
+    expenseCreate: RestApis.userService + "/expensecreate",
+    expenseRejected: RestApis.userService + "/expenserejected",
+    expenseConfirmed: RestApis.userService + "/expenseconfirmed",
+    findAllFinalizedExpense: RestApis.userService + "/allfinalizedexpenses",
+    findAllExpense: RestApis.userService + "/getallexpenses-user",
+
+
+
 
 };
 

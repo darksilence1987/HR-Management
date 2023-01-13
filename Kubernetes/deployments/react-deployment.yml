@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: react-web-service
-          image: burakozer1/react:v003
+          image: burakozer1/react:v004
           resources:
             requests:
               memory: "1Gi"
